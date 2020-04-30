@@ -1,0 +1,14 @@
+
+State Machine - |AlteraDE1_SimpleProcessor|CU:controlUnit|state
+Name state.halt state.jpos state.jz state.Input state.sub state.add state.store state.load state.decode state.fetch state.start 
+state.start 0 0 0 0 0 0 0 0 0 0 0 
+state.fetch 0 0 0 0 0 0 0 0 0 1 1 
+state.decode 0 0 0 0 0 0 0 0 1 0 1 
+state.load 0 0 0 0 0 0 0 1 0 0 1 
+state.store 0 0 0 0 0 0 1 0 0 0 1 
+state.add 0 0 0 0 0 1 0 0 0 0 1 
+state.sub 0 0 0 0 1 0 0 0 0 0 1 
+state.Input 0 0 0 1 0 0 0 0 0 0 1 
+state.jz 0 0 1 0 0 0 0 0 0 0 1 
+state.jpos 0 1 0 0 0 0 0 0 0 0 1 
+state.halt 1 0 0 0 0 0 0 0 0 0 1 

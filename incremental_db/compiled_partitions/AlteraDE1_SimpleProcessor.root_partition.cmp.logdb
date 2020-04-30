@@ -1,0 +1,9 @@
+v1
+RAM_PACKING,0,M4K,36,36,SimpleDual,0,20,11110010,DP:dataPath|RAM:RAM32x8|altsyncram:RAM_rtl_0|altsyncram_fij1:auto_generated|ram_block1a0,
+RAM_PACKING,0,M4K,36,36,SimpleDual,0,19,11110010,DP:dataPath|RAM:RAM32x8|altsyncram:RAM_rtl_0|altsyncram_fij1:auto_generated|ram_block1a1,
+RAM_PACKING,0,M4K,36,36,SimpleDual,0,23,11110010,DP:dataPath|RAM:RAM32x8|altsyncram:RAM_rtl_0|altsyncram_fij1:auto_generated|ram_block1a2,
+RAM_PACKING,0,M4K,36,36,SimpleDual,0,21,11110010,DP:dataPath|RAM:RAM32x8|altsyncram:RAM_rtl_0|altsyncram_fij1:auto_generated|ram_block1a3,
+RAM_PACKING,0,M4K,36,36,SimpleDual,0,25,11110010,DP:dataPath|RAM:RAM32x8|altsyncram:RAM_rtl_0|altsyncram_fij1:auto_generated|ram_block1a4,
+RAM_PACKING,0,M4K,36,36,SimpleDual,0,15,11110010,DP:dataPath|RAM:RAM32x8|altsyncram:RAM_rtl_0|altsyncram_fij1:auto_generated|ram_block1a5,
+RAM_PACKING,0,M4K,36,36,SimpleDual,0,12,11110010,DP:dataPath|RAM:RAM32x8|altsyncram:RAM_rtl_0|altsyncram_fij1:auto_generated|ram_block1a6,
+RAM_PACKING,0,M4K,36,36,SimpleDual,0,14,11110010,DP:dataPath|RAM:RAM32x8|altsyncram:RAM_rtl_0|altsyncram_fij1:auto_generated|ram_block1a7,
