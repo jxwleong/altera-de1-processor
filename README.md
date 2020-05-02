@@ -290,7 +290,7 @@ Figure x. RLT view of processor.
 Figure above shows the entire circuitry of the processor. The processor contains two main compartment which are the Control Unit (CU) and Datapath (DP). The CU behaves like an instructor where it instruct the DP to process the data. CU receives the instruction from DP and send the control signals to DP so that DP can process the data as expected. After processing the data, DP will sent out status signals to CU to act as a feedback so that CU can transition in to the right state to give correct control signals. 
 
 ![Datapath of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/Datapath.png)   
-Figure 4. Datapath for the GPM from [1.]. 
+Figure 4. Datapath for the GPM from [1]. 
   
 ![RTL view of data path](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DataPath.png)  
 Figure x. RLT view of data path (open image in new tab). 
@@ -304,10 +304,10 @@ Figures above shows the schematic and RTL view of the Datapath (DP) and Control 
 
 1. **Register**  
 In electronics, register is made out of flip-flop to store larger size data. This is because flip-flop can only stored one bit of data.
-However, the data stored in the flip-flop will be erased as soon as the power goes off. For this processor, D flip-flop is used because of the simplicity of the design.  
+However, the data stored in the flip-flop will be erased as soon as the power goes off. For this processor, D flip-flop is used because of the simplicity of the design. Figure below shows the RTL view of the 8-bit register made of eight D flip-flop. This register is then used for instruction register, data register (accumulator) and program counter (5-bit). The verilog code for this module can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/DFF_reg.v).    
 
 ![RTL view of D register](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DReg.png)  
-Figure x. RLT view of D register. Figure below shows the RTL view of the 8-bit register made of eight D flip-flop. This register is then used for instruction register, data register (accumulator) and program counter (5-bit). The verilog code for this module can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/DFF_reg.v).  
+Figure x. RLT view of D register. 
 
 <br/>   
 
@@ -331,7 +331,7 @@ Figures above shows RTL view of 2-to-1 and 4-to-1 multiplexer. Multiplexer is a 
 | 0           |    D0   |
 | 1           |    D1   |  
  
-Table above shows the truth table of 2-to-1 multiplexer. When the select signals is `LOW`, the multiplexer will select LSB as output. Otherwise, it will select MSB as output.
+Table above shows the truth table of 2-to-1 multiplexer. When the select signals is `LOW`, the multiplexer will select LSB as output. Otherwise, it will select MSB as output.  
 
 | Select1(S1) | Select0 (S0) | Out |
 |-------------|--------------|-----|
@@ -340,7 +340,9 @@ Table above shows the truth table of 2-to-1 multiplexer. When the select signals
 | 1           | 0            | D2  |
 | 1           | 1            | D3  |
 
-4-to-1 multiplexer functions like 2-to-1 multiplexer but with extra select signals as shown as table above. When the select signals (S1S0) is `00` it will select LSB as the output and so on.
+4-to-1 multiplexer functions like 2-to-1 multiplexer but with extra select signals as shown as table above. When the select signals (S1S0) is `00` it will select LSB as the output and so on.  
+
+The verilog code for 2-to-1 multiplexer can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux2to1.v) and the code for 4-to1 multiplexer is located [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux4to1.v).
 
 
 5. **Adder-subtractor**  
@@ -350,6 +352,8 @@ Figure x. RTL view of adder-subtractor.
 
 <br/>  
 
+The code of the adder-subtractor can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/addSubstractor.v)
+
 
 6. **RAM**  
 ![RTL internal view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_InternalView.png)
@@ -358,7 +362,9 @@ Figure x. RTL internal view of 32x8 RAM.
 ![RTL external view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_ExternalView.png)
 Figure x. RTL external view of 32x8 RAM.  
 
-<br/>
+<br/>  
+
+The code for the RAM can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/RAM.v).
 
 
 ## References
