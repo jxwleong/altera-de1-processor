@@ -39,7 +39,6 @@ Based on Figure 1, there are a total of eight instructions for this GCD processo
 **1. LOAD A**   
 This instruction will load the content of memory location aaaaa (encoded with the instruction) into the accumulator.
 
-
 **2. STORE A**  
 This instruction will store the data in A (an 8-bit data register) into the memory location aaaaa, whereby aaaaa is encoded within the instruction in the RAM.
 
@@ -61,13 +60,34 @@ This instruction will configure the Program Counter (PC) to the memory address, 
 **8. HALT**  
 This instruction will halt the execution. This instruction will be executed when the GCD is found.
 
+<br/>
 
+
+#### Schematic View of the Processor
+![Complete Circuit for Processor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/CompleteCircuitProcessor.png)  
+Figure x. The Complete Circuit for the GCD Processor
+
+<br/>  
+
+The structure of the processor can be broken-down into two sections, Control Unit (CU) and Data Path (DP).
+
+The ***Control Unit (CU)*** is the component that direct the oprations of the processor based on the status signals such as instruction received from datapath. Based on the instruction received, it will send the corresponding control signals to perform the task. It normally control the memory and register (enable read/ write operation or when to load the register).
+
+The ***Data Path (DP)*** consists of a combinations of functional units such as adder, subtractor and memory. It is used to perform data processing based on the control signals received from CU. Besides, it also send the instruction bits and neccesary status signals to help CU to send the correct control signals.
+
+
+<br/>
 
 #### State Table
 ![State Table of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/StateTable.png)   
 Figure 2. State Table for the GPM from [1]. 
 
 <br/>
+
+Figure above shows the state table of the processor. The state table will tells what are the next state based on different input signals and produce the relevant output signals. There are 11 different states for this processor.
+
+<br/>
+
 
 #### State Diagram
 ![State Diagram of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/StateDiagram.png)   
@@ -119,9 +139,7 @@ In otherwords, the program counter will jump to the specified memory location in
 The processor will be halt when the GCD is find.  
 
 ![Datapath of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/Datapath.png)   
-<div align="center">
-  Figure 4. Datapath for the GPM from [1.]. 
-</div>
+Figure 4. Datapath for the GPM from [1.]. 
 
 <br/>
 
