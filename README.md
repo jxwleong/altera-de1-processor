@@ -5,6 +5,9 @@ Datapath (DP) and Control Unit (CU). Write the DP and CU code seperately then co
 
 ## Table of Contents
 1.  [Requirements for this repo](#repoReq)
+    * [Software Requirement](#softReq)
+    * [Hardware Requirement](#hardReq)
+    * [Processor Specifications](#proSpec)  
 2.  [What is Greatest Common Divisor (GCD)](#whatIsGCD)
     * [GCD Example](#GCDExp)
     * [GCD Application](#GCDApp)
@@ -16,33 +19,63 @@ Datapath (DP) and Control Unit (CU). Write the DP and CU code seperately then co
 5.  [Quartus II Results](#quar2Res)
 
 ## <a name="repoReq"></a> Requirements for this repo  
-### Software Requirements
+
+### <a name="softReq"></a> Software Requirements
 1. Quartus II
 2. Model SIM
 
-### Hardware Requirement
+### <a name="hardReq"></a>Hardware Requirement
 1. Altera DE1 Board
 
-### Processor Specifications  
-![Instruction Set of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/InstructionSet.png)   
-<div align="center">
-  Figure 1. Instruction Set for the GPM from [1]. 
-</div>  
-&nbsp  
+### <a name="proSpec"></a>Processor Specifications  
+#### Instruction Sets
+![Instruction Sets of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/InstructionSet.png)  
+Figure 1. Instruction Set for the GPM from [1]. 
 
+<br/>  
+
+Based on Figure 1, there are a total of eight instructions for this GCD processor. The 8-bit instruction is encoded into two parts, `bit 7 to 5 (3-bit)` indicates the actual instruction that will determine the state and `bit 4 to 0 (5-bit)` indicates the memory location of the RAM. The desription of each instructions are shown below. <br/>
+
+**1. LOAD A**   
+This instruction will load the content of memory location aaaaa (encoded with the instruction) into the accumulator.
+
+
+**2. STORE A**  
+This instruction will store the data in A (an 8-bit data register) into the memory location aaaaa, whereby aaaaa is encoded within the instruction in the RAM.
+
+**3. ADD A**  
+This instruction will add the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the addition is stored back into A.
+
+**4. SUB A**  
+This instruction will subtract the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the subtraction is stored back into A.
+
+**5. IN A**  
+This instruction will load A (an 8-bit data register) with the data from INPUT line (external I/Os such as switch in Altera DE1).
+
+**6. JZ**  
+This instruction will configure the Program Counter (PC) to the memory address, aaaaa when the value of A is zero so that the PC will executed the instruction at specific memory address instead to sequentially.
+
+**7. JPOS**  
+This instruction will configure the Program Counter (PC) to the memory address, aaaaa when the value of A is postive so that the PC will executed the instruction at specific memory address instead to sequentially.
+
+**8. HALT**  
+This instruction will halt the execution. This instruction will be executed when the GCD is found.
+
+
+
+#### State Table
 ![State Table of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/StateTable.png)   
-<div align="center">
-  Figure 2. State Table for the GPM from [1]. 
-</div>  
-&nbsp  
+Figure 2. State Table for the GPM from [1]. 
 
+<br/>
+
+#### State Diagram
 ![State Diagram of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/StateDiagram.png)   
-<div align="center">
-  Figure 3. State Diagram for the GPM from [1]. 
-</div>    
-&nbsp  
-&nbsp   
+Figure 3. State Diagram for the GPM from [1]. 
 
+<br/>
+  
+#### The State Machine in this Processor
 
 **1. START**  
 The start state of the processor, it will jump to next state (FETCH) after start up.  
@@ -90,6 +123,8 @@ The processor will be halt when the GCD is find.
   Figure 4. Datapath for the GPM from [1.]. 
 </div>
 
+<br/>
+
 ## <a name="whatIsGCD"></a> What is Greatest Common Divisor (GCD)?
 Greatest Common Divider (GCD) is the largest positive integer that divides two or more integers [2].
 
@@ -132,61 +167,50 @@ Once the execute stage is complete, the CPU will begin another instruction cycle
 
 ## <a  name="quar2Res"></a> Quartus II Results  
 
-![Top RTL view of processor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_Top.png)
-<div align="center">
-  Figure x. RLT view of processor. 
-</div>  
-&nbsp  
+![Top RTL view of processor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_Top.png)  
+Figure x. RLT view of processor. 
 
-![RTL view of control unit](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_ControlUnit.png)
+<br/>
 
-<div align="center">
-  Figure x. RLT view of control unit. 
-</div>
-&nbsp  
-&nbsp  
+![RTL view of control unit](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_ControlUnit.png)  
+Figure x. RLT view of control unit. 
 
-![RTL view of data path](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DataPath.png)
-<div align="center">
-  Figure x. RLT view of data path. 
-</div>  
-&nbsp  
+<br/>
+
+![RTL view of data path](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DataPath.png)  
+Figure x. RLT view of data path. 
+
+<br/> 
 
 ![RTL view of 2-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_2to1MUX.png)
-<div align="center">
-  Figure x. RLT view of two to one multiplexer. 
-</div>  
-&nbsp  
+Figure x. RLT view of two to one multiplexer. 
 
-![RTL view of 4-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_4to1MUX.png)
-<div align="center">
-  Figure x. RLT view of four to one multiplexer. 
-</div>  
-&nbsp  
+<br/>
+
+![RTL view of 4-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_4to1MUX.png)  
+Figure x. RLT view of four to one multiplexer. 
+
+<br/>
 
 ![RTL view of adder-subtractor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_AddSub.png)
-<div align="center">
-  Figure x. RLT view of adder-subtractor. 
-</div>  
-&nbsp  
+Figure x. RLT view of adder-subtractor. 
+
+<br/> 
 
 ![RTL internal view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_InternalView.png)
-<div align="center">
-  Figure x. RLT internal view of 32x8 RAM. 
-</div>  
-&nbsp  
+Figure x. RLT internal view of 32x8 RAM. 
+
+<br/>
 
 ![RTL external view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_ExternalView.png)
-<div align="center">
-  Figure x. RLT external view of 32x8 RAM. 
-</div> 
-&nbsp  
+Figure x. RLT external view of 32x8 RAM. 
 
-![RTL view of D register](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DReg.png)
-<div align="center">
-  Figure x. RLT view of D register. 
-</div>  
-&nbsp  
+<br/>
+
+![RTL view of D register](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DReg.png)  
+Figure x. RLT view of D register. 
+
+<br/>  
 
 
 ## References
