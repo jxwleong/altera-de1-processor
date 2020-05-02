@@ -27,18 +27,22 @@ Datapath (DP) and Control Unit (CU). Write the DP and CU code seperately then co
 ![Instruction Set of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/InstructionSet.png)   
 <div align="center">
   Figure 1. Instruction Set for the GPM from [1]. 
-</div>
+</div>  
+&nbsp  
 
 ![State Table of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/StateTable.png)   
 <div align="center">
   Figure 2. State Table for the GPM from [1]. 
-</div>
+</div>  
+&nbsp  
 
 ![State Diagram of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/StateDiagram.png)   
 <div align="center">
   Figure 3. State Diagram for the GPM from [1]. 
-</div>  
+</div>    
 &nbsp  
+&nbsp   
+
 
 **1. START**  
 The start state of the processor, it will jump to next state (FETCH) after start up.  
@@ -128,42 +132,61 @@ Once the execute stage is complete, the CPU will begin another instruction cycle
 
 ## <a  name="quar2Res"></a> Quartus II Results  
 
+![Top RTL view of processor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_Top.png)
 <div align="center">
   Figure x. RLT view of processor. 
 </div>  
+&nbsp  
 
+![RTL view of control unit](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_ControlUnit.png)
 
 <div align="center">
   Figure x. RLT view of control unit. 
 </div>
+&nbsp  
+&nbsp  
 
+![RTL view of data path](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DataPath.png)
 <div align="center">
   Figure x. RLT view of data path. 
-</div>
+</div>  
+&nbsp  
 
+![RTL view of 2-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_2to1MUX.png)
 <div align="center">
   Figure x. RLT view of two to one multiplexer. 
-</div>
+</div>  
+&nbsp  
 
+![RTL view of 4-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_4to1MUX.png)
 <div align="center">
   Figure x. RLT view of four to one multiplexer. 
-</div>
+</div>  
+&nbsp  
 
+![RTL view of adder-subtractor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_AddSub.png)
 <div align="center">
   Figure x. RLT view of adder-subtractor. 
-</div>
+</div>  
+&nbsp  
 
+![RTL internal view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_InternalView.png)
 <div align="center">
-  Figure x. RLT view of 32x8 RAM view 1. 
-</div>
+  Figure x. RLT internal view of 32x8 RAM. 
+</div>  
+&nbsp  
 
+![RTL external view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_ExternalView.png)
 <div align="center">
-  Figure x. RLT view of 32x8 RAM view 2. 
-</div>
+  Figure x. RLT external view of 32x8 RAM. 
+</div> 
+&nbsp  
 
+![RTL view of D register](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DReg.png)
 <div align="center">
   Figure x. RLT view of D register. 
-</div>
+</div>  
+&nbsp  
 
 
 ## References
