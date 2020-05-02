@@ -18,6 +18,7 @@ Datapath (DP) and Control Unit (CU). Write the DP and CU code seperately then co
 4.  [Important components of the Simple Processor](#importComp)    
 5.  [Quartus II Results](#quar2Res)
 
+
 ## <a name="repoReq"></a> Requirements for this repo  
 
 ### <a name="softReq"></a> Software Requirements
@@ -63,18 +64,78 @@ This instruction will halt the execution. This instruction will be executed when
 <br/>
 
 
+
 #### Schematic View of the Processor
 ![Complete Circuit for Processor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/CompleteCircuitProcessor.png)  
 Figure x. The Complete Circuit for the GCD Processor
-
+  
 <br/>  
 
-The structure of the processor can be broken-down into two sections, Control Unit (CU) and Data Path (DP).
+The structure of the processor can be broken-down into two sections, Control Unit (CU) and Datapath (DP).
 
 The ***Control Unit (CU)*** is the component that direct the oprations of the processor based on the status signals such as instruction received from datapath. Based on the instruction received, it will send the corresponding control signals to perform the task. It normally control the memory and register (enable read/ write operation or when to load the register).
 
-The ***Data Path (DP)*** consists of a combinations of functional units such as adder, subtractor and memory. It is used to perform data processing based on the control signals received from CU. Besides, it also send the instruction bits and neccesary status signals to help CU to send the correct control signals.
+The ***Datapath (DP)*** consists of a combinations of functional units such as adder, subtractor and memory. It is used to perform data processing based on the control signals received from CU. Besides, it also send the instruction bits and neccesary status signals to help CU to send the correct control signals.  
+<br/>  
+#### I/O Signals  
 
+1. **Clock**  
+The processor executes instructions based on the clock. For this processor, the instructions is executed on the rising edge of the clock signals. The clock speed will determine how fast the processor can executes the instuctions. The clock speed for this processor is 4 Hz by using a clock divider.
+
+2. **Reset**  
+For Control Unit (CU), the Reset signal will cause the state to become the first state which is `start`.  
+For Datapath (DP), the Reset signal will cause the data in 8-bit instruction register, 5-bit Program Counter (PC) and 8-bit data register/ accumulator to be cleared.
+
+3. **Enter**  
+This input signal is used when the current state is in `input` state. It is control by an external trigger (such as switch) to tell the CU that the correct input data is selected. When this signal is high, it will tell DP to process the data so that it can proceed to next state.
+
+4. **Halt**  
+This output signal is used to indicate that the program is completed. It is assigned with the LED pin on Altera DE1.
+
+5. **Input**  
+This 8-bit input signals will be loaded into A (8-bit data register) when the current state is `input`. This signals will be used for the adding or subrating operations based on the instruction.
+
+6. **Output**  
+This 8-bit output signals will sent out from A (8-bit data register) when the current state is `load`. This output signals is only used for display or send to another component. This output signal is crucial for sending `Aeq0` and `Apos` status signals to CU.  
+
+<br/>
+
+#### Control Signals
+1. **IRload**  
+This signal will sent to the Data Path (DP) so that the 8-bit instruction stored in the RAM can be loaded into the 8-bit instruction register.
+
+2. **JMPmux**  
+This signal will allow the 2-to-1 multiplexer to choose the memory address to be loaded into the 5-bit Program Counter (PC) instead of the increment value after each instruction is executed. Basically, the signal is important when there are jump instructions to be executed. When the signal is `HIGH`, it will choose the memory address from the instruction. Otherwise, it will select the increment value.
+
+3. **PCload**  
+PCload signal is used to load the 5-bit PC. The data to be loaded could be the specific memory address for jump instructions or increment value.
+
+4. **Meminst**  
+This signal will determine which memory address to be used for Read/ Write the data in RAM. If the signal is `HIGH`, it will choose the address from that is encoded with the instruction. Else, it will choose the memory address from PC.
+
+5. **MemWr**  
+MemWr signal is used to determine the operations of the RAM. When the signal is `HIGH`, the input signals of the RAM will be written in the specific memory address encoded in the instruction. If the signal is `LOW`, the RAM is available for read only.
+
+6. **Asel**  
+These signals is used for the 4-to-1 decoder so that it will select the correct input signals to be loaded into A (8-bit data register/ Accumulator).
+
+7. **Aload**  
+This signals function are similar to **PCload**, it is used to load data register A.
+
+8. **Sub**  
+Sub signal is send to the adder-subtractor. When the signal is `HIGH`, the adder-subtractor will act as a subtractor. Otherwise, it operates like an adder.
+  
+<br/>
+
+#### Status Signals  
+1. **IR**  
+These signals contain the actual 3-bit instruction from the RAM. It is received from Datapath (DP) to update current state and send correct control signals back to DP.
+
+2. **Aeq0**  
+This signal is sent to Control Unit (CU) when the data in A (8-bit data register/ Accumulator) so that the CU will sent the control signals to executed the right instructions. OR gate is used to check the output signals from A, if the data is zero it will sent `HIGH` to CU.
+
+3. **Apos**  
+Apos signal function similar to Aeq0. It is used to tell the CU that the data in A is positive. The MSB of the 8-bit output signals will used to determine whether the number is postivie or negative because MSB is the sign indicator. A NOT gate is used to validate the data in A, if the MSB is 0 which means that the number is positive, `HIGH` will be sent to CU.
 
 <br/>
 
