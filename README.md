@@ -295,7 +295,7 @@ Figure 4. Datapath for the GPM from [1.].
 Figure x. RLT view of data path (open image in new tab). 
 
 ![RTL view of control unit](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_ControlUnit.png)  
-Figure x. RLT view of control unit. 
+Figure x. RTL view of control unit. 
 
 <br/> 
 
@@ -309,7 +309,8 @@ However, the data stored in the flip-flop will be erased as soon as the power go
 Figure x. RLT view of D register. 
 
 <br/>   
-Figure above shows the RTL view of the 8-bit register made of eight D flip-flop. This register is then used for instruction register, data register (accumulator) and program counter (5-bit).
+Figure above shows the RTL view of the 8-bit register made of eight D flip-flop. This register is then used for instruction register, data register (accumulator) and program counter (5-bit). The verilog code for this module can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/DFF_reg.v)  
+
 
 2. **Program Counter (PC)**  
 Program Counter (PC) is a register in a processor that indicates the next instruction memory address after fetching a instruction [5]. The program counter are affected by the instruction cycle. The value in the PC will be changed when the instructions already fetched or a branch or jump condition is met so the PC value will changed to that specific memory location. If there are no branch or jump conditions, the value of the PC will be incremented as the instruction executes. 
@@ -346,20 +347,17 @@ Table above shows the truth table of 2-to-1 multiplexer. When the select signals
 5. **Adder-subtractor**  
 
 ![RTL view of adder-subtractor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_AddSub.png)
-Figure x. RLT view of adder-subtractor. 
+Figure x. RTL view of adder-subtractor. 
 
 <br/>  
 
 
 6. **RAM**  
-
-<br/>
 ![RTL internal view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_InternalView.png)
-Figure x. RLT internal view of 32x8 RAM.   
-
+Figure x. RTL internal view of 32x8 RAM.   
 
 ![RTL external view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_ExternalView.png)
-Figure x. RLT external view of 32x8 RAM.  
+Figure x. RTL external view of 32x8 RAM.  
 
 <br/>
 
