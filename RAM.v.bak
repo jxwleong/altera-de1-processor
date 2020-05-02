@@ -28,35 +28,15 @@ module RAM #(parameter RAM_LOCATIONS = 16, 	parameter RAM_BITS = 4)(input [RAM_B
 		RAM[31] = 8'b00000000;
 	end	
 	
-	// PC Count	: Instruction code: Desc
-	//  00000	: 100 00000; -- INPUT A
-	//  00001	: 001 11110; -- STORE A -> 11110
-	//  00010	: 100 00000; -- INPUT A
-	//  00011	: 001 11111; -- STORE A -> 11111
-	//  00100	: 000 11110; -- LOAD (11110) -> A
-	//  00101	: 011 11111; -- A = A - (11111)
-	//  00110	: 101 10000; -- JUMP to PC (10000) if A = 0
-	//  00111	: 110 01100; -- JUMP to PC (01100) if A = +ve
-	//	01000	: 000 11111; -- STORE A -> 11111
-	//  01001	: 011 11110; -- A = A - (11110)  
-	//  01010	: 001 11111; -- STORE A -> 11111
-	//  01011	: 110 00100; -- JUMP to PC (01100) if A = +ve
-	//  01100	: 000 11110; -- STORE A -> 11110
-	//  01101	: 011 11111; -- A = A - 11111
-	//  01110   : 001 11110; -- STORE A -> 11110
-	//  01111   : 110 00100; -- JUMP to PC (00100) if A = +ve
-	//  10000	: 000 11110; -- LOAD (11110) -> A
-	//  10001	: 111 11111; -- HALT    
-	   
-	/*	Exampel from Lab Manual
+	/*
 	initial 
 	begin
-	RAM[0] = 8'b10000000; -- INPUT A
-	RAM[1] = 8'b01111111; -- A = A - (11111)
-	RAM[2] = 8'b10100100; -- JUMP to PC (00100) if A = 0
-	RAM[3] = 8'b11000001; -- JUMP to PC (00001) if A = +ve
-	RAM[4] = 8'b11111111; -- HALT
-	RAM[31]= 8'b00000001; -- CONSTANT 1
+	RAM[0] = 8'b10000000;
+	RAM[1] = 8'b01111111;
+	RAM[2] = 8'b10100100;
+	RAM[3] = 8'b11000001;
+	RAM[4] = 8'b11111111;
+	RAM[31]= 8'b00000001;
 	end
 	*/
 	always@(posedge clk)
