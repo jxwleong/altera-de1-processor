@@ -13,8 +13,7 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
         * [Find Least Common Multiple (LCM)](#findLCM)
         * [Cryptography](#crypto)
 3.  [Instruction Cycle](#instCyc)     
-4.  [Important components of the Simple Processor](#importComp)    
-5.  [Quartus II Results](#quar2Res)
+4.  [Components of the Processor](#comp)    
 
 
 ## <a name="repoReq"></a> Requirements for this repo  
@@ -35,28 +34,28 @@ Figure 1. Instruction Set for the GPM from [1].
 
 Based on Figure 1, there are a total of eight instructions for this GCD processor. The 8-bit instruction is encoded into two parts, `bit 7 to 5 (3-bit)` indicates the actual instruction that will determine the state and `bit 4 to 0 (5-bit)` indicates the memory location of the RAM. The desription of each instructions are shown below. <br/>
 
-**1. LOAD A**   
+1. **LOAD A**   
 This instruction will load the content of memory location aaaaa (encoded with the instruction) into the accumulator.
 
-**2. STORE A**  
+2. **STORE A**  
 This instruction will store the data in A (an 8-bit data register) into the memory location aaaaa, whereby aaaaa is encoded within the instruction in the RAM.
 
-**3. ADD A**  
+3. **ADD A**  
 This instruction will add the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the addition is stored back into A.
 
-**4. SUB A**  
+4. **SUB A**  
 This instruction will subtract the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the subtraction is stored back into A.
 
-**5. IN A**  
+5. **IN A**  
 This instruction will load A (an 8-bit data register) with the data from INPUT line (external I/Os such as switch in Altera DE1).
 
-**6. JZ**  
+6. **JZ**  
 This instruction will configure the Program Counter (PC) to the memory address, aaaaa when the value of A is zero so that the PC will executed the instruction at specific memory address instead to sequentially.
 
-**7. JPOS**  
+7. **JPOS**  
 This instruction will configure the Program Counter (PC) to the memory address, aaaaa when the value of A is postive so that the PC will executed the instruction at specific memory address instead to sequentially.
 
-**8. HALT**  
+8. **HALT**  
 This instruction will halt the execution. This instruction will be executed when the GCD is found.
 
 <br/>
@@ -190,10 +189,7 @@ In otherwords, the program counter will jump to the specified memory location in
 
 11. **HALT**    
 The processor will be halt when the GCD is find.  
-
-![Datapath of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/Datapath.png)   
-Figure 4. Datapath for the GPM from [1.]. 
-
+  
 <br/>
 
 ## <a name="whatIsGCD"></a> What is Greatest Common Divisor (GCD)?
@@ -283,54 +279,89 @@ The next step of the instruction cycle is decode. CPU is designed to understand 
 3. **Execute**  
 The last stage of the instruction cycle. In this stage, the CPU will process the data based on the instruction. Once the execute stage is complete, the CPU will begin another instruction cycle [4]. After receiving the control signals from CU, the DP will process the data according to the signals sent from CU. 
 
-<br/>
+<br/>  
 
-## <a  name="quar2Res"></a> Quartus II Results  
-
+## <a  name="comp"></a> Components of the Processor 
 ![Top RTL view of processor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_Top.png)  
 Figure x. RLT view of processor. 
 
-<br/>
+<br/>  
+Figure above shows the entire circuitry of the processor. The processor contains two main compartment which are the Control Unit (CU) and Datapath (DP). The CU behaves like an instructor where it instruct the DP to process the data. CU receives the instruction from DP and send the control signals to DP so that DP can process the data as expected. After processing the data, DP will sent out status signals to CU to act as a feedback so that CU can transition in to the right state to give correct control signals. 
+
+![Datapath of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/Datapath.png)   
+Figure 4. Datapath for the GPM from [1.]. 
+  
+![RTL view of data path](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DataPath.png)  
+Figure x. RLT view of data path (open image in new tab). 
 
 ![RTL view of control unit](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_ControlUnit.png)  
 Figure x. RLT view of control unit. 
 
-<br/>
-
-![RTL view of data path](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DataPath.png)  
-Figure x. RLT view of data path. 
-
 <br/> 
 
-![RTL view of 2-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_2to1MUX.png)
-Figure x. RLT view of two to one multiplexer. 
+Figures above shows the schematic and RTL view of the Datapath (DP) and Control Unit (CU), the DP contains a collection of different functional components such as adder-subtractor, accumulator, RAM and register to process the data. Moreover, the CU consists of decoder, selector and some logic gate to determine the states and control signals. The description for each components can be found below.  
 
-<br/>
-
-![RTL view of 4-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_4to1MUX.png)  
-Figure x. RLT view of four to one multiplexer. 
-
-<br/>
-
-![RTL view of adder-subtractor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_AddSub.png)
-Figure x. RLT view of adder-subtractor. 
-
-<br/> 
-
-![RTL internal view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_InternalView.png)
-Figure x. RLT internal view of 32x8 RAM. 
-
-<br/>
-
-![RTL external view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_ExternalView.png)
-Figure x. RLT external view of 32x8 RAM. 
-
-<br/>
+1. **Register**  
+In electronics, register is made out of flip-flop to store larger size data. This is because flip-flop can only stored one bit of data.
+However, the data stored in the flip-flop will be erased as soon as the power goes off. For this processor, D flip-flop is used because of the simplicity of the design.  
 
 ![RTL view of D register](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DReg.png)  
 Figure x. RLT view of D register. 
 
+<br/>   
+Figure above shows the RTL view of the 8-bit register made of eight D flip-flop. This register is then used for instruction register, data register (accumulator) and program counter (5-bit).
+
+2. **Program Counter (PC)**  
+Program Counter (PC) is a register in a processor that indicates the next instruction memory address after fetching a instruction [5]. The program counter are affected by the instruction cycle. The value in the PC will be changed when the instructions already fetched or a branch or jump condition is met so the PC value will changed to that specific memory location. If there are no branch or jump conditions, the value of the PC will be incremented as the instruction executes. 
+
+3. **Instruction Register (IR)**  
+Instruction register (IR) is a register that store the actual instruction to be executed or decoded. First, the instruction is fetched to the IR, then it holds the instruction while decoding. After decoding, the instruction is executed and current register is replaced with next instruction. For this processor, `bit 4 to 0` will be loaded to the PC when the instructions requires branch or jump to specific memory address or it's the first instruction.  
+
+4. **Multiplexer**  
+![RTL view of 2-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_2to1MUX.png)  
+Figure x. RLT view of two to one multiplexer. 
+
+![RTL view of 4-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_4to1MUX.png)  
+Figure x. RLT view of four to one multiplexer. 
+
+Figures above shows RTL view of 2-to-1 and 4-to-1 multiplexer. Multiplexer is a device that selects one of the analog or digital input signals and forwards it into a single output line. Multiplexer selects the input signals based on the signals given at selector pin. 
+
+| Select (S0) |   Out   |
+|-------------|---------|
+| 0           |    D0   |
+| 1           |    D1   |  
+ 
+Table above shows the truth table of 2-to-1 multiplexer. When the select signals is `LOW`, the multiplexer will select LSB as output. Otherwise, it will select MSB as output.
+
+| Select1(S1) | Select0 (S0) | Out |
+|-------------|--------------|-----|
+| 0           | 0            | D0  |
+| 0           | 1            | D1  |
+| 1           | 0            | D2  |
+| 1           | 1            | D3  |
+
+4-to-1 multiplexer functions like 2-to-1 multiplexer but with extra select signals as shown as table above. When the select signals (S1S0) is `00` it will select LSB as the output and so on.
+
+
+5. **Adder-subtractor**  
+
+![RTL view of adder-subtractor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_AddSub.png)
+Figure x. RLT view of adder-subtractor. 
+
 <br/>  
+
+
+6. **RAM**  
+
+<br/>
+![RTL internal view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_InternalView.png)
+Figure x. RLT internal view of 32x8 RAM.   
+
+
+![RTL external view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_ExternalView.png)
+Figure x. RLT external view of 32x8 RAM.  
+
+<br/>
 
 
 ## References
@@ -341,4 +372,5 @@ Figure x. RLT view of D register.
 [5] Program counter, Wikiepedia, 2020. Available at: https://en.wikipedia.org/wiki/Program_counter (viewed on 1 May 2020)  
 [6] Instruction register, Wikipedia, 2020. Availabe at: https://en.wikipedia.org/wiki/Instruction_register (viewed on 1 May 2020)  
 [7] How to Find the Greatest Common Divisor by Using the Euclidian Algorithm, Learn Math Tutorials, 2020. Available at: https://www.youtube.com/watch?v=JUzYl1TYMcU (viewed on 2 May 2020)  
-[8] What are the applications of HCF and LCM in daily life? Adhikari, 2017. Available at: https://www.quora.com/What-are-the-applications-of-HCF-and-LCM-in-daily-life (viewed on 2 May 2020)
+[8] What are the applications of HCF and LCM in daily life? Adhikari, 2017. Available at: https://www.quora.com/What-are-the-applications-of-HCF-and-LCM-in-daily-life (viewed on 2 May 2020)  
+[9] Multiplexer, Wikipedia, 2020. Available at: https://en.wikipedia.org/wiki/Multiplexer (viewed on 2 May 2020)
