@@ -1,5 +1,6 @@
 # Altera DE1 SimpleProcessor (Overview)
-Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The GPM is broken down into two parts: Datapath (DP) and Control Unit (CU). Write the DP and CU code seperately then combined into a top module (DP + CU). The purpose of the GPM is to determine the Greatest Common Divisor (GCD) between two integers.
+Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The GPM is broken down into two parts: Datapath (DP) and Control Unit (CU). Write the DP and CU code seperately then combined into a top module (DP + CU). The purpose of the GPM is to determine the Greatest Common Divisor (GCD) between two integers.  
+
 
 ## Table of Contents
 1.  [Requirements for this repo](#repoReq)
@@ -309,7 +310,8 @@ However, the data stored in the flip-flop will be erased as soon as the power go
 Figure x. RLT view of D register. 
 
 <br/>   
-Figure above shows the RTL view of the 8-bit register made of eight D flip-flop. This register is then used for instruction register, data register (accumulator) and program counter (5-bit). The verilog code for this module can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/DFF_reg.v)  
+
+Figure above shows the RTL view of the 8-bit register made of eight D flip-flop. This register is then used for instruction register, data register (accumulator) and program counter (5-bit). The verilog code for this module can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/DFF_reg.v).
 
 
 2. **Program Counter (PC)**  
