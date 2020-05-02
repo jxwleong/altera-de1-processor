@@ -1,7 +1,5 @@
 # Altera DE1 SimpleProcessor (Overview)
-Use HDL code to synthesize the General Purpose Microprocessor (GPM). The GPM is broken down into two parts: 
-Datapath (DP) and Control Unit (CU). Write the DP and CU code seperately then combined into a top module 
-(DP + CU).
+Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The GPM is broken down into two parts: Datapath (DP) and Control Unit (CU). Write the DP and CU code seperately then combined into a top module (DP + CU). The purpose of the GPM is to determine the Greatest Common Divisor (GCD) between two integers.
 
 ## Table of Contents
 1.  [Requirements for this repo](#repoReq)
@@ -158,45 +156,39 @@ Figure 3. State Diagram for the GPM from [1].
   
 #### The State Machine in this Processor
 
-**1. START**  
+1. **START**  
 The start state of the processor, it will jump to next state (FETCH) after start up.  
 
-**2. FETCH**  
+2. **FETCH**  
 The instruction register (IR) will fetch the instruction from memory (RAM). At the same time, the value of program
 counter is incremented by 1.  
 
-**3. DECODE**  
-At this stage, the memory address (encoded in the instruction) was sent in the 32x8 RAM. So that the writing/ reading
-process are executed at the correct memory location. Depend on the instruction, there are multiple possible next states.  
+3. **DECODE**  
+At this stage, the memory address (encoded in the instruction) was sent in the 32x8 RAM. So that the writing/ reading process are executed at the correct memory location. Depend on the instruction, there are multiple possible next states.  
 
-**4. LOAD**  
-At this state, it will load the data from RAM with memory location set by the instruction to the 8-bit data register (A). After
-the instruction is executed, the CPU will go back to start state to wait for new instruction to process.  
+4. **LOAD**  
+At this state, it will load the data from RAM with memory location set by the instruction to the 8-bit data register (A). After the instruction is executed, the CPU will go back to start state to wait for new instruction to process.  
 
-**5. STORE**  
+5. **STORE**  
 At STORE state, it will load the current data in the 8-bit data register (A) to the memory address encoded with the instruction. 
 
-**6. ADD**  
-At this state, the adder-subtractor will add the current value at the 8-bit data register with the output data of RAM with
-memory address set by the instruction code.  
+6. **ADD**  
+At this state, the adder-subtractor will add the current value at the 8-bit data register with the output data of RAM with memory address set by the instruction code.  
 
-**7. SUB**  
-At this state, the adder-subtractor will minus the current value at the 8-bit data register (A) with the output data of RAM with
-memory address set by the instruction code using 2's complement (A + B'').  
+7. **SUB**  
+At this state, the adder-subtractor will minus the current value at the 8-bit data register (A) with the output data of RAM with memory address set by the instruction code using 2's complement (A + B'').  
 
-**8. INPUT**  
-The 8-bit INPUT (from input pin) will be loaded into the 8-bit data register (A). An external pin (ENTER) was used to determine
-when the assign data is ready.  
+8. **INPUT**  
+The 8-bit INPUT (from input pin) will be loaded into the 8-bit data register (A). An external pin (ENTER) was used to determine when the assign data is ready.  
 
-**9. JZ**  
-If the data in the 8-bit data register is 0, the address is jump to the specified memory location encoded within the instruction.
-In otherwords, the program counter will jump to the specified memory location instead of increment.  
+9. **JZ**  
+If the data in the 8-bit data register is 0, the address is jump to the specified memory location encoded within the instruction. In otherwords, the program counter will jump to the specified memory location instead of increment.  
 
-**10. JPOS**   
+10. **JPOS**   
 If the data in the 8-bit data register is positive, the address is jump to the specified memory location encoded within the instruction.
 In otherwords, the program counter will jump to the specified memory location instead of increment.  
 
-**11. HALT**    
+11. **HALT**    
 The processor will be halt when the GCD is find.  
 
 ![Datapath of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/Datapath.png)   
@@ -269,26 +261,29 @@ A of the real life applications of LCM are distribute item evenly. For example, 
 Multiple of 2: 2, 4, **6**, 8, 10, 12  
 Multiple of 3: 3, **6**, 9, 12, 15, 18
 
-The LCM between 2 and 3 are 6. So, the pizza is sliced into six pieces so that everyone share the even amount.
+The LCM between 2 and 3 are 6. So, the pizza is sliced into six pieces so that everyone share the even amount of pizza.
 
 #### <a name="crypto"></a> 3. Cryptography
 GCD is also used in cryptography (requires further exploration).
 
+<br/>
 
 ## <a name="instCyc"></a> Instruction Cycle
 The instruction cycle of a processor can be broken down into three stages, fetch, decode and execute.
 
-**1. Fetch**  
-This is the first step for instruction cycle. THe CPU fetch some data and instructions from the main
-memory and store them it in a temporary memoty areas (register) [4]. 
+![Instruction Cycle w/ PC](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Misc/ProgramCounterExplanation.gif)  
+Gif 1. Animation of the instruction cycle and program counter.  
 
-**2. Decode**  
-The next step of the instruction cycle is decode. CPU is designed to understand a specific set of instructions.
-The CPU decodes the fetched instruction and proceed to next step [4].
+1. **Fetch**  
+This is the first step for instruction cycle. THe CPU fetch some data and instructions from the main memory and store them it in a temporary memoty areas (register) [4]. After the instructions is fetched, the value in Program Counter (PC) is incremented or replaced to other specific memory location if branch or jump conditions is met. At the same time, the Control Unit (CU) receives the instructions for Datapath (DP).
 
-**3. Execute**  
-The last stage of the instruction cycle. In this stage, the CPU will process the data based on the instruction.
-Once the execute stage is complete, the CPU will begin another instruction cycle [4].  
+2. **Decode**  
+The next step of the instruction cycle is decode. CPU is designed to understand a specific set of instructions. The CPU decodes the fetched instruction and proceed to next step [4]. At this stage, the CU decode the instruction from DP. Based on the instruction, the respond is sent to DP in the form of control signals.
+
+3. **Execute**  
+The last stage of the instruction cycle. In this stage, the CPU will process the data based on the instruction. Once the execute stage is complete, the CPU will begin another instruction cycle [4]. After receiving the control signals from CU, the DP will process the data according to the signals sent from CU. 
+
+<br/>
 
 ## <a  name="quar2Res"></a> Quartus II Results  
 
