@@ -77,8 +77,8 @@ The ***Control Unit (CU)*** is the component that direct the oprations of the pr
 
 The ***Datapath (DP)*** consists of a combinations of functional units such as adder, subtractor and memory. It is used to perform data processing based on the control signals received from CU. Besides, it also send the instruction bits and neccesary status signals to help CU to send the correct control signals.  
 <br/>  
-#### I/O Signals  
 
+#### I/O Signals  
 1. **Clock**  
 The processor executes instructions based on the clock. For this processor, the instructions is executed on the rising edge of the clock signals. The clock speed will determine how fast the processor can executes the instuctions. The clock speed for this processor is 4 Hz by using a clock divider.
 
@@ -145,7 +145,7 @@ Figure 2. State Table for the GPM from [1].
 
 <br/>
 
-Figure above shows the state table of the processor. The state table will tells what are the next state based on different input signals and produce the relevant output signals. There are 11 different states for this processor.
+Figure above shows the state table of the processor. The state table will tells what are the next state based on different input signals and produce the relevant output signals. There are 11 different states for this processor. The transition of different states is determined by the Control Unit (CU). The CU will send the correct control signals after receiving the status signals from the Datapath (DP). The relationship between the control signals from CU and the states are stated in the table shown in Figure above.
 
 <br/>
 
@@ -206,24 +206,70 @@ Figure 4. Datapath for the GPM from [1.].
 
 ## <a name="whatIsGCD"></a> What is Greatest Common Divisor (GCD)?
 Greatest Common Divider (GCD) is the largest positive integer that divides two or more integers [2].
-
-## <a name="GCDExp"></a> GCD Example
+  
+<br/>
+  
+### <a name="GCDExp"></a> GCD Example
 Example of GCD, the GCD of 8 and 12 is 4. This is because 4 is the largest positive integer that can
 divide 8 and 12.
 
+The example above is simple to understand and calculated. However, it may find the GCD between two large number ineffective. To solve this problem, **Euclidian Algorithm** is used in this processor to determine the GCD between two large number more efficiently. The algorithm is explained below.
 
-## <a name="GCDApp"></a> GCD Application
+**Simple example**
+```
+Find the GCD between 8 and 12.
+
+Answer:
+12 = 8.q + r   ; q = quantity in integer that can be multiply to have number close to the number on the left.
+               : r = remainder of the multiplication with q
+12 = 8.1 + 4   ; Move the operand eight (8 to left) and move 4 to the left
+
+8 = 4.2 + 0 ; When the remainder (r) is zero, the remainder on the previous equation is the GCD.
+
+# The GCD between 8 and 12 is 4.
+
+```
+
+**Complex example**
+```
+Find the GCD between 12238 and 3768.
+
+Answer:  Repeat the process from Simple example.
+12238 = 3768.3 + 934
+3768 = 934.3 + 32
+934 = 32.29 + 6
+32 = 6.5 + 2
+6 = 2.3 + 0
+
+# The GCD between 12238 and 3768 is 2.
+
+```
+
+<br/>
+
+
+### <a name="GCDApp"></a> GCD Application
 #### <a name="redFrac"></a> 1. Reducing Fractions
-GCD is useful for reducing fractions. For Example, the GCD of 12 / 24 is **12**. Therefore,  
-12 / 24 = (1 * **12**)/(2 * **12**) = 1/2 
-
+GCD is useful for reducing fractions. It can be used to simplify the fraction to the lowest terms. For Example, the GCD of <sup>12</sup>&frasl;<sub>24</sub> is **12**. Therefore, 
+  
+<sup>12</sup>&frasl;<sub>24</sub> = <sup>(1 * 12)</sup>&frasl;<sub>(2 * 12)</sub> = <sup>1</sup>&frasl;<sub>2</sub>  
+   
+The simplest term for <sup>12</sup>&frasl;<sub>24</sub> is <sup>1</sup>&frasl;<sub>2</sub> 
+ 
 #### <a name="findLCM"></a> 2. Find Least Common Multiple (LCM)
-As the name implies, LCD means the least common multiple of two or more integers. For example,  
+As the name implies, LCM means the least common multiple of two or more integers. For example,  
 
 Multiple of 2:	2, **4**, 6, 8, 10, 12  
 Multiple of 4:  **4**, 8, 12, 16, 20, 24
 
 The LCM of 2 and 4 is 4.
+
+A of the real life applications of LCM are distribute item evenly. For example, there are two slice of pizza and it must be shared among three people [8]. By determine the LCM,
+
+Multiple of 2: 2, 4, **6**, 8, 10, 12  
+Multiple of 3: 3, **6**, 9, 12, 15, 18
+
+The LCM between 2 and 3 are 6. So, the pizza is sliced into six pieces so that everyone share the even amount.
 
 #### <a name="crypto"></a> 3. Cryptography
 GCD is also used in cryptography (requires further exploration).
@@ -299,4 +345,5 @@ Figure x. RLT view of D register.
 [4] The fetch-decode-execute cycle, Teach-ICT. Available at:http://teach-ict.com/gcse_computing/ocr/212_computing_hardware/cpu/miniweb/pg3.php (viewed on 1 May 2020)   
 [5] Program counter, Wikiepedia, 2020. Available at: https://en.wikipedia.org/wiki/Program_counter (viewed on 1 May 2020)  
 [6] Instruction register, Wikipedia, 2020. Availabe at: https://en.wikipedia.org/wiki/Instruction_register (viewed on 1 May 2020)  
-[7]
+[7] How to Find the Greatest Common Divisor by Using the Euclidian Algorithm, Learn Math Tutorials, 2020. Available at: https://www.youtube.com/watch?v=JUzYl1TYMcU (viewed on 2 May 2020)  
+[8] What are the applications of HCF and LCM in daily life? Adhikari, 2017. Available at: https://www.quora.com/What-are-the-applications-of-HCF-and-LCM-in-daily-life (viewed on 2 May 2020)
