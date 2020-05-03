@@ -1,12 +1,21 @@
 # Altera DE1 Processor (Overview)
 Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The GPM is broken down into two parts: Datapath (DP) and Control Unit (CU). Write the DP and CU code seperately then combined into a top module (DP + CU). The purpose of the GPM is to determine the Greatest Common Divisor (GCD) between two integers.  
 
+<br/>  
+
 
 ## Table of Contents
 1.  [Requirements for this project](#projReq)
     * [Software Requirement](#softReq)
     * [Hardware Requirement](#hardReq)
     * [Processor Specifications](#proSpec)  
+      * [Instruction Sets](#insSet)
+      * [Schematic View](#schem)
+        * [I/O Signals](#iOSig)
+        * [Control Signals](#contSig)
+        * [Status Signals](#statSig)  
+      * [State Table](#statTable)
+      * [State Diagram](#statDiag) 
 2.  [What is Greatest Common Divisor (GCD)](#whatIsGCD)
     * [GCD Method and Example](#GCDMetnExp)
         * [Euclidian Algorithm](#euAlgo)
@@ -24,18 +33,26 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
     * [Adder-subtractor](#addSub)
     * [RAM](#ram)
 5.  [Program to Determine GCD](#program)
+    * [Program Example](#progExp)
+6.  [References](#refer)    
+
+<br/>  
 
 ## <a name="projReq"></a> Requirements for this project  
 
 ### <a name="softReq"></a> Software Requirements
 1. Quartus II
-2. Model SIM
+2. Model SIM  
+
+<br/>  
 
 ### <a name="hardReq"></a>Hardware Requirement
-1. Altera DE1 Board
+1. Altera DE1 Board  
+
+<br/>  
 
 ### <a name="proSpec"></a>Processor Specifications  
-#### Instruction Sets
+#### <a name="insSet"></a>Instruction Sets
 ![Instruction Sets of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/InstructionSet.png)  
 Figure 1. Instruction Set for the GPM from [1]. 
 
@@ -71,20 +88,20 @@ This instruction will halt the execution. This instruction will be executed when
 
 
 
-#### Schematic View of the Processor
+#### <a name="schem"></a>Schematic View of the Processor
 ![Complete Circuit for Processor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/CompleteCircuitProcessor.png)  
-Figure x. The Complete Circuit for the GCD Processor
+Figure 2. The Complete Circuit for the GCD Processor
   
 <br/>  
 
 The structure of the processor can be broken-down into two sections, Control Unit (CU) and Datapath (DP).
 
-The ***Control Unit (CU)*** is the component that direct the oprations of the processor based on the status signals such as instruction received from datapath. Based on the instruction received, it will send the corresponding control signals to perform the task. It normally control the memory and register (enable read/ write operation or when to load the register).
+The ***Control Unit (CU)*** is the component that direct the oprations of the processor based on the status signals such as instruction received from datapath. Based on the instruction received, it will send the corresponding control signals to perform the task. It normally control the memory and register (enable read/write operation or when to load the register).
 
 The ***Datapath (DP)*** consists of a combinations of functional units such as adder, subtractor and memory. It is used to perform data processing based on the control signals received from CU. Besides, it also send the instruction bits and neccesary status signals to help CU to send the correct control signals.  
 <br/>  
 
-#### I/O Signals  
+#### <a name="iOSig"></a>I/O Signals  
 1. **Clock**  
 The processor executes instructions based on the clock. For this processor, the instructions is executed on the rising edge of the clock signals. The clock speed will determine how fast the processor can executes the instuctions. The clock speed for this processor is 4 Hz by using a clock divider.
 
@@ -106,7 +123,7 @@ This 8-bit output signals will sent out from A (8-bit data register) when the cu
 
 <br/>
 
-#### Control Signals
+#### <a name="contSig"></a>Control Signals
 1. **IRload**  
 This signal will sent to the Data Path (DP) so that the 8-bit instruction stored in the RAM can be loaded into the 8-bit instruction register.
 
@@ -133,7 +150,7 @@ Sub signal is send to the adder-subtractor. When the signal is `HIGH`, the adder
   
 <br/>
 
-#### Status Signals  
+#### <a name="statSig"></a>Status Signals  
 1. **IR**  
 These signals contain the actual 3-bit instruction from the RAM. It is received from Datapath (DP) to update current state and send correct control signals back to DP.
 
@@ -145,9 +162,9 @@ Apos signal function similar to Aeq0. It is used to tell the CU that the data in
 
 <br/>
 
-#### State Table
+#### <a name="statTable"></a>State Table
 ![State Table of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/StateTable.png)   
-Figure 2. State Table for the GPM from [1]. 
+Figure 3. State Table for the GPM from [1]. 
 
 <br/>
 
@@ -156,9 +173,9 @@ Figure above shows the state table of the processor. The state table will tells 
 <br/>
 
 
-#### State Diagram
+#### <a name="statDiag"></a>State Diagram
 ![State Diagram of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/StateDiagram.png)   
-Figure 3. State Diagram for the GPM from [1]. 
+Figure 4. State Diagram for the GPM from [1]. 
 
 <br/>
   
@@ -313,19 +330,19 @@ The last stage of the instruction cycle. In this stage, the CPU will process the
 
 ## <a  name="comp"></a> Components of the Processor 
 ![Top RTL view of processor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_Top.png)  
-Figure x. RLT view of processor. 
+Figure 5. RLT view of processor. 
 
 <br/>  
 Figure above shows the entire circuitry of the processor. The processor contains two main compartment which are the Control Unit (CU) and Datapath (DP). The CU behaves like an instructor where it instruct the DP to process the data. CU receives the instruction from DP and send the control signals to DP so that DP can process the data as expected. After processing the data, DP will sent out status signals to CU to act as a feedback so that CU can transition in to the right state to give correct control signals. 
 
 ![Datapath of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/Datapath.png)   
-Figure 4. Datapath for the GPM from [1]. 
+Figure 6. Datapath for the GPM from [1]. 
   
 ![RTL view of data path](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DataPath.png)  
-Figure x. RLT view of data path (open image in new tab). 
+Figure 7. RLT view of data path (open image in new tab). 
 
 ![RTL view of control unit](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_ControlUnit.png)  
-Figure x. RTL view of control unit. 
+Figure 8. RTL view of control unit. 
 
 <br/> 
 
@@ -336,7 +353,7 @@ Figures above shows the schematic and RTL view of the Datapath (DP) and Control 
 In electronics, register is made out of flip-flop to store larger size data. This is because flip-flop can only stored one bit of data.
 However, the data stored in the flip-flop will be erased as soon as the power goes off. For this processor, D flip-flop is used because of the simplicity of the design. Figure below shows the RTL view of the 8-bit register made of eight D flip-flop. This register is then used for instruction register, data register (accumulator) and program counter (5-bit). The verilog code for this module can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/DFF_reg.v).    
 ![RTL view of D register](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DReg.png)  
-Figure x. RLT view of D register. 
+Figure 9. RLT view of D register. 
 
 <br/>   
 
@@ -350,9 +367,9 @@ Instruction register (IR) is a register that store the actual instruction to be 
 
 ### <a  name="mux"></a> Multiplexer   
 ![RTL view of 2-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_2to1MUX.png)  
-Figure x. RLT view of two to one multiplexer. 
+Figure 10. RLT view of two to one multiplexer. 
 ![RTL view of 4-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_4to1MUX.png)  
-Figure x. RLT view of four to one multiplexer.  <br/>  
+Figure 11. RLT view of four to one multiplexer.  <br/>  
 Figures above shows RTL view of 2-to-1 and 4-to-1 multiplexer. Multiplexer is a device that selects one of the analog or digital input signals and forwards it to a single output line. Multiplexer selects the input signals based on the signals given at selector pin. 
 
 | Select (S0) |   Out   |
@@ -377,7 +394,7 @@ The verilog code for 2-to-1 multiplexer can be found [here](https://github.com/j
 
 ### <a  name="addSub"></a> Adder-subtractor   
 ![RTL view of adder-subtractor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_AddSub.png)
-Figure x. RTL view of adder-subtractor.     <br/> 
+Figure 12. RTL view of adder-subtractor.     <br/> 
 
 
 The adder-subtractor is used to perform calculations to find the GCD. This device can be configured to used act as an adder or subtractor depend on the control signal received `sub`. When `sub` is 1, then it will act as a subtractor else it will operator as an adder. However, the figure above shows that the adder-subtractor is made of two seperate adder. This is because adder can transform into subtractor by utilising 2's complement. For example,
@@ -425,13 +442,13 @@ The code of the adder-subtractor can be found [here](https://github.com/jason982
    
 ### <a  name="ram"></a> RAM  
 ![RTL internal view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_InternalView.png)
-Figure x. RTL internal view of 32x8 RAM.   
+Figure 13. RTL internal view of 32x8 RAM.   
 ![RTL external view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_ExternalView.png)
-Figure x. RTL external view of 32x8 RAM.  <br/>  
+Figure 14. RTL external view of 32x8 RAM.  <br/>  
 
 The size of the RAM used in this processor is 32 x 8. In other words, it contains 32 memory locations that can fit 8-bit data which is suitable for this processor because the instructions are in 8-bit.  This RAM is used to store the program (combination of different instructions) to find the GCD between two integers.  
     
-Figures above shows in RTL view of the 32x8 RAM synthesized in this project. The RAM is made out of registers and extra I/O signals such as read/ write address `ADDR[4:0]`, write enable `WRITE` and input data `DATA_IN[7:0]`. When `WRITE` is high, the input data from `DATA_IN[7:0]` will be stored into memory location specified at `ADDR[4:0]`. If `WRITE` is low, the content at address `ADDR[4:0]` will be outputed to `DATA_OUT[7:0]`.  
+Figures above shows in RTL view of the 32x8 RAM synthesized in this project. The RAM is made out of registers and extra I/O signals such as read/write address `ADDR[4:0]`, write enable `WRITE` and input data `DATA_IN[7:0]`. When `WRITE` is high, the input data from `DATA_IN[7:0]` will be stored into memory location specified at `ADDR[4:0]`. If `WRITE` is low, the content at address `ADDR[4:0]` will be outputed to `DATA_OUT[7:0]`.  
 
 The code for the RAM can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/RAM.v).  
     
@@ -460,6 +477,30 @@ Programs that are preloaded into the RAM.
 | 01111 (15)              | 110 00100         | JUMP to PC (00100) if A = +ve |
 | 10000 (16)              | 000 11110         | LOAD (11110) -> A             |
 | 10001 (17)              | 111 11111         | HALT                          |
+
+&nbsp;
+
+### <a  name="progExp"></a> Program Example 
+
+Find the GCD where A  = 10, B = 5 by following the program preloaded into the RAM.
+
+| No | Instructions             | Description                        |
+|----|--------------------------|------------------------------------|
+| 1  | IN A (10)                | INPUT integer 10 (A)               |
+| 2  | STORE A (10) -> 11110    | Store 10 at location 11110         |
+| 3  | IN A (5)                 | INPUT integer 5 (B)                |
+| 4  | STORE A (5) -> 11111     | Store 5 at location 11111          |
+| 5  | LOAD content 11110 to A  | Load 10 into A                     |
+| 6  | A = A - 5 = 10 - 5 = 5   | Subtract A from content at 11111   |
+| 7  | Skip because A is not 0. | Skip because A is not 0.           |
+| 8  | JPOS                     | JUMP Program Counter (PC) to 01100 |
+| 9  | STORE A (5) -> 11110     | STORE A (5) at location 11110      |
+| 10 | A = A - 5 = 5 - 5 = 0    | Subtract A from content at 11111   |
+| 11 | Skip because A is 0.     | Skip because A is 0.               |
+| 12 | LOAD 11110 -> A          | LOAD content from 11110 (5) to A   |
+| 13 | HALT                     | HALT                               |  
+
+> The GCD between 10 and 5 is 5 (Step 12).
 
 <br/>  
 
