@@ -23,9 +23,9 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
     * [Multiplexer (2-to-1 and 4-to-1)](#mux)
     * [Adder-subtractor](#addSub)
     * [RAM](#ram)
+5.  [Program to Determine GCD](#program)
 
-
-## <a name="projReq"></a> Requirements for this repo  
+## <a name="projReq"></a> Requirements for this project  
 
 ### <a name="softReq"></a> Software Requirements
 1. Quartus II
@@ -269,7 +269,9 @@ GCD is useful for reducing fractions. It can be used to simplify the fraction to
 <sup>12</sup>&frasl;<sub>24</sub> = <sup>(1 * 12)</sup>&frasl;<sub>(2 * 12)</sub> = <sup>1</sup>&frasl;<sub>2</sub>  
    
 The simplest term for <sup>12</sup>&frasl;<sub>24</sub> is <sup>1</sup>&frasl;<sub>2</sub> 
- 
+   
+<br/>  
+
 #### <a name="findLCM"></a> 2. Find Least Common Multiple (LCM)
 As the name implies, LCM means the least common multiple of two or more integers. For example,  
 
@@ -284,6 +286,8 @@ Multiple of 2: 2, 4, **6**, 8, 10, 12
 Multiple of 3: 3, **6**, 9, 12, 15, 18
 
 The LCM between 2 and 3 are 6. So, the pizza is sliced into six pieces so that everyone share the even amount of pizza.
+
+<br/>  
 
 #### <a name="crypto"></a> 3. Cryptography
 GCD is also used in cryptography (requires further exploration).
@@ -434,7 +438,32 @@ The code for the RAM can be found [here](https://github.com/jason9829/AlteraDE1_
 
 <br/>  
 
-## References
+## <a  name="program"></a> Program to Determine GCD  
+Programs that are preloaded into the RAM.
+| PC Count (RAM location) | Instruction code  | Description                   |
+|-------------------------|-------------------|-------------------------------|
+| 00000 (0)               | 100 00000         | INPUT A                       |
+| 00001 (1)               | 001 11110         | STORE A -> 11110              |
+| 00010 (2)               | 100 00000         | INPUT A                       |
+| 00011 (3)               | 001 11111         | STORE A -> 11111              |
+| 00100 (4)               | 000 11110         | LOAD (11110) -> A             |
+| 00101 (5)               | 011 11111         | A = A - (11111)               |
+| 00110 (6)               | 101 10000         | JUMP to PC (10000) if A = 0   |
+| 00111 (7)               | 110 01100         | JUMP to PC (01100) if A = +ve |
+| 01000 (8)               | 000 11111         | STORE A -> 11111              |
+| 01001 (9)               | 011 11110         | A = A - (11110)               |
+| 01010 (10)              | 001 11111         | STORE A -> 11111              |
+| 01011 (11)              | 110 00100         | JUMP to PC (01100) if A = +ve |
+| 01100 (12)              | 000 11110         | STORE A -> 11110              |
+| 01101 (13)              | 011 11111         | A = A - 11111                 |
+| 01110 (14)              | 001 11110         | STORE A -> 11110              |
+| 01111 (15)              | 110 00100         | JUMP to PC (00100) if A = +ve |
+| 10000 (16)              | 000 11110         | LOAD (11110) -> A             |
+| 10001 (17)              | 111 11111         | HALT                          |
+
+<br/>  
+
+## <a  name="refer"></a> References  
 [1] [Lab manual](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/pdf/BAME2044%20%40%20LAB%202018.pdf)  
 [2] Greatest common divisor, Wikipedia, 2020. Available at: https://en.wikipedia.org/wiki/Greatest_common_divisor (viewed on 30 Apr 2020)    
 [3] Least common multiple, Wikipedia, 2020. Available at: https://en.wikipedia.org/wiki/Least_common_multiple (viewed on 30 Apr 2020)  
