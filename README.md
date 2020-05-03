@@ -8,7 +8,7 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
     * [Hardware Requirement](#hardReq)
     * [Processor Specifications](#proSpec)  
 2.  [What is Greatest Common Divisor (GCD)](#whatIsGCD)
-    * [GCD Example](#GCDExp)
+    * [GCD Method and Example](#GCDMetnExp)
     * [GCD Application](#GCDApp)
         * [Reducing Fractions](#redFrac)
         * [Find Least Common Multiple (LCM)](#findLCM)
@@ -198,7 +198,7 @@ Greatest Common Divider (GCD) is the largest positive integer that divides two o
   
 <br/>
   
-### <a name="GCDExp"></a> GCD Example
+### <a name="GCDMetnExp"></a> GCD Method and Example
 Example of GCD, the GCD of 8 and 12 is 4. This is because 4 is the largest positive integer that can
 divide 8 and 12.
 
@@ -233,6 +233,22 @@ Answer:  Repeat the process from Simple example.
 # The GCD between 12238 and 3768 is 2.
 
 ```
+  
+  
+<br/>   
+The last method is to used the repeated subraction method. The working princple is subtract the smaller number from the greater. Repeat the process until the remainders are equal, which is the GCD of the given numbers [10]. For example,  
+  
+  
+```
+Find the GCD for 20 and 5.
+
+0. GCD (20, 5) ; Subtract the larger number with smaller number
+1. GCD (15, 5) ; Repeat
+2. GCD (10, 5) ; Repeat
+3. GCD (5, 5)  ; The remainders are equal so that GCD is 5.
+
+```
+This processor use this method to find the GCD between two integer numbers.
 
 <br/>
 
@@ -410,4 +426,5 @@ Figure x. RTL external view of 32x8 RAM.  <br/>
 [6] Instruction register, Wikipedia, 2020. Availabe at: https://en.wikipedia.org/wiki/Instruction_register (viewed on 1 May 2020)  
 [7] How to Find the Greatest Common Divisor by Using the Euclidian Algorithm, Learn Math Tutorials, 2020. Available at: https://www.youtube.com/watch?v=JUzYl1TYMcU (viewed on 2 May 2020)  
 [8] What are the applications of HCF and LCM in daily life? Adhikari, 2017. Available at: https://www.quora.com/What-are-the-applications-of-HCF-and-LCM-in-daily-life (viewed on 2 May 2020)  
-[9] Multiplexer, Wikipedia, 2020. Available at: https://en.wikipedia.org/wiki/Multiplexer (viewed on 2 May 2020)
+[9] Multiplexer, Wikipedia, 2020. Available at: https://en.wikipedia.org/wiki/Multiplexer (viewed on 2 May 2020)   
+[10] Finding the Greatest Common Divisor by Repeated Subtractions, Yiu, 2016. Available at: http://www.amesa.org.za/amesal_n21_a7.pdf (viewed on 3 May 2020) 
