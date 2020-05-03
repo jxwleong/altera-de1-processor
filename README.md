@@ -9,6 +9,8 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
     * [Processor Specifications](#proSpec)  
 2.  [What is Greatest Common Divisor (GCD)](#whatIsGCD)
     * [GCD Method and Example](#GCDMetnExp)
+        * [Euclidian Algorithm](#euAlgo)
+        * [Subtraction](#sub)
     * [GCD Application](#GCDApp)
         * [Reducing Fractions](#redFrac)
         * [Find Least Common Multiple (LCM)](#findLCM)
@@ -194,14 +196,14 @@ The processor will be halt when the GCD is find.
 <br/>
 
 ## <a name="whatIsGCD"></a> What is Greatest Common Divisor (GCD)?
-Greatest Common Divider (GCD) is the largest positive integer that divides two or more integers [2].
-  
-<br/>
+Greatest Common Divider (GCD) is the largest positive integer that divides two or more integers [2].  
+
   
 ### <a name="GCDMetnExp"></a> GCD Method and Example
 Example of GCD, the GCD of 8 and 12 is 4. This is because 4 is the largest positive integer that can
 divide 8 and 12.
 
+#### <a name="euAlgo"></a> Euclidian Algorithm     
 The example above is simple to understand and calculated. However, it may find the GCD between two large number ineffective. To solve this problem, **Euclidian Algorithm** is used in this processor to determine the GCD between two large number more efficiently. The algorithm is explained below.
 
 **Simple example**
@@ -234,10 +236,11 @@ Answer:  Repeat the process from Simple example.
 
 ```
   
-  
-<br/>   
+<br/>  
+
+
+#### <a name="sub"></a> Subtraction   
 The last method is to used the repeated subraction method. The working princple is subtract the smaller number from the greater. Repeat the process until the remainders are equal, which is the GCD of the given numbers [10]. For example,  
-  
   
 ```
 Find the GCD for 20 and 5.
