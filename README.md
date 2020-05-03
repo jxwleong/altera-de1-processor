@@ -344,23 +344,62 @@ Figures above shows RTL view of 2-to-1 and 4-to-1 multiplexer. Multiplexer is a 
 
 5. **Adder-subtractor**  
 ![RTL view of adder-subtractor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_AddSub.png)
-Figure x. RTL view of adder-subtractor. 
+Figure x. RTL view of adder-subtractor.     <br/> 
 
-<br/>  
 
-    The code of the adder-subtractor can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/addSubstractor.v)
+    The adder-subtractor is used to perform Euclidian algorithm. This device can be configured to used act as an adder or subtractor depend on the control signal received `sub`. When `sub` is 1, then it will act as a subtractor else it will operator as an adder. However, the figure above shows that the adder-subtractor is made of two seperate adder. This is because adder can transform into subtractor by utilising 2's complement. For example,
+    
+    ```
+    Normal subtraction,
+    
+    A = 10, B = 5
+    
+    Ans = A - B
+        = 10 - 5
+        = 5
+        
+    or in binary
+    
+        A     1 0 1 0   [10]
+    (-) B     0 1 0 1   [5]
+    ==================
+    Ans  =    0 1 0 1   [5]
+    
+    
+    Using 2's complement to convert adder to subtractor,
+    
+    A = 10, B = 5
+    Ans = A + 2's(B)
+    
+    B = 0 1 0 1
+    1's (B) = 1 0 1 0   - Invert
+    2's (B) = 1 0 1 1   - Plus one
+    
+        A     1 0 1 0   [10]
+    (+) B     1 0 1 1   [5]
+    ==================
+    Ans  =  1 0 1 0 1   [5] - The MSB is sign bit, this bit need to be inverted.
+                              If sign bit is 1 means the number is negative.
+    Ans = 0 0 1 0 1 = 5
+    
+    ```
+  
+    Basically, this adder-subtractor will calculated become addition and subtraction. The control signal `sub` will prompt the 2-to-1 multiplexer to choose the correct answer.
+    
+    The code of the adder-subtractor can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/addSubstractor.v).   
+    
 
 
 6. **RAM**  
 ![RTL internal view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_InternalView.png)
 Figure x. RTL internal view of 32x8 RAM.   
 ![RTL external view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_ExternalView.png)
-Figure x. RTL external view of 32x8 RAM.  
+Figure x. RTL external view of 32x8 RAM.  <br/>  
+
+    The code for the RAM can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/RAM.v).  
+    
 
 <br/>  
-
-    The code for the RAM can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/RAM.v).
-
 
 ## References
 [1] [Lab manual](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/pdf/BAME2044%20%40%20LAB%202018.pdf)  
