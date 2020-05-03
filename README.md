@@ -351,23 +351,23 @@ Figure x. RLT view of two to one multiplexer.
 Figure x. RLT view of four to one multiplexer.  <br/>  
 Figures above shows RTL view of 2-to-1 and 4-to-1 multiplexer. Multiplexer is a device that selects one of the analog or digital input signals and forwards it to a single output line. Multiplexer selects the input signals based on the signals given at selector pin. 
 
-    | Select (S0) |   Out   |
-    |-------------|---------|
-    | 0           |    D0   |
-    | 1           |    D1   |  
+| Select (S0) |   Out   |
+|-------------|---------|
+| 0           |    D0   |
+| 1           |    D1   |  
  
-    Table above shows the truth table of 2-to-1 multiplexer. When the select signals is `LOW`, the multiplexer will select LSB as output. Otherwise, it will select MSB as output.  
+Table above shows the truth table of 2-to-1 multiplexer. When the select signals is `LOW`, the multiplexer will select LSB as output. Otherwise, it will select MSB as output.  
 
-     | Select1(S1) | Select0 (S0) | Out |
-     |-------------|--------------|-----| 
-     | 0           | 0            | D0  |
-     | 0           | 1            | D1  |
-     | 1           | 0            | D2  |
-     | 1           | 1            | D3  |
+| Select1(S1) | Select0 (S0) | Out |
+|-------------|--------------|-----| 
+| 0           | 0            | D0  |
+| 0           | 1            | D1  |
+| 1           | 0            | D2  |
+| 1           | 1            | D3  |
 
-     4-to-1 multiplexer functions like 2-to-1 multiplexer but with extra select signals as shown as table above. When the select signals (S1S0) is `00` it will select LSB as the output and so on.  
+4-to-1 multiplexer functions like 2-to-1 multiplexer but with extra select signals as shown as table above. When the select signals (S1S0) is `00` it will select LSB as the output and so on.  
 
-     The verilog code for 2-to-1 multiplexer can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux2to1.v) and the code for 4-to1 multiplexer is located [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux4to1.v).  
+The verilog code for 2-to-1 multiplexer can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux2to1.v) and the code for 4-to1 multiplexer is located [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux4to1.v).  
 
 <br/>
 
@@ -376,46 +376,46 @@ Figures above shows RTL view of 2-to-1 and 4-to-1 multiplexer. Multiplexer is a 
 Figure x. RTL view of adder-subtractor.     <br/> 
 
 
-    The adder-subtractor is used to perform calculations to find the GCD. This device can be configured to used act as an adder or subtractor depend on the control signal received `sub`. When `sub` is 1, then it will act as a subtractor else it will operator as an adder. However, the figure above shows that the adder-subtractor is made of two seperate adder. This is because adder can transform into subtractor by utilising 2's complement. For example,
+The adder-subtractor is used to perform calculations to find the GCD. This device can be configured to used act as an adder or subtractor depend on the control signal received `sub`. When `sub` is 1, then it will act as a subtractor else it will operator as an adder. However, the figure above shows that the adder-subtractor is made of two seperate adder. This is because adder can transform into subtractor by utilising 2's complement. For example,
     
-    ```
-    Normal subtraction,
+```
+Normal subtraction,
     
-    A = 10, B = 5
+A = 10, B = 5
     
-    Ans = A - B
-        = 10 - 5
-        = 5
+Ans = A - B
+    = 10 - 5
+    = 5
         
-    or in binary
-    
-        A     1 0 1 0   [10]
-    (-) B     0 1 0 1   [5]
+or in binary
+
+    A     1 0 1 0   [10]
+(-) B     0 1 0 1   [5]
     ==================
-    Ans  =    0 1 0 1   [5]
+Ans  =    0 1 0 1   [5]
     
     
-    Using 2's complement to convert adder to subtractor,
+Using 2's complement to convert adder to subtractor,
     
-    A = 10, B = 5
-    Ans = A + 2's(B)
+A = 10, B = 5
+Ans = A + 2's(B)
     
-    B = 0 1 0 1
-    1's (B) = 1 0 1 0   - Invert
-    2's (B) = 1 0 1 1   - Plus one
+B = 0 1 0 1
+1's (B) = 1 0 1 0   - Invert
+2's (B) = 1 0 1 1   - Plus one
     
-        A     1 0 1 0   [10]
-    (+) B     1 0 1 1   [5]
-    ==================
-    Ans  =  1 0 1 0 1   [5] - The MSB is sign bit, this bit need to be inverted.
-                              If sign bit is 1 means the number is negative.
-    Ans = 0 0 1 0 1 = 5
+     A     1 0 1 0   [10]
+ (+) B     1 0 1 1   [5]
+     ==================
+  Ans  =  1 0 1 0 1   [5] - The MSB is sign bit, this bit need to be inverted.
+                            If sign bit is 1 means the number is negative.
+                            Ans = 0 0 1 0 1 = 5
     
-    ```
+```  
   
-    Basically, this adder-subtractor will calculated become addition and subtraction. The control signal `sub` will prompt the 2-to-1 multiplexer to choose the correct answer.
+Basically, this adder-subtractor will calculated become addition and subtraction. The control signal `sub` will prompt the 2-to-1 multiplexer to choose the correct answer.  
     
-    The code of the adder-subtractor can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/addSubstractor.v).   
+The code of the adder-subtractor can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/addSubstractor.v).   
      
 <br/>
    
@@ -425,11 +425,11 @@ Figure x. RTL internal view of 32x8 RAM.
 ![RTL external view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_ExternalView.png)
 Figure x. RTL external view of 32x8 RAM.  <br/>  
 
-    The size of the RAM used in this processor is 32 x 8. In other words, it contains 32 memory locations that can fit 8-bit data which is suitable for this processor because the instructions are in 8-bit.  This RAM is used to store the program (combination of different instructions) to find the GCD between two integers.
+The size of the RAM used in this processor is 32 x 8. In other words, it contains 32 memory locations that can fit 8-bit data which is suitable for this processor because the instructions are in 8-bit.  This RAM is used to store the program (combination of different instructions) to find the GCD between two integers.  
     
-    Figures above shows in RTL view of the 32x8 RAM synthesized in this project. The RAM is made out of registers and extra I/O signals such as read/ write address `ADDR[4:0]`, write enable `WRITE` and input data `DATA_IN[7:0]`. When `WRITE` is high, the input data from `DATA_IN[7:0]` will be stored into memory location specified at `ADDR[4:0]`. If `WRITE` is low, the content at address `ADDR[4:0]` will be outputed to `DATA_OUT[7:0]`.
+Figures above shows in RTL view of the 32x8 RAM synthesized in this project. The RAM is made out of registers and extra I/O signals such as read/ write address `ADDR[4:0]`, write enable `WRITE` and input data `DATA_IN[7:0]`. When `WRITE` is high, the input data from `DATA_IN[7:0]` will be stored into memory location specified at `ADDR[4:0]`. If `WRITE` is low, the content at address `ADDR[4:0]` will be outputed to `DATA_OUT[7:0]`.  
 
-    The code for the RAM can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/RAM.v).  
+The code for the RAM can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/RAM.v).  
     
 
 <br/>  
