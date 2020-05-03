@@ -3,7 +3,7 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
 
 
 ## Table of Contents
-1.  [Requirements for this repo](#repoReq)
+1.  [Requirements for this project](#projReq)
     * [Software Requirement](#softReq)
     * [Hardware Requirement](#hardReq)
     * [Processor Specifications](#proSpec)  
@@ -16,10 +16,16 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
         * [Find Least Common Multiple (LCM)](#findLCM)
         * [Cryptography](#crypto)
 3.  [Instruction Cycle](#instCyc)     
-4.  [Components of the Processor](#comp)    
+4.  [Components of the Processor](#comp)  
+    * [Register](#reg)
+    * [Program Counter (PC)](#pC)
+    * [Instruction Register (IR)](#iR)
+    * [Multiplexer (2-to-1 and 4-to-1)](#mux)
+    * [Adder-subtractor](#addSub)
+    * [RAM](#ram)
 
 
-## <a name="repoReq"></a> Requirements for this repo  
+## <a name="projReq"></a> Requirements for this repo  
 
 ### <a name="softReq"></a> Software Requirements
 1. Quartus II
@@ -251,7 +257,7 @@ Find the GCD for 20 and 5.
 3. GCD (5, 5)  ; The remainders are equal so that GCD is 5.
 
 ```
-This processor use this method to find the GCD between two integer numbers.
+This processor use this method to find the GCD between two integer numbers. However, this processor will continue to subtract (the same remainders) to zero so that it knows it's the end of the calculation.
 
 <br/>
 
@@ -321,7 +327,8 @@ Figure x. RTL view of control unit.
 
 Figures above shows the schematic and RTL view of the Datapath (DP) and Control Unit (CU), the DP contains a collection of different functional components such as adder-subtractor, accumulator, RAM and register to process the data. Moreover, the CU consists of decoder, selector and some logic gate to determine the states and control signals. The description for each components can be found below.  
 
-1. **Register**  
+
+### <a  name="reg"></a> Register  
 In electronics, register is made out of flip-flop to store larger size data. This is because flip-flop can only stored one bit of data.
 However, the data stored in the flip-flop will be erased as soon as the power goes off. For this processor, D flip-flop is used because of the simplicity of the design. Figure below shows the RTL view of the 8-bit register made of eight D flip-flop. This register is then used for instruction register, data register (accumulator) and program counter (5-bit). The verilog code for this module can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/DFF_reg.v).    
 ![RTL view of D register](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DReg.png)  
@@ -329,13 +336,15 @@ Figure x. RLT view of D register.
 
 <br/>   
 
-2. **Program Counter (PC)**  
+### <a  name="pC"></a> Program Counter (PC)     
 Program Counter (PC) is a register in a processor that indicates the next instruction memory address after fetching a instruction [5]. The program counter are affected by the instruction cycle. The value in the PC will be changed when the instructions already fetched or a branch or jump condition is met so the PC value will changed to that specific memory location. If there are no branch or jump conditions, the value of the PC will be incremented as the instruction executes. 
+<br/>  
 
-3. **Instruction Register (IR)**  
+### <a  name="iR"></a> Instruction Register (IR)   
 Instruction register (IR) is a register that store the actual instruction to be executed or decoded. First, the instruction is fetched to the IR, then it holds the instruction while decoding. After decoding, the instruction is executed and current register is replaced with next instruction. For this processor, `bit 4 to 0` will be loaded to the PC when the instructions requires branch or jump to specific memory address or it's the first instruction.  
+<br/>  
 
-4. **Multiplexer**  
+### <a  name="mux"></a> Multiplexer   
 ![RTL view of 2-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_2to1MUX.png)  
 Figure x. RLT view of two to one multiplexer. 
 ![RTL view of 4-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_4to1MUX.png)  
@@ -358,15 +367,16 @@ Figures above shows RTL view of 2-to-1 and 4-to-1 multiplexer. Multiplexer is a 
 
      4-to-1 multiplexer functions like 2-to-1 multiplexer but with extra select signals as shown as table above. When the select signals (S1S0) is `00` it will select LSB as the output and so on.  
 
-     The verilog code for 2-to-1 multiplexer can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux2to1.v) and the code for 4-to1 multiplexer is located [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux4to1.v).
+     The verilog code for 2-to-1 multiplexer can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux2to1.v) and the code for 4-to1 multiplexer is located [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux4to1.v).  
 
+<br/>
 
-5. **Adder-subtractor**  
+### <a  name="addSub"></a> Adder-subtractor   
 ![RTL view of adder-subtractor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_AddSub.png)
 Figure x. RTL view of adder-subtractor.     <br/> 
 
 
-    The adder-subtractor is used to perform Euclidian algorithm. This device can be configured to used act as an adder or subtractor depend on the control signal received `sub`. When `sub` is 1, then it will act as a subtractor else it will operator as an adder. However, the figure above shows that the adder-subtractor is made of two seperate adder. This is because adder can transform into subtractor by utilising 2's complement. For example,
+    The adder-subtractor is used to perform calculations to find the GCD. This device can be configured to used act as an adder or subtractor depend on the control signal received `sub`. When `sub` is 1, then it will act as a subtractor else it will operator as an adder. However, the figure above shows that the adder-subtractor is made of two seperate adder. This is because adder can transform into subtractor by utilising 2's complement. For example,
     
     ```
     Normal subtraction,
@@ -406,14 +416,18 @@ Figure x. RTL view of adder-subtractor.     <br/>
     Basically, this adder-subtractor will calculated become addition and subtraction. The control signal `sub` will prompt the 2-to-1 multiplexer to choose the correct answer.
     
     The code of the adder-subtractor can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/addSubstractor.v).   
-    
-
-
-6. **RAM**  
+     
+<br/>
+   
+### <a  name="ram"></a> RAM  
 ![RTL internal view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_InternalView.png)
 Figure x. RTL internal view of 32x8 RAM.   
 ![RTL external view of 32x8 RAM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_RAM_ExternalView.png)
 Figure x. RTL external view of 32x8 RAM.  <br/>  
+
+    The size of the RAM used in this processor is 32 x 8. In other words, it contains 32 memory locations that can fit 8-bit data which is suitable for this processor because the instructions are in 8-bit.  This RAM is used to store the program (combination of different instructions) to find the GCD between two integers.
+    
+    Figures above shows in RTL view of the 32x8 RAM synthesized in this project. The RAM is made out of registers and extra I/O signals such as read/ write address `ADDR[4:0]`, write enable `WRITE` and input data `DATA_IN[7:0]`. When `WRITE` is high, the input data from `DATA_IN[7:0]` will be stored into memory location specified at `ADDR[4:0]`. If `WRITE` is low, the content at address `ADDR[4:0]` will be outputed to `DATA_OUT[7:0]`.
 
     The code for the RAM can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/RAM.v).  
     
