@@ -320,27 +320,26 @@ Instruction register (IR) is a register that store the actual instruction to be 
 ![RTL view of 2-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_2to1MUX.png)  
 Figure x. RLT view of two to one multiplexer. 
 ![RTL view of 4-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_4to1MUX.png)  
-Figure x. RLT view of four to one multiplexer.   
+Figure x. RLT view of four to one multiplexer.  <br/>  
+Figures above shows RTL view of 2-to-1 and 4-to-1 multiplexer. Multiplexer is a device that selects one of the analog or digital input signals and forwards it to a single output line. Multiplexer selects the input signals based on the signals given at selector pin. 
 
-> Figures above shows RTL view of 2-to-1 and 4-to-1 multiplexer. Multiplexer is a device that selects one of the analog or digital input signals and forwards it into a single output line. Multiplexer selects the input signals based on the signals given at selector pin.  
-
-> | Select (S0) |   Out   |
-> |-------------|---------|
-> | 0           |    D0   |
-> | 1           |    D1   |  
+    | Select (S0) |   Out   |
+    |-------------|---------|
+    | 0           |    D0   |
+    | 1           |    D1   |  
  
-> Table above shows the truth table of 2-to-1 multiplexer. When the select signals is `LOW`, the multiplexer will select LSB as output. Otherwise, it will select MSB as output.  
+    Table above shows the truth table of 2-to-1 multiplexer. When the select signals is `LOW`, the multiplexer will select LSB as output. Otherwise, it will select MSB as output.  
 
-> | Select1(S1) | Select0 (S0) | Out |
-> |-------------|--------------|-----| 
-> | 0           | 0            | D0  |
-> | 0           | 1            | D1  |
-> | 1           | 0            | D2  |
-> | 1           | 1            | D3  |
+     | Select1(S1) | Select0 (S0) | Out |
+     |-------------|--------------|-----| 
+     | 0           | 0            | D0  |
+     | 0           | 1            | D1  |
+     | 1           | 0            | D2  |
+     | 1           | 1            | D3  |
 
-> 4-to-1 multiplexer functions like 2-to-1 multiplexer but with extra select signals as shown as table above. When the select signals (S1S0) is `00` it will select LSB as the output and so on.  
+     4-to-1 multiplexer functions like 2-to-1 multiplexer but with extra select signals as shown as table above. When the select signals (S1S0) is `00` it will select LSB as the output and so on.  
 
-> The verilog code for 2-to-1 multiplexer can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux2to1.v) and the code for 4-to1 multiplexer is located [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux4to1.v).
+     The verilog code for 2-to-1 multiplexer can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux2to1.v) and the code for 4-to1 multiplexer is located [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux4to1.v).
 
 
 5. **Adder-subtractor**  
@@ -349,7 +348,7 @@ Figure x. RTL view of adder-subtractor.
 
 <br/>  
 
-The code of the adder-subtractor can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/addSubstractor.v)
+    The code of the adder-subtractor can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/addSubstractor.v)
 
 
 6. **RAM**  
@@ -360,7 +359,7 @@ Figure x. RTL external view of 32x8 RAM.
 
 <br/>  
 
-The code for the RAM can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/RAM.v).
+    The code for the RAM can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/RAM.v).
 
 
 ## References
