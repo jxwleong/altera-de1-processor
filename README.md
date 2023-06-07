@@ -361,7 +361,7 @@ Figure 9. RLT view of D register.
 Program Counter (PC) is a register in a processor that indicates the next instruction memory address after fetching a instruction [5]. The program counter are affected by the instruction cycle. The value in the PC will be changed when the instructions already fetched or a branch or jump condition is met so the PC value will changed to that specific memory location. If there are no branch or jump conditions, the value of the PC will be incremented as the instruction executes. 
 <br/>  
 
-### <a  name="iR"></a> Instruction Register (IR)   
+### <a  name="ir"></a> Instruction Register (IR)   
 Instruction register (IR) is a register that store the actual instruction to be executed or decoded. First, the instruction is fetched to the IR, then it holds the instruction while decoding. After decoding, the instruction is executed and current register is replaced with next instruction. For this processor, `bit 4 to 0` will be loaded to the PC when the instructions requires branch or jump to specific memory address or it's the first instruction.  
 <br/>  
 
