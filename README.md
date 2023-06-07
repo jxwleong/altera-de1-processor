@@ -480,7 +480,7 @@ Programs that are preloaded into the RAM.
 
 &nbsp;
 
-### <a  name="progExp"></a> Program Example 
+### <a  name="program_example"></a> Program Example 
 
 Find the GCD where A  = 10, B = 5 by following the program preloaded into the RAM.
 
@@ -504,7 +504,7 @@ Find the GCD where A  = 10, B = 5 by following the program preloaded into the RA
 
 <br/>  
 
-## <a  name="refer"></a> References  
+## <a  name="reference"></a> References  
 [1] [Lab manual](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/pdf/BAME2044%20%40%20LAB%202018.pdf)  
 [2] Greatest common divisor, Wikipedia, 2020. Available at: https://en.wikipedia.org/wiki/Greatest_common_divisor (viewed on 30 Apr 2020)    
 [3] Least common multiple, Wikipedia, 2020. Available at: https://en.wikipedia.org/wiki/Least_common_multiple (viewed on 30 Apr 2020)  
