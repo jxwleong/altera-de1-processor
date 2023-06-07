@@ -6,53 +6,53 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
 
 ## Table of Contents
 1.  [Requirements for this project](#project_requirement)
-    * [Software Requirement](#softReq)
-    * [Hardware Requirement](#hardReq)
-    * [Processor Specifications](#proSpec)  
-      * [Instruction Sets](#insSet)
-      * [Schematic View](#schem)
-        * [I/O Signals](#iOSig)
-        * [Control Signals](#contSig)
-        * [Status Signals](#statSig)  
-      * [State Table](#statTable)
-      * [State Diagram](#statDiag) 
-2.  [What is Greatest Common Divisor (GCD)](#whatIsGCD)
-    * [GCD Method and Example](#GCDMetnExp)
-        * [Euclidian Algorithm](#euAlgo)
-        * [Subtraction](#sub)
-    * [GCD Application](#GCDApp)
-        * [Reducing Fractions](#redFrac)
-        * [Find Least Common Multiple (LCM)](#findLCM)
+    * [Software Requirement](#software_requirement)
+    * [Hardware Requirement](#hardware_requirement)
+    * [Processor Specifications](#processor_specification)  
+      * [Instruction Sets](#instruction_set)
+      * [Schematic View](#schematic)
+        * [I/O Signals](#io_signal)
+        * [Control Signals](#control_signal)
+        * [Status Signals](#status_signal)  
+      * [State Table](#state_table)
+      * [State Diagram](#state_diagram) 
+2.  [What is Greatest Common Divisor (GCD)](#what_is_gcd)
+    * [GCD Method and Example](#gcd_method_and_experiment)
+        * [Euclidian Algorithm](#euclidian_algorithm)
+        * [Subtraction](#subtraction)
+    * [GCD Application](#gcd_application)
+        * [Reducing Fractions](#reducing_fraction)
+        * [Find Least Common Multiple (LCM)](#find_lcm)
         * [Cryptography](#crypto)
-3.  [Instruction Cycle](#instCyc)     
+3.  [Instruction Cycle](#instruction_cycle)     
 4.  [Components of the Processor](#comp)  
     * [Register](#reg)
-    * [Program Counter (PC)](#pC)
-    * [Instruction Register (IR)](#iR)
+    * [Program Counter (PC)](#pc)
+    * [Instruction Register (IR)](#ir)
     * [Multiplexer (2-to-1 and 4-to-1)](#mux)
-    * [Adder-subtractor](#addSub)
+    * [Adder-subtractor](#addsubtraction)
     * [RAM](#ram)
 5.  [Program to Determine GCD](#program)
-    * [Program Example](#progExp)
-6.  [References](#refer)    
+    * [Program Example](#program_example)
+6.  [References](#reference)    
 
 <br/>  
 
 ## <a name="project_requirement"></a> Requirements for this project  
 
-### <a name="softReq"></a> Software Requirements
+### <a name="software_requirement"></a> Software Requirements
 1. Quartus II
 2. Model SIM  
 
 <br/>  
 
-### <a name="hardReq"></a>Hardware Requirement
+### <a name="hardware_requirement"></a>Hardware Requirement
 1. Altera DE1 Board  
 
 <br/>  
 
-### <a name="proSpec"></a>Processor Specifications  
-#### <a name="insSet"></a>Instruction Sets
+### <a name="processor_specification"></a>Processor Specifications  
+#### <a name="instruction_set"></a>Instruction Sets
 ![Instruction Sets of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/InstructionSet.png)  
 Figure 1. Instruction Set for the GPM from [1]. 
 
@@ -69,8 +69,8 @@ This instruction will store the data in A (an 8-bit data register) into the memo
 3. **ADD A**  
 This instruction will add the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the addition is stored back into A.
 
-4. **SUB A**  
-This instruction will subtract the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the subtraction is stored back into A.
+4. **subtraction A**  
+This instruction will subtractiontract the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the subtractiontraction is stored back into A.
 
 5. **IN A**  
 This instruction will load A (an 8-bit data register) with the data from INPUT line (external I/Os such as switch in Altera DE1).
@@ -88,7 +88,7 @@ This instruction will halt the execution. This instruction will be executed when
 
 
 
-#### <a name="schem"></a>Schematic View of the Processor
+#### <a name="schematic"></a>Schematic View of the Processor
 ![Complete Circuit for Processor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/CompleteCircuitProcessor.png)  
 Figure 2. The Complete Circuit for the GCD Processor
   
@@ -98,10 +98,10 @@ The structure of the processor can be broken-down into two sections, Control Uni
 
 The ***Control Unit (CU)*** is the component that direct the oprations of the processor based on the status signals such as instruction received from datapath. Based on the instruction received, it will send the corresponding control signals to perform the task. It normally control the memory and register (enable read/write operation or when to load the register).
 
-The ***Datapath (DP)*** consists of a combinations of functional units such as adder, subtractor and memory. It is used to perform data processing based on the control signals received from CU. Besides, it also send the instruction bits and neccesary status signals to help CU to send the correct control signals.  
+The ***Datapath (DP)*** consists of a combinations of functional units such as adder, subtractiontractor and memory. It is used to perform data processing based on the control signals received from CU. Besides, it also send the instruction bits and neccesary status signals to help CU to send the correct control signals.  
 <br/>  
 
-#### <a name="iOSig"></a>I/O Signals  
+#### <a name="io_signal"></a>I/O Signals  
 1. **Clock**  
 The processor executes instructions based on the clock. For this processor, the instructions is executed on the rising edge of the clock signals. The clock speed will determine how fast the processor can executes the instuctions. The clock speed for this processor is 4 Hz by using a clock divider.
 
@@ -116,14 +116,14 @@ This input signal is used when the current state is in `input` state. It is cont
 This output signal is used to indicate that the program is completed. It is assigned with the LED pin on Altera DE1.
 
 5. **Input**  
-This 8-bit input signals will be loaded into A (8-bit data register) when the current state is `input`. This signals will be used for the adding or subrating operations based on the instruction.
+This 8-bit input signals will be loaded into A (8-bit data register) when the current state is `input`. This signals will be used for the adding or subtractionrating operations based on the instruction.
 
 6. **Output**  
 This 8-bit output signals will sent out from A (8-bit data register) when the current state is `load`. This output signals is only used for display or send to another component. This output signal is crucial for sending `Aeq0` and `Apos` status signals to CU.  
 
 <br/>
 
-#### <a name="contSig"></a>Control Signals
+#### <a name="control_signal"></a>Control Signals
 1. **IRload**  
 This signal will sent to the Data Path (DP) so that the 8-bit instruction stored in the RAM can be loaded into the 8-bit instruction register.
 
@@ -145,12 +145,12 @@ These signals is used for the 4-to-1 decoder so that it will select the correct 
 7. **Aload**  
 This signals function are similar to **PCload**, it is used to load data register A.
 
-8. **Sub**  
-Sub signal is send to the adder-subtractor. When the signal is `HIGH`, the adder-subtractor will act as a subtractor. Otherwise, it operates like an adder.
+8. **subtraction**  
+subtraction signal is send to the adder-subtractiontractor. When the signal is `HIGH`, the adder-subtractiontractor will act as a subtractiontractor. Otherwise, it operates like an adder.
   
 <br/>
 
-#### <a name="statSig"></a>Status Signals  
+#### <a name="status_signal"></a>Status Signals  
 1. **IR**  
 These signals contain the actual 3-bit instruction from the RAM. It is received from Datapath (DP) to update current state and send correct control signals back to DP.
 
@@ -162,7 +162,7 @@ Apos signal function similar to Aeq0. It is used to tell the CU that the data in
 
 <br/>
 
-#### <a name="statTable"></a>State Table
+#### <a name="state_table"></a>State Table
 ![State Table of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/StateTable.png)   
 Figure 3. State Table for the GPM from [1]. 
 
@@ -173,7 +173,7 @@ Figure above shows the state table of the processor. The state table will tells 
 <br/>
 
 
-#### <a name="statDiag"></a>State Diagram
+#### <a name="state_diagram"></a>State Diagram
 ![State Diagram of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/StateDiagram.png)   
 Figure 4. State Diagram for the GPM from [1]. 
 
@@ -198,10 +198,10 @@ At this state, it will load the data from RAM with memory location set by the in
 At STORE state, it will load the current data in the 8-bit data register (A) to the memory address encoded with the instruction. 
 
 6. **ADD**  
-At this state, the adder-subtractor will add the current value at the 8-bit data register with the output data of RAM with memory address set by the instruction code.  
+At this state, the adder-subtractiontractor will add the current value at the 8-bit data register with the output data of RAM with memory address set by the instruction code.  
 
-7. **SUB**  
-At this state, the adder-subtractor will minus the current value at the 8-bit data register (A) with the output data of RAM with memory address set by the instruction code using 2's complement (A + B'').  
+7. **subtraction**  
+At this state, the adder-subtractiontractor will minus the current value at the 8-bit data register (A) with the output data of RAM with memory address set by the instruction code using 2's complement (A + B'').  
 
 8. **INPUT**  
 The 8-bit INPUT (from input pin) will be loaded into the 8-bit data register (A). An external pin (ENTER) was used to determine when the assign data is ready.  
@@ -218,15 +218,15 @@ The processor will be halt when the GCD is find.
   
 <br/>
 
-## <a name="whatIsGCD"></a> What is Greatest Common Divisor (GCD)?
+## <a name="what_is_gcd"></a> What is Greatest Common Divisor (GCD)?
 Greatest Common Divider (GCD) is the largest positive integer that divides two or more integers [2].  
 
   
-### <a name="GCDMetnExp"></a> GCD Method and Example
+### <a name="gcd_method_and_experiment"></a> GCD Method and Example
 Example of GCD, the GCD of 8 and 12 is 4. This is because 4 is the largest positive integer that can
 divide 8 and 12.
 
-#### <a name="euAlgo"></a> Euclidian Algorithm     
+#### <a name="euclidian_algorithm"></a> Euclidian Algorithm     
 The example above is simple to understand and calculated. However, it may find the GCD between two large number ineffective. To solve this problem, **Euclidian Algorithm** is used in this processor to determine the GCD between two large number more efficiently. The algorithm is explained below.
 
 **Simple example**
@@ -262,34 +262,34 @@ Answer:  Repeat the process from Simple example.
 <br/>  
 
 
-#### <a name="sub"></a> Subtraction   
-The last method is to used the repeated subraction method. The working princple is subtract the smaller number from the greater. Repeat the process until the remainders are equal, which is the GCD of the given numbers [10]. For example,  
+#### <a name="subtraction"></a> subtractiontraction   
+The last method is to used the repeated subtractionraction method. The working princple is subtractiontract the smaller number from the greater. Repeat the process until the remainders are equal, which is the GCD of the given numbers [10]. For example,  
   
 ```
 Find the GCD for 20 and 5.
 
-0. GCD (20, 5) ; Subtract the larger number with smaller number
+0. GCD (20, 5) ; subtractiontract the larger number with smaller number
 1. GCD (15, 5) ; Repeat
 2. GCD (10, 5) ; Repeat
 3. GCD (5, 5)  ; The remainders are equal so that GCD is 5.
 
 ```
-This processor use this method to find the GCD between two integer numbers. However, this processor will continue to subtract (the same remainders) to zero so that it knows it's the end of the calculation.
+This processor use this method to find the GCD between two integer numbers. However, this processor will continue to subtractiontract (the same remainders) to zero so that it knows it's the end of the calculation.
 
 <br/>
 
 
-### <a name="GCDApp"></a> GCD Application
-#### <a name="redFrac"></a> 1. Reducing Fractions
-GCD is useful for reducing fractions. It can be used to simplify the fraction to the lowest terms. For Example, the GCD of <sup>12</sup>&frasl;<sub>24</sub> is **12**. Therefore, 
+### <a name="gcd_application"></a> GCD Application
+#### <a name="reducing_fraction"></a> 1. Reducing Fractions
+GCD is useful for reducing fractions. It can be used to simplify the fraction to the lowest terms. For Example, the GCD of <sup>12</sup>&frasl;<subtraction>24</subtraction> is **12**. Therefore, 
   
-<sup>12</sup>&frasl;<sub>24</sub> = <sup>(1 * 12)</sup>&frasl;<sub>(2 * 12)</sub> = <sup>1</sup>&frasl;<sub>2</sub>  
+<sup>12</sup>&frasl;<subtraction>24</subtraction> = <sup>(1 * 12)</sup>&frasl;<subtraction>(2 * 12)</subtraction> = <sup>1</sup>&frasl;<subtraction>2</subtraction>  
    
-The simplest term for <sup>12</sup>&frasl;<sub>24</sub> is <sup>1</sup>&frasl;<sub>2</sub> 
+The simplest term for <sup>12</sup>&frasl;<subtraction>24</subtraction> is <sup>1</sup>&frasl;<subtraction>2</subtraction> 
    
 <br/>  
 
-#### <a name="findLCM"></a> 2. Find Least Common Multiple (LCM)
+#### <a name="find_lcm"></a> 2. Find Least Common Multiple (LCM)
 As the name implies, LCM means the least common multiple of two or more integers. For example,  
 
 Multiple of 2:	2, **4**, 6, 8, 10, 12  
@@ -311,7 +311,7 @@ GCD is also used in cryptography (requires further exploration).
 
 <br/>
 
-## <a name="instCyc"></a> Instruction Cycle
+## <a name="instruction_cycle"></a> Instruction Cycle
 The instruction cycle of a processor can be broken down into three stages, fetch, decode and execute.
 
 ![Instruction Cycle w/ PC](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Misc/ProgramCounterExplanation.gif)  
@@ -346,7 +346,7 @@ Figure 8. RTL view of control unit.
 
 <br/> 
 
-Figures above shows the schematic and RTL view of the Datapath (DP) and Control Unit (CU), the DP contains a collection of different functional components such as adder-subtractor, accumulator, RAM and register to process the data. Moreover, the CU consists of decoder, selector and some logic gate to determine the states and control signals. The description for each components can be found below.  
+Figures above shows the schematic and RTL view of the Datapath (DP) and Control Unit (CU), the DP contains a collection of different functional components such as adder-subtractiontractor, accumulator, RAM and register to process the data. Moreover, the CU consists of decoder, selector and some logic gate to determine the states and control signals. The description for each components can be found below.  
 
 
 ### <a  name="reg"></a> Register  
@@ -392,15 +392,15 @@ The verilog code for 2-to-1 multiplexer can be found [here](https://github.com/j
 
 <br/>
 
-### <a  name="addSub"></a> Adder-subtractor   
-![RTL view of adder-subtractor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_AddSub.png)
-Figure 12. RTL view of adder-subtractor.     <br/> 
+### <a  name="addsubtraction"></a> Adder-subtractiontractor   
+![RTL view of adder-subtractiontractor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_Addsubtraction.png)
+Figure 12. RTL view of adder-subtractiontractor.     <br/> 
 
 
-The adder-subtractor is used to perform calculations to find the GCD. This device can be configured to used act as an adder or subtractor depend on the control signal received `sub`. When `sub` is 1, then it will act as a subtractor else it will operator as an adder. However, the figure above shows that the adder-subtractor is made of two seperate adder. This is because adder can transform into subtractor by utilising 2's complement. For example,
+The adder-subtractiontractor is used to perform calculations to find the GCD. This device can be configured to used act as an adder or subtractiontractor depend on the control signal received `subtraction`. When `subtraction` is 1, then it will act as a subtractiontractor else it will operator as an adder. However, the figure above shows that the adder-subtractiontractor is made of two seperate adder. This is because adder can transform into subtractiontractor by utilising 2's complement. For example,
     
 ```
-Normal subtraction,
+Normal subtractiontraction,
     
 A = 10, B = 5
     
@@ -416,7 +416,7 @@ or in binary
 Ans  =    0 1 0 1   [5]
     
     
-Using 2's complement to convert adder to subtractor,
+Using 2's complement to convert adder to subtractiontractor,
     
 A = 10, B = 5
 Ans = A + 2's(B)
@@ -434,9 +434,9 @@ B = 0 1 0 1
     
 ```  
   
-Basically, this adder-subtractor will calculated become addition and subtraction. The control signal `sub` will prompt the 2-to-1 multiplexer to choose the correct answer.  
+Basically, this adder-subtractiontractor will calculated become addition and subtractiontraction. The control signal `subtraction` will prompt the 2-to-1 multiplexer to choose the correct answer.  
     
-The code of the adder-subtractor can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/addSubstractor.v).   
+The code of the adder-subtractiontractor can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/addsubtractionstractor.v).   
      
 <br/>
    
@@ -491,11 +491,11 @@ Find the GCD where A  = 10, B = 5 by following the program preloaded into the RA
 | 3  | IN A (5)                 | INPUT integer 5 (B)                |
 | 4  | STORE A (5) -> 11111     | Store 5 at location 11111          |
 | 5  | LOAD content 11110 to A  | Load 10 into A                     |
-| 6  | A = A - 5 = 10 - 5 = 5   | Subtract A from content at 11111   |
+| 6  | A = A - 5 = 10 - 5 = 5   | subtractiontract A from content at 11111   |
 | 7  | Skip because A is not 0. | Skip because A is not 0.           |
 | 8  | JPOS                     | JUMP Program Counter (PC) to 01100 |
 | 9  | STORE A (5) -> 11110     | STORE A (5) at location 11110      |
-| 10 | A = A - 5 = 5 - 5 = 0    | Subtract A from content at 11111   |
+| 10 | A = A - 5 = 5 - 5 = 0    | subtractiontract A from content at 11111   |
 | 11 | Skip because A is 0.     | Skip because A is 0.               |
 | 12 | LOAD 11110 -> A          | LOAD content from 11110 (5) to A   |
 | 13 | HALT                     | HALT                               |  
@@ -514,4 +514,4 @@ Find the GCD where A  = 10, B = 5 by following the program preloaded into the RA
 [7] How to Find the Greatest Common Divisor by Using the Euclidian Algorithm, Learn Math Tutorials, 2020. Available at: https://www.youtube.com/watch?v=JUzYl1TYMcU (viewed on 2 May 2020)  
 [8] What are the applications of HCF and LCM in daily life? Adhikari, 2017. Available at: https://www.quora.com/What-are-the-applications-of-HCF-and-LCM-in-daily-life (viewed on 2 May 2020)  
 [9] Multiplexer, Wikipedia, 2020. Available at: https://en.wikipedia.org/wiki/Multiplexer (viewed on 2 May 2020)   
-[10] Finding the Greatest Common Divisor by Repeated Subtractions, Yiu, 2016. Available at: http://www.amesa.org.za/amesal_n21_a7.pdf (viewed on 3 May 2020) 
+[10] Finding the Greatest Common Divisor by Repeated subtractiontractions, Yiu, 2016. Available at: http://www.amesa.org.za/amesal_n21_a7.pdf (viewed on 3 May 2020) 
