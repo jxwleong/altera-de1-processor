@@ -5,7 +5,7 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
 
 
 ## Table of Contents
-1.  [Requirements for this project](#projReq)
+1.  [Requirements for this project](#project_requirement)
     * [Software Requirement](#softReq)
     * [Hardware Requirement](#hardReq)
     * [Processor Specifications](#proSpec)  
@@ -38,7 +38,7 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
 
 <br/>  
 
-## <a name="projReq"></a> Requirements for this project  
+## <a name="project_requirement"></a> Requirements for this project  
 
 ### <a name="softReq"></a> Software Requirements
 1. Quartus II
