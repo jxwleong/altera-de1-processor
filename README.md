@@ -33,7 +33,7 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
     - [ Program Counter (PC)](#-program-counter-pc)
     - [ Instruction Register (IR)](#-instruction-register-ir)
     - [ Multiplexer](#-multiplexer)
-    - [ Adder-subtractiontractor](#-adder-subtractiontractor)
+    - [ Adder-subtractor](#-adder-subtractor)
     - [ RAM](#-ram)
   - [ Program to Determine GCD](#-program-to-determine-gcd)
     - [ Program Example](#-program-example)
@@ -395,7 +395,7 @@ The verilog code for 2-to-1 multiplexer can be found [here](https://github.com/j
 
 <br/>
 
-### <a  name="addsubtraction"></a> Adder-subtractiontractor   
+### <a  name="addsubtraction"></a> Adder-subtractor   
 ![RTL view of adder-subtractiontractor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_AddSub.png)
 Figure 12. RTL view of adder-subtractiontractor.     <br/> 
 
