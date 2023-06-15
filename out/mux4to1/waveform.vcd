@@ -1,0 +1,75 @@
+$date
+	Thu Jun 15 21:19:26 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module mux4to1_TB $end
+$var wire 8 ! out [7:0] $end
+$var parameter 32 " size $end
+$var reg 1 # S0 $end
+$var reg 1 $ S1 $end
+$var reg 8 % i0 [7:0] $end
+$var reg 8 & i1 [7:0] $end
+$var reg 8 ' i2 [7:0] $end
+$var reg 8 ( i3 [7:0] $end
+$scope module inst1 $end
+$var wire 1 # S0 $end
+$var wire 1 $ S1 $end
+$var wire 8 ) i0 [7:0] $end
+$var wire 8 * i1 [7:0] $end
+$var wire 8 + i2 [7:0] $end
+$var wire 8 , i3 [7:0] $end
+$var wire 8 - out [7:0] $end
+$var parameter 32 . size $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1000 .
+b1000 "
+$end
+#0
+$dumpvars
+b0 -
+b0 ,
+b0 +
+b0 *
+b0 )
+b0 (
+b0 '
+b0 &
+b0 %
+0$
+0#
+b0 !
+$end
+#10
+b11110000 !
+b11110000 -
+b11110011 (
+b11110011 ,
+b11110010 '
+b11110010 +
+b11110001 &
+b11110001 *
+b11110000 %
+b11110000 )
+#20
+b11110001 !
+b11110001 -
+1#
+#30
+b11110010 !
+b11110010 -
+1$
+0#
+#40
+b11110011 !
+b11110011 -
+1#
+#50

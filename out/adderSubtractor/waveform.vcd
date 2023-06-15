@@ -1,0 +1,51 @@
+$date
+	Thu Jun 15 21:30:25 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module addSubstractor_tb $end
+$var wire 9 ! out [8:0] $end
+$var reg 8 " A [7:0] $end
+$var reg 8 # B [7:0] $end
+$var reg 1 $ sub $end
+$scope module inst1 $end
+$var wire 8 % A [7:0] $end
+$var wire 8 & B [7:0] $end
+$var wire 1 $ sub $end
+$var reg 9 ' out [8:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 '
+b0 &
+b0 %
+0$
+b0 #
+b0 "
+b0 !
+$end
+#10
+b11 !
+b11 '
+b10 #
+b10 &
+b1 "
+b1 %
+#20
+b1 !
+b1 '
+b1 #
+b1 &
+b10 "
+b10 %
+1$
+#30

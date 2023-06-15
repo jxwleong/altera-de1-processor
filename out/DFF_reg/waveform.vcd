@@ -1,0 +1,76 @@
+$date
+	Thu Jun 15 20:36:01 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module DFF_reg_tb $end
+$var wire 8 ! Q [7:0] $end
+$var parameter 32 " size $end
+$var reg 8 # D [7:0] $end
+$var reg 1 $ clear $end
+$var reg 1 % clock $end
+$var reg 1 & load $end
+$scope module u1 $end
+$var wire 8 ' D [7:0] $end
+$var wire 1 $ clear $end
+$var wire 1 % clock $end
+$var wire 1 & load $end
+$var parameter 32 ( size $end
+$var reg 8 ) Q [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1000 (
+b1000 "
+$end
+#0
+$dumpvars
+bx )
+b0 '
+0&
+0%
+1$
+b0 #
+bx !
+$end
+#5
+1%
+#10
+0%
+b10100101 #
+b10100101 '
+1&
+#15
+b10100101 !
+b10100101 )
+1%
+#20
+0%
+0&
+#25
+1%
+#30
+0%
+#35
+1%
+#40
+0%
+b111100 #
+b111100 '
+1&
+#45
+b111100 !
+b111100 )
+1%
+#50
+0%
+#55
+1%
+#60
+0%

@@ -1,4 +1,4 @@
-module RAM #(parameter RAM_LOCATIONS = 16, 	parameter RAM_BITS = 4)(input [RAM_BITS - 1:0] DATA_IN, input [4:0] ADDR, input WRITE, clk, output reg[RAM_BITS - 1:0] DATA_OUT);
+module RAM #(parameter RAM_LOCATIONS = 32, 	parameter RAM_BITS = 8)(input [RAM_BITS - 1:0] DATA_IN, input [4:0] ADDR, input WRITE, clk, output reg[RAM_BITS - 1:0] DATA_OUT);
 	
 
 	

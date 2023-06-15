@@ -1,0 +1,86 @@
+$date
+	Thu Jun 15 22:02:39 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module RAM_tb $end
+$var wire 8 ! DATA_OUT [7:0] $end
+$var parameter 32 " RAM_BITS $end
+$var parameter 32 # RAM_LOCATIONS $end
+$var reg 5 $ ADDR [4:0] $end
+$var reg 8 % DATA_IN [7:0] $end
+$var reg 1 & WRITE $end
+$var reg 1 ' clk $end
+$scope module inst1 $end
+$var wire 5 ( ADDR [4:0] $end
+$var wire 8 ) DATA_IN [7:0] $end
+$var wire 1 & WRITE $end
+$var wire 1 ' clk $end
+$var parameter 32 * RAM_BITS $end
+$var parameter 32 + RAM_LOCATIONS $end
+$var reg 8 , DATA_OUT [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b100000 +
+b1000 *
+b100000 #
+b1000 "
+$end
+#0
+$dumpvars
+bx ,
+b0 )
+b0 (
+0'
+0&
+b0 %
+b0 $
+bx !
+$end
+#5
+b10000000 !
+b10000000 ,
+1'
+#10
+0'
+b1 $
+b1 (
+#15
+b111110 !
+b111110 ,
+1'
+#20
+0'
+1&
+b11111 $
+b11111 (
+b10101010 %
+b10101010 )
+#25
+1'
+#30
+0'
+0&
+#35
+b10101010 !
+b10101010 ,
+1'
+#40
+0'
+b0 %
+b0 )
+#45
+1'
+#50
+0'
+#55
+1'
+#60
+0'
