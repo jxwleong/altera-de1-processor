@@ -18,7 +18,7 @@ begin
 	if(~reset)
 	state <= start;	// Reset state to start if reset signal is active
 	else
-	state <= nextState;	// Reset state to start if reset signal is active
+	state <= nextState;	// GO to next state
 end
 
 
