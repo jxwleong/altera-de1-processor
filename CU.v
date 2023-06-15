@@ -6,17 +6,19 @@ module CU(output reg IRload, JMPmux, PCload, Meminst, MemWr, Aload, Sub, Halt,
 
 reg [3:0] state, nextState;
 
+// Define states with readable names
 parameter start = 4'b0000, fetch = 4'b0001, decode = 4'b0010, 
 		  load = 4'b1000, store = 4'b1001, add = 4'b1010, sub = 4'b1011,
 		  Input = 4'b1100, jz = 4'b1101, jpos = 4'b1110, halt = 4'b1111;
 
-		  
+
+// State transition block  
 always @(posedge clock, negedge reset)
 begin
 	if(~reset)
-	state <= start;
+	state <= start;	// Reset state to start if reset signal is active
 	else
-	state <= nextState;
+	state <= nextState;	// Reset state to start if reset signal is active
 end
 
 

@@ -36,6 +36,7 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
     - [ Adder-subtractor](#-adder-subtractor)
     - [ RAM](#-ram)
   - [ Program to Determine GCD](#-program-to-determine-gcd)
+    - [Pseudocode of the Program](#pseudocode-of-the-program)
     - [ Program Example](#-program-example)
   - [ References](#-references)
 
@@ -483,6 +484,29 @@ Programs that are preloaded into the RAM.
 
 &nbsp;
 
+### Pseudocode of the Program
+```python
+# Initialize input values
+num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+
+# Main loop
+while True:
+    # If the numbers are equal, num1 is the GCD
+    if num1 == num2:
+        print("GCD is", num1)
+        break  # Exit the loop
+    
+    # If num1 > num2, subtract num2 from num1
+    elif num1 > num2:
+        num1 = num1 - num2
+    
+    # If num2 > num1, subtract num1 from num2
+    else: 
+        num2 = num2 - num1
+```
+
+&nbsp;&nbsp;  
 ### <a  name="program_example"></a> Program Example 
 
 Find the GCD where A  = 10, B = 5 by following the program preloaded into the RAM.
