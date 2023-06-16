@@ -22,7 +22,7 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
   - [ What is Greatest Common Divisor (GCD)?](#-what-is-greatest-common-divisor-gcd)
     - [ GCD Method and Example](#-gcd-method-and-example)
       - [ Euclidian Algorithm](#-euclidian-algorithm)
-      - [ subtractiontraction](#-subtractiontraction)
+      - [ subtraction](#-subtraction)
     - [ GCD Application](#-gcd-application)
       - [ 1. Reducing Fractions](#-1-reducing-fractions)
       - [ 2. Find Least Common Multiple (LCM)](#-2-find-least-common-multiple-lcm)
@@ -74,7 +74,7 @@ This instruction will store the data in A (an 8-bit data register) into the memo
 This instruction will add the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the addition is stored back into A.
 
 4. **subtraction A**  
-This instruction will subtractiontract the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the subtractiontraction is stored back into A.
+This instruction will subtractiontract the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the subtraction is stored back into A.
 
 5. **IN A**  
 This instruction will load A (an 8-bit data register) with the data from INPUT line (external I/Os such as switch in Altera DE1).
@@ -102,7 +102,7 @@ The structure of the processor can be broken-down into two sections, Control Uni
 
 The ***Control Unit (CU)*** is the component that direct the oprations of the processor based on the status signals such as instruction received from datapath. Based on the instruction received, it will send the corresponding control signals to perform the task. It normally control the memory and register (enable read/write operation or when to load the register).
 
-The ***Datapath (DP)*** consists of a combinations of functional units such as adder, subtractiontractor and memory. It is used to perform data processing based on the control signals received from CU. Besides, it also send the instruction bits and neccesary status signals to help CU to send the correct control signals.  
+The ***Datapath (DP)*** consists of a combinations of functional units such as adder, subtractor and memory. It is used to perform data processing based on the control signals received from CU. Besides, it also send the instruction bits and neccesary status signals to help CU to send the correct control signals.  
 <br/>  
 
 #### <a name="io_signal"></a>I/O Signals  
@@ -150,7 +150,7 @@ These signals is used for the 4-to-1 decoder so that it will select the correct 
 This signals function are similar to **PCload**, it is used to load data register A.
 
 8. **subtraction**  
-subtraction signal is send to the adder-subtractiontractor. When the signal is `HIGH`, the adder-subtractiontractor will act as a subtractiontractor. Otherwise, it operates like an adder.
+subtraction signal is send to the adder-subtractor. When the signal is `HIGH`, the adder-subtractor will act as a subtractor. Otherwise, it operates like an adder.
   
 <br/>
 
@@ -202,10 +202,10 @@ At this state, it will load the data from RAM with memory location set by the in
 At STORE state, it will load the current data in the 8-bit data register (A) to the memory address encoded with the instruction. 
 
 6. **ADD**  
-At this state, the adder-subtractiontractor will add the current value at the 8-bit data register with the output data of RAM with memory address set by the instruction code.  
+At this state, the adder-subtractor will add the current value at the 8-bit data register with the output data of RAM with memory address set by the instruction code.  
 
 7. **subtraction**  
-At this state, the adder-subtractiontractor will minus the current value at the 8-bit data register (A) with the output data of RAM with memory address set by the instruction code using 2's complement (A + B'').  
+At this state, the adder-subtractor will minus the current value at the 8-bit data register (A) with the output data of RAM with memory address set by the instruction code using 2's complement (A + B'').  
 
 8. **INPUT**  
 The 8-bit INPUT (from input pin) will be loaded into the 8-bit data register (A). An external pin (ENTER) was used to determine when the assign data is ready.  
@@ -266,7 +266,7 @@ Answer:  Repeat the process from Simple example.
 <br/>  
 
 
-#### <a name="subtraction"></a> subtractiontraction   
+#### <a name="subtraction"></a> subtraction   
 The last method is to used the repeated subtractionraction method. The working princple is subtractiontract the smaller number from the greater. Repeat the process until the remainders are equal, which is the GCD of the given numbers [10]. For example,  
   
 ```
@@ -350,7 +350,7 @@ Figure 8. RTL view of control unit.
 
 <br/> 
 
-Figures above shows the schematic and RTL view of the Datapath (DP) and Control Unit (CU), the DP contains a collection of different functional components such as adder-subtractiontractor, accumulator, RAM and register to process the data. Moreover, the CU consists of decoder, selector and some logic gate to determine the states and control signals. The description for each components can be found below.  
+Figures above shows the schematic and RTL view of the Datapath (DP) and Control Unit (CU), the DP contains a collection of different functional components such as adder-subtractor, accumulator, RAM and register to process the data. Moreover, the CU consists of decoder, selector and some logic gate to determine the states and control signals. The description for each components can be found below.  
 
 
 ### <a  name="reg"></a> Register  
@@ -397,14 +397,14 @@ The verilog code for 2-to-1 multiplexer can be found [here](https://github.com/j
 <br/>
 
 ### <a  name="addsubtraction"></a> Adder-subtractor   
-![RTL view of adder-subtractiontractor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_AddSub.png)
-Figure 12. RTL view of adder-subtractiontractor.     <br/> 
+![RTL view of adder-subtractor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_AddSub.png)
+Figure 12. RTL view of adder-subtractor.     <br/> 
 
 
-The adder-subtractiontractor is used to perform calculations to find the GCD. This device can be configured to used act as an adder or subtractiontractor depend on the control signal received `subtraction`. When `subtraction` is 1, then it will act as a subtractiontractor else it will operator as an adder. However, the figure above shows that the adder-subtractiontractor is made of two seperate adder. This is because adder can transform into subtractiontractor by utilising 2's complement. For example,
+The adder-subtractor is used to perform calculations to find the GCD. This device can be configured to used act as an adder or subtractor depend on the control signal received `subtraction`. When `subtraction` is 1, then it will act as a subtractor else it will operator as an adder. However, the figure above shows that the adder-subtractor is made of two seperate adder. This is because adder can transform into subtractor by utilising 2's complement. For example,
     
 ```
-Normal subtractiontraction,
+Normal subtraction,
     
 A = 10, B = 5
     
@@ -420,7 +420,7 @@ or in binary
 Ans  =    0 1 0 1   [5]
     
     
-Using 2's complement to convert adder to subtractiontractor,
+Using 2's complement to convert adder to subtractor,
     
 A = 10, B = 5
 Ans = A + 2's(B)
@@ -438,9 +438,9 @@ B = 0 1 0 1
     
 ```  
   
-Basically, this adder-subtractiontractor will calculated become addition and subtractiontraction. The control signal `subtraction` will prompt the 2-to-1 multiplexer to choose the correct answer.  
+Basically, this adder-subtractor will calculated become addition and subtraction. The control signal `subtraction` will prompt the 2-to-1 multiplexer to choose the correct answer.  
     
-The code of the adder-subtractiontractor can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/addsubtractionstractor.v).   
+The code of the adder-subtractor can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/addsubtractionstractor.v).   
      
 <br/>
    
@@ -541,4 +541,4 @@ Find the GCD where A  = 10, B = 5 by following the program preloaded into the RA
 [7] How to Find the Greatest Common Divisor by Using the Euclidian Algorithm, Learn Math Tutorials, 2020. Available at: https://www.youtube.com/watch?v=JUzYl1TYMcU (viewed on 2 May 2020)  
 [8] What are the applications of HCF and LCM in daily life? Adhikari, 2017. Available at: https://www.quora.com/What-are-the-applications-of-HCF-and-LCM-in-daily-life (viewed on 2 May 2020)  
 [9] Multiplexer, Wikipedia, 2020. Available at: https://en.wikipedia.org/wiki/Multiplexer (viewed on 2 May 2020)   
-[10] Finding the Greatest Common Divisor by Repeated subtractiontractions, Yiu, 2016. Available at: http://www.amesa.org.za/amesal_n21_a7.pdf (viewed on 3 May 2020) 
+[10] Finding the Greatest Common Divisor by Repeated subtractions, Yiu, 2016. Available at: http://www.amesa.org.za/amesal_n21_a7.pdf (viewed on 3 May 2020) 
