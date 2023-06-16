@@ -38,25 +38,22 @@ always @(state, Enter, IR)
 			  nextState = decode;
 			  end
 	
-	decode	:
-			 begin
-			 {IRload, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b00001000; 
-			 Asel[1:0] = 2'b00;
-			 Halt = 1'b0;
-		case (IR)
-		
-		3'b000 :	nextState = load;	
-		3'b001 :	nextState = store;	
-		3'b010 :	nextState = add;				
-		3'b011 :	nextState = sub;		
-		3'b100 :	nextState = Input;								
-		3'b101 :	nextState = jz;					
-		3'b110 :	nextState = jpos;
-		3'b111 :	nextState = halt;			
-		default :	nextState = decode;
-											
-		endcase
-		end
+	decode	:begin
+			{IRload, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b00001000; 
+			Asel[1:0] = 2'b00;
+			Halt = 1'b0;
+				case (IR)
+					3'b000 :	nextState = load;	
+					3'b001 :	nextState = store;	
+					3'b010 :	nextState = add;				
+					3'b011 :	nextState = sub;		
+					3'b100 :	nextState = Input;								
+					3'b101 :	nextState = jz;					
+					3'b110 :	nextState = jpos;
+					3'b111 :	nextState = halt;			
+					default :	nextState = decode;							
+				endcase
+			end
 	load	: begin
 			  Halt = 1'b0;
 			  Asel[1:0] = 2'b10;
@@ -90,9 +87,9 @@ always @(state, Enter, IR)
 			  Asel[1:0] = 2'b01;
 			  {IRload, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b0000010;
 			  if(~Enter)
-			  nextState = Input;
+				nextState = Input;
 			  else
-			  nextState = start;
+				nextState = start;
 			  end
 			  	
 	jz		: begin

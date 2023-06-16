@@ -1,0 +1,393 @@
+$date
+	Fri Jun 16 13:59:32 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module CU_tb $end
+$var wire 1 ! Sub $end
+$var wire 1 " PCload $end
+$var wire 1 # Meminst $end
+$var wire 1 $ MemWr $end
+$var wire 1 % JMPmux $end
+$var wire 1 & IRLoad $end
+$var wire 1 ' Halt $end
+$var wire 2 ( Asel [1:0] $end
+$var wire 1 ) Aload $end
+$var reg 1 * Aeq0 $end
+$var reg 1 + Apos $end
+$var reg 1 , Enter $end
+$var reg 3 - IR [2:0] $end
+$var reg 1 . clock $end
+$var reg 1 / reset $end
+$scope module inst1 $end
+$var wire 1 * Aeq0 $end
+$var wire 1 + Apos $end
+$var wire 1 , Enter $end
+$var wire 3 0 IR [2:0] $end
+$var wire 1 . clock $end
+$var wire 1 / reset $end
+$var parameter 4 1 Input $end
+$var parameter 4 2 add $end
+$var parameter 4 3 decode $end
+$var parameter 4 4 fetch $end
+$var parameter 4 5 halt $end
+$var parameter 4 6 jpos $end
+$var parameter 4 7 jz $end
+$var parameter 4 8 load $end
+$var parameter 4 9 start $end
+$var parameter 4 : store $end
+$var parameter 4 ; sub $end
+$var reg 1 ) Aload $end
+$var reg 2 < Asel [1:0] $end
+$var reg 1 ' Halt $end
+$var reg 1 & IRload $end
+$var reg 1 % JMPmux $end
+$var reg 1 $ MemWr $end
+$var reg 1 # Meminst $end
+$var reg 1 " PCload $end
+$var reg 1 ! Sub $end
+$var reg 4 = nextState [3:0] $end
+$var reg 4 > state [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1011 ;
+b1001 :
+b0 9
+b1000 8
+b1101 7
+b1110 6
+b1111 5
+b1 4
+b10 3
+b1010 2
+b1100 1
+$end
+#0
+$dumpvars
+b0 >
+b1 =
+b0 <
+bx 0
+0/
+0.
+bx -
+0,
+x+
+x*
+0)
+b0 (
+0'
+0&
+0%
+0$
+0#
+0"
+0!
+$end
+#5
+1.
+#10
+0.
+1/
+#15
+b10 =
+1&
+1"
+b1 >
+1.
+#20
+0.
+#25
+0&
+0"
+1#
+b10 >
+1.
+#30
+b1000 =
+0.
+b0 -
+b0 0
+#35
+b0 =
+0#
+1)
+b10 (
+b10 <
+b1000 >
+1.
+#40
+0.
+#45
+b1 =
+b0 (
+b0 <
+0)
+b0 >
+1.
+#50
+0.
+#55
+b10 =
+1&
+1"
+b1 >
+1.
+#60
+0.
+#65
+b1000 =
+0&
+0"
+1#
+b10 >
+1.
+#70
+b1001 =
+0.
+b1 -
+b1 0
+#75
+b0 =
+1$
+b1001 >
+1.
+#80
+0.
+#85
+b1 =
+0#
+0$
+b0 >
+1.
+#90
+0.
+#95
+b10 =
+1&
+1"
+b1 >
+1.
+#100
+0.
+#105
+b1001 =
+0&
+0"
+1#
+b10 >
+1.
+#110
+b1100 =
+0.
+1,
+b100 -
+b100 0
+#115
+b0 =
+0#
+1)
+b1 (
+b1 <
+b1100 >
+1.
+#120
+0.
+#125
+b1 =
+b0 (
+b0 <
+0)
+b0 >
+1.
+#130
+0.
+0,
+#135
+b10 =
+1&
+1"
+b1 >
+1.
+#140
+0.
+#145
+b1100 =
+0&
+0"
+1#
+b10 >
+1.
+#150
+b1010 =
+0.
+b10 -
+b10 0
+#155
+b0 =
+0#
+1)
+b1010 >
+1.
+#160
+0.
+#165
+b1 =
+0)
+b0 >
+1.
+#170
+0.
+#175
+b10 =
+1&
+1"
+b1 >
+1.
+#180
+0.
+#185
+b1010 =
+0&
+0"
+1#
+b10 >
+1.
+#190
+b1011 =
+0.
+b11 -
+b11 0
+#195
+b0 =
+0#
+1)
+1!
+b1011 >
+1.
+#200
+0.
+#205
+b1 =
+0)
+0!
+b0 >
+1.
+#210
+0.
+#215
+b10 =
+1&
+1"
+b1 >
+1.
+#220
+0.
+#225
+b1011 =
+0&
+0"
+1#
+b10 >
+1.
+#230
+b1101 =
+0.
+b101 -
+b101 0
+#235
+b0 =
+x"
+1%
+0#
+b1101 >
+1.
+#240
+0.
+#245
+b1 =
+0%
+0"
+b0 >
+1.
+#250
+0.
+#255
+b10 =
+1&
+1"
+b1 >
+1.
+#260
+0.
+#265
+b1101 =
+0&
+0"
+1#
+b10 >
+1.
+#270
+b1110 =
+0.
+b110 -
+b110 0
+#275
+b0 =
+x"
+1%
+0#
+b1110 >
+1.
+#280
+0.
+#285
+b1 =
+0%
+0"
+b0 >
+1.
+#290
+0.
+#295
+b10 =
+1&
+1"
+b1 >
+1.
+#300
+0.
+#305
+b1110 =
+0&
+0"
+1#
+b10 >
+1.
+#310
+b1111 =
+0.
+b111 -
+b111 0
+#315
+0#
+1'
+b1111 >
+1.
+#320
+b1 =
+0'
+b0 >
+0.
+0/
+#325
+1.
+#330
+0.

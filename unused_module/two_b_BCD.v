@@ -7,14 +7,14 @@ module two_b_BCD(
 		reg [3:0]counter;			// for HEX0
 		reg [3:0]counter2;			// for HEX1
 		reg [3:0]cycles;
-		wire clock_oneHz;				
+		wire clock_clk_1Hz;				
 		
-		Lab4B_modified oneHzClock (CLOCK_50,KEY,clock_oneHz);
+		clock_divider clk_1HzClock (CLOCK_50,KEY,clock_clk_1Hz);
 		BCD_decoder_modified seven_seg1 (counter,HEX0);
 		BCD_decoder_modified seven_seg2 (counter2,HEX1);
 
 		
-always@(posedge clock_oneHz, negedge KEY)
+always@(posedge clock_clk_1Hz, negedge KEY)
 		
 		if (~KEY)   //reset
 		begin
