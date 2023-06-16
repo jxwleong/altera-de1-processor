@@ -1,5 +1,5 @@
 $date
-	Fri Jun 16 14:19:50 2023
+	Fri Jun 16 16:00:39 2023
 $end
 $version
 	Icarus Verilog
@@ -7,387 +7,207 @@ $end
 $timescale
 	1s
 $end
-$scope module CU_tb $end
-$var wire 1 ! Sub $end
-$var wire 1 " PCload $end
-$var wire 1 # Meminst $end
-$var wire 1 $ MemWr $end
-$var wire 1 % JMPmux $end
-$var wire 1 & IRLoad $end
-$var wire 1 ' Halt $end
-$var wire 2 ( Asel [1:0] $end
-$var wire 1 ) Aload $end
-$var reg 1 * Aeq0 $end
-$var reg 1 + Apos $end
-$var reg 1 , Enter $end
-$var reg 3 - IR [2:0] $end
-$var reg 1 . clock $end
-$var reg 1 / reset $end
+$scope module DP_tb $end
+$var wire 8 ! OUTPUT [7:0] $end
+$var wire 3 " IR [2:0] $end
+$var wire 1 # Apos $end
+$var wire 1 $ Aeq0 $end
+$var reg 1 % Aload $end
+$var reg 2 & Asel [1:0] $end
+$var reg 1 ' Clock $end
+$var reg 8 ( INPUT [7:0] $end
+$var reg 1 ) IRLoad $end
+$var reg 1 * JMPmux $end
+$var reg 1 + MemWr $end
+$var reg 1 , Meminst $end
+$var reg 1 - PCload $end
+$var reg 1 . Reset $end
+$var reg 1 / Sub $end
 $scope module inst1 $end
-$var wire 1 * Aeq0 $end
-$var wire 1 + Apos $end
-$var wire 1 , Enter $end
-$var wire 3 0 IR [2:0] $end
-$var wire 1 . clock $end
-$var wire 1 / reset $end
-$var parameter 4 1 Input $end
-$var parameter 4 2 add $end
-$var parameter 4 3 decode $end
-$var parameter 4 4 fetch $end
-$var parameter 4 5 halt $end
-$var parameter 4 6 jpos $end
-$var parameter 4 7 jz $end
-$var parameter 4 8 load $end
-$var parameter 4 9 start $end
-$var parameter 4 : store $end
-$var parameter 4 ; sub $end
-$var reg 1 ) Aload $end
-$var reg 2 < Asel [1:0] $end
-$var reg 1 ' Halt $end
-$var reg 1 & IRload $end
-$var reg 1 % JMPmux $end
-$var reg 1 $ MemWr $end
-$var reg 1 # Meminst $end
-$var reg 1 " PCload $end
-$var reg 1 ! Sub $end
-$var reg 4 = nextState [3:0] $end
-$var reg 4 > state [3:0] $end
+$var wire 1 $ Aeq0 $end
+$var wire 1 % Aload $end
+$var wire 1 # Apos $end
+$var wire 2 0 Asel [1:0] $end
+$var wire 1 ' Clock $end
+$var wire 8 1 INPUT [7:0] $end
+$var wire 1 ) IRload $end
+$var wire 1 * JMPmux $end
+$var wire 1 + MemWr $end
+$var wire 1 , Meminst $end
+$var wire 8 2 OUTPUT [7:0] $end
+$var wire 1 - PCload $end
+$var wire 1 . Reset $end
+$var wire 1 / Sub $end
+$var wire 8 3 Z [7:0] $end
+$var wire 2 4 wireAsel [1:0] $end
+$var wire 2 5 wireNOR [1:0] $end
+$var wire 8 6 wireMux4to1 [7:0] $end
+$var wire 8 7 wireAddSubRslt [7:0] $end
+$var wire 9 8 resultAddSub [8:0] $end
+$var wire 8 9 qRAM [7:0] $end
+$var wire 5 : qPC [4:0] $end
+$var wire 8 ; qIR [7:0] $end
+$var wire 8 < qA [7:0] $end
+$var wire 5 = increment5bits [4:0] $end
+$var wire 5 > dPC [4:0] $end
+$var wire 5 ? address [4:0] $end
+$var wire 3 @ IR [2:0] $end
+$scope module Areg $end
+$var wire 1 . clear $end
+$var wire 1 ' clock $end
+$var wire 1 % load $end
+$var wire 8 A D [7:0] $end
+$var parameter 32 B size $end
+$var reg 8 C Q [7:0] $end
+$upscope $end
+$scope module IRreg $end
+$var wire 1 . clear $end
+$var wire 1 ' clock $end
+$var wire 1 ) load $end
+$var wire 8 D D [7:0] $end
+$var parameter 32 E size $end
+$var reg 8 F Q [7:0] $end
+$upscope $end
+$scope module PCreg $end
+$var wire 1 . clear $end
+$var wire 1 ' clock $end
+$var wire 1 - load $end
+$var wire 5 G D [4:0] $end
+$var parameter 32 H size $end
+$var reg 5 I Q [4:0] $end
+$upscope $end
+$scope module RAM32x8 $end
+$var wire 8 J DATA_IN [7:0] $end
+$var wire 1 + WRITE $end
+$var wire 1 ' clk $end
+$var wire 5 K ADDR [4:0] $end
+$var parameter 32 L RAM_BITS $end
+$var parameter 32 M RAM_LOCATIONS $end
+$var reg 8 N DATA_OUT [7:0] $end
+$upscope $end
+$scope module addSub1 $end
+$var wire 8 O A [7:0] $end
+$var wire 8 P B [7:0] $end
+$var wire 1 / sub $end
+$var reg 9 Q out [8:0] $end
+$upscope $end
+$scope module mux1 $end
+$var wire 1 R S0 $end
+$var wire 1 S S1 $end
+$var wire 8 T i0 [7:0] $end
+$var wire 8 U i1 [7:0] $end
+$var wire 8 V i2 [7:0] $end
+$var wire 8 W i3 [7:0] $end
+$var wire 8 X out [7:0] $end
+$var parameter 32 Y size $end
+$upscope $end
+$scope module muxJMP $end
+$var wire 1 * S0 $end
+$var wire 5 Z i0 [4:0] $end
+$var wire 5 [ i1 [4:0] $end
+$var wire 5 \ out [4:0] $end
+$var parameter 32 ] size $end
+$upscope $end
+$scope module muxMeminst $end
+$var wire 1 , S0 $end
+$var wire 5 ^ i0 [4:0] $end
+$var wire 5 _ i1 [4:0] $end
+$var wire 5 ` out [4:0] $end
+$var parameter 32 a size $end
+$upscope $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 $comment Show the parameter values. $end
 $dumpall
-b1011 ;
-b1001 :
-b0 9
-b1000 8
-b1101 7
-b1110 6
-b1111 5
-b1 4
-b10 3
-b1010 2
-b1100 1
+b101 a
+b101 ]
+b1000 Y
+b100000 M
+b1000 L
+b101 H
+b1000 E
+b1000 B
 $end
 #0
 $dumpvars
-b0 >
+b0 `
+b0 _
+b0 ^
+b1 \
+b0 [
+b1 Z
+bx X
+bz W
+bx V
+bz U
+bx T
+zS
+zR
+bx Q
+bx P
+b0 O
+bx N
+b0 K
+b0 J
+b0 I
+b1 G
+b0 F
+bx D
+b0 C
+bx A
+b0 @
+b0 ?
+b1 >
 b1 =
 b0 <
-bx 0
+b0 ;
+b0 :
+bx 9
+bx 8
+bx 7
+bx 6
+b0 5
+bz 4
+bz 3
+b0 2
+bz 1
+bz 0
 0/
 0.
-bx -
+0-
 0,
-x+
-x*
+0+
+0*
 0)
 b0 (
 0'
-0&
+b0 &
 0%
-0$
-0#
-0"
-0!
+1$
+1#
+b0 "
+b0 !
 $end
 #5
-1.
-#10
-0.
-1/
-#15
-b10 =
-1&
-1"
-b1 >
-1.
-#20
-0.
-#25
-0&
-0"
-1#
-b10 >
-1.
-#30
-b1000 =
-0.
-b0 -
-b0 0
-#35
-b0 =
-0#
-1)
-b10 (
-b10 <
-b1000 >
-1.
-#40
-0.
-#45
-b1 =
-b0 (
-b0 <
-0)
-b0 >
-1.
-#50
-0.
-#55
-b10 =
-1&
-1"
-b1 >
-1.
-#60
-0.
-#65
-b1000 =
-0&
-0"
-1#
-b10 >
-1.
-#70
-b1001 =
-0.
-b1 -
-b1 0
-#75
-b0 =
-1$
-b1001 >
-1.
-#80
-0.
-#85
-b1 =
-0#
-0$
-b0 >
-1.
-#90
-0.
-#95
-b10 =
-1&
-1"
-b1 >
-1.
-#100
-0.
-#105
-b1001 =
-0&
-0"
-1#
-b10 >
-1.
-#110
-b1100 =
-0.
-1,
-b100 -
-b100 0
-#115
-b0 =
-0#
-1)
-b1 (
-b1 <
-b1100 >
-1.
-#120
-0.
-#125
-b1 =
-b0 (
-b0 <
-0)
-b0 >
-1.
-#130
-0.
-0,
-#135
-b10 =
-1&
-1"
-b1 >
-1.
-#140
-0.
-#145
-b1100 =
-0&
-0"
-1#
-b10 >
-1.
-#150
-b1010 =
-0.
-b10 -
-b10 0
-#155
-b0 =
-0#
-1)
-b1010 >
-1.
-#160
-0.
-#165
-b1 =
-0)
-b0 >
-1.
-#170
-0.
-#175
-b10 =
-1&
-1"
-b1 >
-1.
-#180
-0.
-#185
-b1010 =
-0&
-0"
-1#
-b10 >
-1.
-#190
-b1011 =
-0.
-b11 -
-b11 0
-#195
-b0 =
-0#
-1)
-1!
-b1011 >
-1.
-#200
-0.
-#205
-b1 =
-0)
-0!
-b0 >
-1.
-#210
-0.
-#215
-b10 =
-1&
-1"
-b1 >
-1.
-#220
-0.
-#225
-b1011 =
-0&
-0"
-1#
-b10 >
-1.
-#230
-b1101 =
-0.
-b101 -
-b101 0
-#235
-b0 =
-x"
-1%
-0#
-b1101 >
-1.
-#240
-0.
-#245
-b1 =
-0%
-0"
-b0 >
-1.
-#250
-0.
-#255
-b10 =
-1&
-1"
-b1 >
-1.
-#260
-0.
-#265
-b1101 =
-0&
-0"
-1#
-b10 >
-1.
-#270
-b1110 =
-0.
-b110 -
-b110 0
-#275
-b0 =
-x"
-1%
-0#
-b1110 >
-1.
-#280
-0.
-#285
-b1 =
-0%
-0"
-b0 >
-1.
-#290
-0.
-#295
-b10 =
-1&
-1"
-b1 >
-1.
-#300
-0.
-#305
-b1110 =
-0&
-0"
-1#
-b10 >
-1.
-#310
-b1111 =
-0.
-b111 -
-b111 0
-#315
-0#
+b10000000 7
+b10000000 T
+b10000000 8
+b10000000 Q
+b10000000 9
+b10000000 D
+b10000000 N
+b10000000 P
+b10000000 V
 1'
-b1111 >
-1.
-#320
-b1 =
+#10
 0'
-b0 >
-0.
-0/
-#325
-1.
-#330
-0.
+b1000 (
+1%
+b10 &
+#15
+1'
+#20
+0'
+0%
+b0 &

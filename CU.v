@@ -1,8 +1,9 @@
-module CU(output reg IRload, JMPmux, PCload, Meminst, MemWr, Aload, Sub, Halt,
-		  output reg[1:0] Asel,
-		  input clock, reset, Enter, Aeq0, Apos,
-		  input [2:0]IR
-		  );
+module CU(
+	output reg IRload, JMPmux, PCload, Meminst, MemWr, Aload, Sub, Halt,
+	output reg [1:0] Asel,
+	input clock, reset, Enter, Aeq0, Apos,
+	input [2:0] IR
+);
 
 reg [3:0] state, nextState;
 
