@@ -61,8 +61,6 @@ module CombinedCUnDP_tb();
         end 
     end
 
-
-
     
     initial begin
         X = 8'd51;
@@ -82,23 +80,5 @@ module CombinedCUnDP_tb();
         #30 enter = 0; 
 
     end 
-
-        // Simulate input of X and Y values
-        /*
-	initial
-        begin
-            processor_init;
-            trigger_reset;
-            #12 dataIn = 8'd50; // 12 time units in, set dataIn as 50 (X value)
-            $display("INPUT FOR X: %d\n", dataIn); 
-            X = dataIn;     
-            #10 enter = 1; // 10 time units later, set enter high to indicate dataIn is ready
-            #4 enter = 0; // 4 time units later, set enter back to low
-            #26 dataIn = 8'd17; // 26 time units later, set dataIn as 17 (Y value)
-            $display("INPUT FOR Y: %d\n", dataIn);
-            Y = dataIn;
-            #10 enter = 1; // 10 time units later, set enter high
-            #4 enter = 0; // 4 time units later, set enter back to low
-        end*/
 
 endmodule 
