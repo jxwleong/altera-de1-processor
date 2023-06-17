@@ -38,6 +38,8 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
   - [ Program to Determine GCD](#-program-to-determine-gcd)
     - [Pseudocode of the Program](#pseudocode-of-the-program)
     - [ Program Example](#-program-example)
+      - [Example 1](#example-1)
+      - [Example3:  Let's trace through the execution with num1=10 and num2=9](#example3--lets-trace-through-the-execution-with-num110-and-num29)
   - [ References](#-references)
 
 <br/>  
@@ -508,7 +510,7 @@ while True:
 
 &nbsp;&nbsp;  
 ### <a  name="program_example"></a> Program Example 
-
+#### Example 1
 Find the GCD where A  = 10, B = 5 by following the program preloaded into the RAM.
 
 | No | Instructions             | Description                        |
@@ -528,6 +530,27 @@ Find the GCD where A  = 10, B = 5 by following the program preloaded into the RA
 | 13 | HALT                     | HALT                               |  
 
 > The GCD between 10 and 5 is 5 (Step 12).
+
+<br/>  
+
+#### Example3:  Let's trace through the execution with num1=10 and num2=9
+
+PC=00000: The first input num1 is entered as 10.
+PC=00001: num1 is stored in memory location 11110.
+PC=00010: The second input num2 is entered as 9.
+PC=00011: num2 is stored in memory location 11111.
+PC=00100: num1 is loaded from location 11110, so A = 10.
+PC=00101: Subtract num2 from num1 (A = A - 9), so A becomes 1.
+PC=00110: Since A is not zero, this jump is not taken.
+PC=00111: Since A is positive, we jump to PC 01100.
+PC=01100: num1 is loaded from location 11110, so A = 10.
+PC=01101: Subtract num2 from num1 (A = A - 9), so A becomes 1.
+PC=01110: Store the result 1 into location 11110 (i.e., num1 becomes 1).
+PC=01111: Since A is not positive, this jump is not taken.
+PC=10000: Load num1 from location 11110, so A = 1.
+PC=10001: Halt execution.
+
+> The GCD between 10 and 9 is 1/
 
 <br/>  
 
