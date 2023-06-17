@@ -1,0 +1,26 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sat Jun 17 07:02:37 2023
+[*]
+[dumpfile] "C:\Users\xleong\OneDrive - Intel Corporation\Desktop\altera-de1-processor\out\adderSubtractor\waveform.vcd"
+[dumpfile_mtime] "Fri Jun 16 13:37:34 2023"
+[dumpfile_size] 644
+[savefile] "C:\Users\xleong\OneDrive - Intel Corporation\Desktop\altera-de1-processor\out\adderSubtractor\addSubtractor.gtkw"
+[timestart] 0
+[size] 2560 1009
+[pos] -217 -217
+*-3.203590 30 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] addSubstractor_tb.
+[sst_width] 197
+[signals_width] 94
+[sst_expanded] 1
+[sst_vpaned_height] 297
+@22
+addSubstractor_tb.A[7:0]
+addSubstractor_tb.B[7:0]
+@29
+addSubstractor_tb.sub
+@22
+addSubstractor_tb.out[8:0]
+[pattern_trace] 1
+[pattern_trace] 0

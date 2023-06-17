@@ -1,0 +1,39 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sat Jun 17 07:06:24 2023
+[*]
+[dumpfile] "C:\Users\xleong\OneDrive - Intel Corporation\Desktop\altera-de1-processor\out\CU\waveform.vcd"
+[dumpfile_mtime] "Fri Jun 16 06:19:50 2023"
+[dumpfile_size] 3244
+[savefile] "C:\Users\xleong\OneDrive - Intel Corporation\Desktop\altera-de1-processor\out\CU\waveform_exampl2_full.gtkw"
+[timestart] 0
+[size] 2560 1009
+[pos] -191 -191
+*-6.620081 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] CU_tb.
+[treeopen] CU_tb.inst1.
+[sst_width] 197
+[signals_width] 181
+[sst_expanded] 1
+[sst_vpaned_height] 297
+@28
+CU_tb.clock
+CU_tb.reset
+CU_tb.Enter
+CU_tb.Halt
+CU_tb.IRLoad
+CU_tb.JMPmux
+CU_tb.PCload
+CU_tb.Meminst
+CU_tb.MemWr
+CU_tb.Aload
+CU_tb.Asel[1:0]
+CU_tb.Sub
+CU_tb.IR[2:0]
+@200
+-FSM
+@22
+CU_tb.inst1.state[3:0]
+CU_tb.inst1.nextState[3:0]
+[pattern_trace] 1
+[pattern_trace] 0

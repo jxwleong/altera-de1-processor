@@ -1,0 +1,26 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sat Jun 17 06:59:16 2023
+[*]
+[dumpfile] "C:\Users\xleong\OneDrive - Intel Corporation\Desktop\altera-de1-processor\out\mux2to1\waveform.vcd"
+[dumpfile_mtime] "Thu Jun 15 12:51:24 2023"
+[dumpfile_size] 758
+[savefile] "C:\Users\xleong\OneDrive - Intel Corporation\Desktop\altera-de1-processor\out\mux2to1\mux2to1.gtkw"
+[timestart] 0
+[size] 2560 1009
+[pos] -243 -243
+*-3.203590 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] mux2to1_tb.
+[sst_width] 197
+[signals_width] 140
+[sst_expanded] 1
+[sst_vpaned_height] 297
+@22
+mux2to1_tb.i0[7:0]
+mux2to1_tb.i1[7:0]
+@28
+mux2to1_tb.S0
+@22
+mux2to1_tb.out[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
