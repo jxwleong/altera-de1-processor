@@ -1,0 +1,49 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sat Jun 17 05:23:46 2023
+[*]
+[dumpfile] "C:\Users\xleong\OneDrive - Intel Corporation\Desktop\altera-de1-processor\out\DP\waveform_A_from_input_value_100_add_RAM_addr_0_value_10_output_hex_6E.vcd"
+[dumpfile_mtime] "Sat Jun 17 05:17:15 2023"
+[dumpfile_size] 5305
+[savefile] "C:\Users\xleong\OneDrive - Intel Corporation\Desktop\altera-de1-processor\out\DP\waveform_A_from_input_value_100_add_RAM_addr_0_value_10_output_hex_6E.gtkw"
+[timestart] 0
+[size] 2560 1009
+[pos] -35 -35
+*-5.168257 88 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 197
+[signals_width] 134
+[sst_expanded] 1
+[sst_vpaned_height] 297
+@28
+DP_tb.Clock
+DP_tb.Reset
+DP_tb.Aload
+DP_tb.Asel[1:0]
+@22
+DP_tb.INPUT[7:0]
+DP_tb.OUTPUT[7:0]
+@29
+DP_tb.Aeq0
+@28
+DP_tb.Apos
+@200
+-Areg
+@22
+DP_tb.inst1.Areg.D[7:0]
+DP_tb.inst1.Areg.Q[7:0]
+@200
+-RAM_32x8
+@22
+DP_tb.inst1.RAM32x8.ADDR[4:0]
+DP_tb.inst1.RAM32x8.DATA_IN[7:0]
+DP_tb.inst1.RAM32x8.DATA_OUT[7:0]
+@200
+-AddSubder
+@28
+DP_tb.inst1.addSub1.sub
+@22
+DP_tb.inst1.addSub1.A[7:0]
+DP_tb.inst1.addSub1.B[7:0]
+DP_tb.inst1.addSub1.out[8:0]
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,291 @@
+$date
+	Sat Jun 17 12:21:46 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module DP_tb $end
+$var wire 8 ! OUTPUT [7:0] $end
+$var wire 3 " IR [2:0] $end
+$var wire 1 # Apos $end
+$var wire 1 $ Aeq0 $end
+$var reg 1 % Aload $end
+$var reg 2 & Asel [1:0] $end
+$var reg 1 ' Clock $end
+$var reg 8 ( INPUT [7:0] $end
+$var reg 1 ) IRLoad $end
+$var reg 1 * JMPmux $end
+$var reg 1 + MemWr $end
+$var reg 1 , Meminst $end
+$var reg 1 - PCload $end
+$var reg 1 . Reset $end
+$var reg 1 / Sub $end
+$scope module inst1 $end
+$var wire 1 $ Aeq0 $end
+$var wire 1 % Aload $end
+$var wire 1 # Apos $end
+$var wire 2 0 Asel [1:0] $end
+$var wire 1 ' Clock $end
+$var wire 8 1 INPUT [7:0] $end
+$var wire 1 ) IRload $end
+$var wire 1 * JMPmux $end
+$var wire 1 + MemWr $end
+$var wire 1 , Meminst $end
+$var wire 8 2 OUTPUT [7:0] $end
+$var wire 1 - PCload $end
+$var wire 1 . Reset $end
+$var wire 1 / Sub $end
+$var wire 8 3 Z [7:0] $end
+$var wire 2 4 wireAsel [1:0] $end
+$var wire 2 5 wireNOR [1:0] $end
+$var wire 8 6 wireMux4to1 [7:0] $end
+$var wire 8 7 wireAddSubRslt [7:0] $end
+$var wire 9 8 resultAddSub [8:0] $end
+$var wire 8 9 qRAM [7:0] $end
+$var wire 5 : qPC [4:0] $end
+$var wire 8 ; qIR [7:0] $end
+$var wire 8 < qA [7:0] $end
+$var wire 5 = increment5bits [4:0] $end
+$var wire 5 > dPC [4:0] $end
+$var wire 5 ? address [4:0] $end
+$var wire 3 @ IR [2:0] $end
+$scope module Areg $end
+$var wire 1 . clear $end
+$var wire 1 ' clock $end
+$var wire 1 % load $end
+$var wire 8 A D [7:0] $end
+$var parameter 32 B size $end
+$var reg 8 C Q [7:0] $end
+$upscope $end
+$scope module IRreg $end
+$var wire 1 . clear $end
+$var wire 1 ' clock $end
+$var wire 1 ) load $end
+$var wire 8 D D [7:0] $end
+$var parameter 32 E size $end
+$var reg 8 F Q [7:0] $end
+$upscope $end
+$scope module PCreg $end
+$var wire 1 . clear $end
+$var wire 1 ' clock $end
+$var wire 1 - load $end
+$var wire 5 G D [4:0] $end
+$var parameter 32 H size $end
+$var reg 5 I Q [4:0] $end
+$upscope $end
+$scope module RAM32x8 $end
+$var wire 8 J DATA_IN [7:0] $end
+$var wire 1 + WRITE $end
+$var wire 1 ' clk $end
+$var wire 5 K ADDR [4:0] $end
+$var parameter 32 L RAM_BITS $end
+$var parameter 32 M RAM_LOCATIONS $end
+$var reg 8 N DATA_OUT [7:0] $end
+$upscope $end
+$scope module addSub1 $end
+$var wire 8 O A [7:0] $end
+$var wire 8 P B [7:0] $end
+$var wire 1 / sub $end
+$var reg 9 Q out [8:0] $end
+$upscope $end
+$scope module mux1 $end
+$var wire 1 R S0 $end
+$var wire 1 S S1 $end
+$var wire 8 T i0 [7:0] $end
+$var wire 8 U i1 [7:0] $end
+$var wire 8 V i2 [7:0] $end
+$var wire 8 W i3 [7:0] $end
+$var wire 8 X out [7:0] $end
+$var parameter 32 Y size $end
+$upscope $end
+$scope module muxJMP $end
+$var wire 1 * S0 $end
+$var wire 5 Z i0 [4:0] $end
+$var wire 5 [ i1 [4:0] $end
+$var wire 5 \ out [4:0] $end
+$var parameter 32 ] size $end
+$upscope $end
+$scope module muxMeminst $end
+$var wire 1 , S0 $end
+$var wire 5 ^ i0 [4:0] $end
+$var wire 5 _ i1 [4:0] $end
+$var wire 5 ` out [4:0] $end
+$var parameter 32 a size $end
+$upscope $end
+$upscope $end
+$scope task DP_init $end
+$upscope $end
+$scope task fetch_decode $end
+$upscope $end
+$scope task input_A $end
+$var reg 8 b value [7:0] $end
+$upscope $end
+$scope task read_mem $end
+$upscope $end
+$scope task store_A $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b101 a
+b101 ]
+b1000 Y
+b100000 M
+b1000 L
+b101 H
+b1000 E
+b1000 B
+$end
+#0
+$dumpvars
+bx b
+b0 `
+b0 _
+b0 ^
+b1 \
+b0 [
+b1 Z
+bx X
+bz W
+bx V
+b0 U
+bx T
+0S
+0R
+bx Q
+bx P
+b0 O
+bx N
+b0 K
+b0 J
+b0 I
+b1 G
+b0 F
+bx D
+b0 C
+bx A
+b0 @
+b0 ?
+b1 >
+b1 =
+b0 <
+b0 ;
+b0 :
+bx 9
+bx 8
+bx 7
+bx 6
+b0 5
+b0 4
+bz 3
+b0 2
+b0 1
+b0 0
+0/
+0.
+0-
+0,
+0+
+0*
+0)
+b0 (
+0'
+b0 &
+0%
+1$
+1#
+b0 "
+b0 !
+$end
+#5
+b10000000 6
+b10000000 A
+b10000000 X
+b10000000 7
+b10000000 T
+b10000000 8
+b10000000 Q
+b10000000 9
+b10000000 D
+b10000000 N
+b10000000 P
+b10000000 V
+1'
+#10
+0'
+1.
+#15
+1'
+#20
+b1010 6
+b1010 A
+b1010 X
+1R
+0'
+b1 4
+b1 &
+b1 0
+1%
+b1010 (
+b1010 1
+b1010 U
+b1010 b
+#25
+0$
+b10001010 7
+b10001010 T
+b1 5
+b10001010 8
+b10001010 Q
+b1010 !
+b1010 2
+b1010 <
+b1010 C
+b1010 J
+b1010 O
+1'
+#30
+0'
+#35
+1'
+#40
+b10001010 6
+b10001010 A
+b10001010 X
+0R
+0'
+1,
+1+
+0%
+b0 4
+b0 &
+b0 0
+#45
+1'
+#50
+0'
+#55
+1'
+#60
+0'
+0+
+#65
+b10100 6
+b10100 A
+b10100 X
+b10100 7
+b10100 T
+b10100 8
+b10100 Q
+b1010 9
+b1010 D
+b1010 N
+b1010 P
+b1010 V
+1'
+#70
+0'

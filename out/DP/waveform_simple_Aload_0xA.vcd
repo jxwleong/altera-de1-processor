@@ -1,5 +1,5 @@
 $date
-	Sat Jun 17 11:19:34 2023
+	Sat Jun 17 11:38:27 2023
 $end
 $version
 	Icarus Verilog
@@ -116,6 +116,15 @@ $var wire 5 ` out [4:0] $end
 $var parameter 32 a size $end
 $upscope $end
 $upscope $end
+$scope task DP_init $end
+$upscope $end
+$scope task fetch_decode $end
+$upscope $end
+$scope task input_A $end
+$var reg 8 b value [7:0] $end
+$upscope $end
+$scope task store_A $end
+$upscope $end
 $upscope $end
 $enddefinitions $end
 $comment Show the parameter values. $end
@@ -131,6 +140,7 @@ b1000 B
 $end
 #0
 $dumpvars
+bx b
 b0 `
 b0 _
 b0 ^
@@ -209,8 +219,32 @@ b10000000 V
 #15
 1'
 #20
+b1010 6
+b1010 A
+b1010 X
+1R
 0'
+b1 4
+b1 &
+b1 0
+1%
+b1010 (
+b1010 1
+b1010 U
+b1010 b
 #25
+0$
+b10001010 7
+b10001010 T
+b1 5
+b10001010 8
+b10001010 Q
+b1010 !
+b1010 2
+b1010 <
+b1010 C
+b1010 J
+b1010 O
 1'
 #30
 0'

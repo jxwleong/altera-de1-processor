@@ -46,28 +46,31 @@ module DP_tb();
     always @(posedge Clock) begin 
         $display("At time %t, IRLoad = %b", $time, IRLoad);
         $display("At time %t, Asel = %b", $time, Asel);
+        $display("At time %t, INPUT = %b", $time, INPUT);
 
     end     
     
     task DP_init;
-        // Intialize all inputs to be 0
-        IRLoad = 1'b0;
-        JMPmux = 1'b0;
-        PCload = 1'b0; 
-        Meminst = 1'b0;
-        MemWr = 1'b0; 
-        Aload = 1'b0; 
-        Clock = 1'b0; 
-        Sub = 1'b0;
-        Reset = 1'b0;
-        Asel = 2'b0;
-        INPUT = 8'b0;
-        #10; // Wait for the reset..
+        begin
+            // Intialize all inputs to be 0
+            IRLoad = 1'b0;
+            JMPmux = 1'b0;
+            PCload = 1'b0; 
+            Meminst = 1'b0;
+            MemWr = 1'b0; 
+            Aload = 1'b0; 
+            Clock = 1'b0; 
+            Sub = 1'b0;
+            Reset = 1'b0;
+            Asel = 2'b0;
+            INPUT = 8'b0;
+            #10; // Wait for the reset..
 
-        // Figured out why the DFF is not loaded properly, was due to the
-        // these Reset signals..
-        Reset = 1'b1;  
-        #10;
+            // Figured out why the DFF is not loaded properly, was due to the
+            // these Reset signals..
+            Reset = 1'b1;  
+            #10;
+        end 
     endtask 
 
     task input_A;
@@ -87,6 +90,27 @@ module DP_tb();
             {IRLoad, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b0001100;
             #20;
         end 
+    endtask
+
+    task sub_A;
+        begin 
+            // SUB A in AReg with content in RAM specified by the instruction
+            {IRLoad, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b0000011;
+            #10;    // Some delay else the AReg will be loaded with junk value..
+            Asel = 2'b00;
+            #20;
+        end
+    endtask 
+
+    task add_A;
+        begin 
+            // ADD A in AReg with content in RAM specified by the instruction
+            {IRLoad, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b0000010;
+            #10;    // Some delay else the AReg will be loaded with junk value..
+            Asel = 2'b00;
+            #20;
+        end
+    endtask 
 
     task fetch_decode;
         // Mimic fetch and decode cycle
@@ -99,17 +123,90 @@ module DP_tb();
             {IRLoad, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b0001000;
             #10;
         end 
+    endtask
 
+    task read_mem;
+        // Read mememory by disabling MemWr
+        // So that the data in RAM[x] will be at DATA_OUT
+        begin
+            MemWr = 1'b0;
+            #10;
+        end 
+    endtask
+
+    task jump_if_Aeq0;
+        begin 
+            Asel[1:0] = 2'b00;
+            {IRLoad, JMPmux, Meminst, MemWr, Aload, Sub} = 6'b010000;
+            PCload = Aeq0;
+            #20;
+        end 
+    endtask 
+
+    task jump_if_Apos;
+        begin 
+            Asel[1:0] = 2'b00;
+            {IRLoad, JMPmux, Meminst, MemWr, Aload, Sub} = 6'b010000;
+            PCload = Apos;
+            #20;
+        end 
+    endtask 
 
 
     initial begin
         DP_init;
+        // Test INPUT A and STORE A in RAM[0]
+        /*
+        input_A(8'd10);       
+        store_A();   
+        read_mem;
+        */
+
+        // Default RAM address = 0, since we didn't perform any
+        // insturction fetch..
+        // Load 8'd5 into RAM[0] first
+        // Then Load 8'd10 into AReg
+        // A = AReg input (8'd10)
+        // B = RAM[0]
+        // Only trigger Sub
+        /*
+        input_A(8'd5);       
+        store_A();   
+        read_mem;
 
         input_A(8'd10);
-                    
+        sub_A;     
+        */
+
+        // Test ADD A
+        // The steps is similar to previous test (SUB A)
+        // Only deassert the "Sub".
+        /*
+        input_A(8'd10);       
+        store_A();   
+        read_mem;
+
+        input_A(8'd100);
+        add_A;     
+        */
+        
+        // OK, now we're able to perform the INPUT, STORE, ADD, SUB operations
+        // which is the main parts of the processor
+        // Now we are going to test the Instruction Register (IR) and
+        // Program Counter part of the DP.
+        /*
+        fetch_decode;
+        fetch_decode;
+        */
+
+        // Last part, time to test the jumping mechanism 
+        // EIther "Aeq0" or "Apos" will trigger the JMPmux to select "1"
+        // which will be the change the PC counter value to be the 
+        // address specified by the instructions
+        fetch_decode;
+        fetch_decode;
+        jump_if_Aeq0;       // or use jump_if_Apos;
         $finish;
-
-
     end 
 
 endmodule
