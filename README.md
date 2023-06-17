@@ -563,6 +563,9 @@ Find the GCD where A  = 10, B = 5 by following the program preloaded into the RA
 
 3. **Optimized FSM traversal**: In the current design, the FSM (Finite State Machine) returns to the start state after completing the execution of an instruction. While this approach is simple and easy to implement, it may not be the most efficient in terms of execution cycles. Instead, an optimized approach could be to make the FSM directly transition from the Execute state to the Fetch state after an instruction is completed, bypassing the need to go back to the Start state. This modification could potentially reduce the instruction execution time by reducing unnecessary state transitions, thereby improving the processor's performance. Care should be taken to handle any dependencies or conditions that might affect this direct transition.
 
+4. **Support for Negative Numbers**: The existing design only supports positive numbers, which significantly restricts the scope of its applicability. To widen the range of use-cases that the processor can handle, future enhancements could include adding support for negative numbers. This could be achieved by implementing the Two's Complement representation for negative numbers. In this system, the most significant bit of the number is used as a sign bit (0 for positive, 1 for negative), and the remaining bits represent the magnitude of the number. If the number is negative, the magnitude is represented as the two's complement of the absolute value of the number. This allows for a straightforward arithmetic operation and simplifies the hardware design. Also, this enhancement would require modifying the ALU to correctly handle arithmetic operations with negative numbers and potentially modifying the instruction set to add operations for handling negative numbers.
+
+
 <br/><br/>   
 
 ## <a  name="reference"></a> References  
