@@ -39,10 +39,11 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
     - [Pseudocode of the Program](#pseudocode-of-the-program)
     - [ Program Example](#-program-example)
       - [Example 1](#example-1)
-      - [Example3:  Let's trace through the execution with num1=10 and num2=9](#example3--lets-trace-through-the-execution-with-num110-and-num29)
+      - [Example2: Let's trace through the execution with num1=10 and num2=9](#example2-lets-trace-through-the-execution-with-num110-and-num29)
+  - [ Future Enhancement](#-future-enhancement)
   - [ References](#-references)
 
-<br/>  
+<br/>  <br/>  
 
 ## <a name="project_requirement"></a> Requirements for this project  
 
@@ -183,7 +184,7 @@ Figure above shows the state table of the processor. The state table will tells 
 ![State Diagram of GPM](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Lab%20Manual%20Images/StateDiagram.png)   
 Figure 4. State Diagram for the GPM from [1]. 
 
-<br/>
+<br/><br/>  
   
 #### The State Machine in this Processor
 
@@ -222,7 +223,7 @@ In otherwords, the program counter will jump to the specified memory location in
 11. **HALT**    
 The processor will be halt when the GCD is find.  
   
-<br/>
+<br/><br/>  
 
 ## <a name="what_is_gcd"></a> What is Greatest Common Divisor (GCD)?
 Greatest Common Divider (GCD) is the largest positive integer that divides two or more integers [2].  
@@ -315,7 +316,7 @@ The LCM between 2 and 3 are 6. So, the pizza is sliced into six pieces so that e
 #### <a name="crypto"></a> 3. Cryptography
 GCD is also used in cryptography (requires further exploration).
 
-<br/>
+<br/><br/>  
 
 ## <a name="instruction_cycle"></a> Instruction Cycle
 The instruction cycle of a processor can be broken down into three stages, fetch, decode and execute.
@@ -396,7 +397,7 @@ Table above shows the truth table of 2-to-1 multiplexer. When the select signals
 
 The verilog code for 2-to-1 multiplexer can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux2to1.v) and the code for 4-to1 multiplexer is located [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/mux4to1.v).  
 
-<br/>
+<br/><br/>  
 
 ### <a  name="addsubtraction"></a> Adder-subtractor   
 ![RTL view of adder-subtractor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_AddSub.png)
@@ -459,7 +460,7 @@ Figures above shows in RTL view of the 32x8 RAM synthesized in this project. The
 The code for the RAM can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/RAM.v).  
     
 
-<br/>  
+<br/>  <br/>  
 
 ## <a  name="program"></a> Program to Determine GCD  
 Programs that are preloaded into the RAM.
@@ -533,7 +534,7 @@ Find the GCD where A  = 10, B = 5 by following the program preloaded into the RA
 
 <br/>  
   
-#### Example3:  Let's trace through the execution with num1=10 and num2=9  
+#### Example2: Let's trace through the execution with num1=10 and num2=9  
 
 1. PC=00000: The first input num1 is entered as 10.  
 2. PC=00001: num1 is stored in memory location 11110.
@@ -552,7 +553,17 @@ Find the GCD where A  = 10, B = 5 by following the program preloaded into the RA
 
 > The GCD between 10 and 9 is 1.
 
-<br/>  
+<br/><br/>    
+
+
+## <a  name="future-enhancement"></a> Future Enhancement
+1. **Adding a Pipeline**: The current processor operates in a non-pipelined fashion, where each instruction is completely processed before the next instruction begins execution. This might result in inefficient use of resources as the processor elements could be idle at times. Introducing pipelining would allow multiple instructions to be in different stages of execution at the same time, effectively increasing the processor's throughput. With pipelining, the instruction cycle is divided into different stages, such as Fetch, Decode, and Execute. Each of these stages operates in parallel for different instructions. This parallel operation leads to more efficient use of processor resources and a significant increase in instruction throughput. However, keep in mind that pipelining introduces some complexities, such as handling data and control hazards that need to be addressed with appropriate design techniques.
+
+2. **Flexible Program Loading**: The current design includes a hardcoded program in the RAM module. This approach limits the flexibility of the processor, making it tedious and expensive to synthesize and test different programs. A more efficient and versatile approach would be to remove the hardcoded program and instead design the system to load the program instructions from an external source, such as a file or memory-mapped I/O device. This would allow the processor to execute different programs without requiring modifications or re-synthesis of the RAM module. It would also facilitate testing and debugging, as different test programs could be quickly loaded and executed.
+
+3. **Optimized FSM traversal**: In the current design, the FSM (Finite State Machine) returns to the start state after completing the execution of an instruction. While this approach is simple and easy to implement, it may not be the most efficient in terms of execution cycles. Instead, an optimized approach could be to make the FSM directly transition from the Execute state to the Fetch state after an instruction is completed, bypassing the need to go back to the Start state. This modification could potentially reduce the instruction execution time by reducing unnecessary state transitions, thereby improving the processor's performance. Care should be taken to handle any dependencies or conditions that might affect this direct transition.
+
+<br/><br/>   
 
 ## <a  name="reference"></a> References  
 [1] [Lab manual](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/pdf/BAME2044%20%40%20LAB%202018.pdf)  
