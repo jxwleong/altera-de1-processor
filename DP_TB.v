@@ -19,6 +19,8 @@ module DP_tb();
         .Reset(Reset),
         .Clock(Clock),
         .Sub(Sub),
+        .Asel(Asel),
+        .INPUT(INPUT),
 
         // Declare output
         .Aeq0(Aeq0),
@@ -40,7 +42,14 @@ module DP_tb();
     end 
 
 
-    initial begin
+    // For Debug only..
+    always @(posedge Clock) begin 
+        $display("At time %t, IRLoad = %b", $time, IRLoad);
+        $display("At time %t, Asel = %b", $time, Asel);
+
+    end     
+    
+    task DP_init;
         // Intialize all inputs to be 0
         IRLoad = 1'b0;
         JMPmux = 1'b0;
@@ -48,16 +57,67 @@ module DP_tb();
         Meminst = 1'b0;
         MemWr = 1'b0; 
         Aload = 1'b0; 
-        Reset = 1'b0; 
         Clock = 1'b0; 
         Sub = 1'b0;
-
+        Reset = 1'b0;
         Asel = 2'b0;
         INPUT = 8'b0;
-        #10;
+        #10; // Wait for the reset..
 
-        /*
-        We're going to mimic the behavior of the actual program
+        // Figured out why the DFF is not loaded properly, was due to the
+        // these Reset signals..
+        Reset = 1'b1;  
+        #10;
+    endtask 
+
+    task input_A;
+        input [7:0] value;
+        begin
+            // INPUT A
+            INPUT = value;
+            {IRLoad, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b0000010;
+            Asel = 2'b01;
+            #20;  // Wait two full clock cycles for the register to update
+        end
+    endtask
+
+    task store_A;
+        begin 
+            Asel = 2'b00;
+            {IRLoad, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b0001100;
+            #20;
+        end 
+
+    task fetch_decode;
+        // Mimic fetch and decode cycle
+        // we will send out the control signals accordingly...
+        begin 
+            // Fetch
+            {IRLoad, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b1010000;
+            #10;
+            // Decode
+            {IRLoad, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b0001000;
+            #10;
+        end 
+
+
+
+    initial begin
+        DP_init;
+
+        input_A(8'd10);
+                    
+        $finish;
+
+
+    end 
+
+endmodule
+
+
+   /*
+        We're going to mimic the behavior of the actual program.
+        Which required to simulated the Fetch=>Decode=>Execute cycle.
 
             RAM[0]  = 8'b10000000;	// IN A
             RAM[1]  = 8'b00111110;	// STORE A into address 11110
@@ -81,20 +141,3 @@ module DP_tb();
             RAM[30] = 8'b00000000;
             RAM[31] = 8'b00000000;
         */
-
-        // First, we simulate the Load and Store instruction
-        // 1. INPUT A
-        Asel = 2'b10;
-        Aload = 1'b1;
-        INPUT = 8'd8;
-        #10;
-
-        Asel = 2'b00;
-        Aload = 1'b0;
-
-        $finish;
-
-
-    end 
-
-endmodule

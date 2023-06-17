@@ -1,0 +1,48 @@
+        /*
+        //======================================================================
+        //fetch_decode;
+       // store_A;
+        // Store A into address 11110
+
+        
+        //======================================================================
+        fetch_decode;
+
+
+        input_A(8'd5);
+
+        //======================================================================
+        fetch_decode;
+
+        // Store A into address 11111
+        store_A;
+        
+        //======================================================================
+        
+        // Fetch
+        {IRLoad, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b1010000;
+        #10;
+        // Decode
+        {IRLoad, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b0001000;
+        #10;
+
+        // LOAD Content of 11110 to A (Load first A to A)
+        Asel = 2'b10;
+        {IRLoad, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b0000010;
+        #20;
+
+        //======================================================================
+        // Fetch
+        {IRLoad, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b1010000;
+        #10;
+        // Decode
+        {IRLoad, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b0001000;
+        #10;
+
+        // SUB A with Content of 11111 (First A - Second A)
+        Asel = 2'b00;
+        {IRLoad, JMPmux, PCload, Meminst, MemWr, Aload, Sub} = 7'b0000011;
+        #20;
+
+
+        */

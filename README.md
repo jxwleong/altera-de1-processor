@@ -336,7 +336,7 @@ The last stage of the instruction cycle. In this stage, the CPU will process the
 
 ## <a  name="comp"></a> Components of the Processor 
 ![Top RTL view of processor](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_Top.png)  
-Figure 5. RLT view of processor. 
+Figure 5. RTL view of processor. 
 
 <br/>  
 Figure above shows the entire circuitry of the processor. The processor contains two main compartment which are the Control Unit (CU) and Datapath (DP). The CU behaves like an instructor where it instruct the DP to process the data. CU receives the instruction from DP and send the control signals to DP so that DP can process the data as expected. After processing the data, DP will sent out status signals to CU to act as a feedback so that CU can transition in to the right state to give correct control signals. 
@@ -345,7 +345,7 @@ Figure above shows the entire circuitry of the processor. The processor contains
 Figure 6. Datapath for the GPM from [1]. 
   
 ![RTL view of data path](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DataPath.png)  
-Figure 7. RLT view of data path (open image in new tab). 
+Figure 7. RTL view of data path (open image in new tab). 
 
 ![RTL view of control unit](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_ControlUnit.png)  
 Figure 8. RTL view of control unit. 
@@ -359,7 +359,7 @@ Figures above shows the schematic and RTL view of the Datapath (DP) and Control 
 In electronics, register is made out of flip-flop to store larger size data. This is because flip-flop can only stored one bit of data.
 However, the data stored in the flip-flop will be erased as soon as the power goes off. For this processor, D flip-flop is used because of the simplicity of the design. Figure below shows the RTL view of the 8-bit register made of eight D flip-flop. This register is then used for instruction register, data register (accumulator) and program counter (5-bit). The verilog code for this module can be found [here](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/DFF_reg.v).    
 ![RTL view of D register](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_DReg.png)  
-Figure 9. RLT view of D register. 
+Figure 9. RTL view of D register. 
 
 <br/>   
 
@@ -373,9 +373,9 @@ Instruction register (IR) is a register that store the actual instruction to be 
 
 ### <a  name="mux"></a> Multiplexer   
 ![RTL view of 2-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_2to1MUX.png)  
-Figure 10. RLT view of two to one multiplexer. 
+Figure 10. RTL view of two to one multiplexer. 
 ![RTL view of 4-to-1 mux](https://github.com/jason9829/AlteraDE1_SimpleProcessor/blob/master/resources/images/Quartus%20II%20Images/Quartus_RTL_4to1MUX.png)  
-Figure 11. RLT view of four to one multiplexer.  <br/>  
+Figure 11. RTL view of four to one multiplexer.  <br/>  
 Figures above shows RTL view of 2-to-1 and 4-to-1 multiplexer. Multiplexer is a device that selects one of the analog or digital input signals and forwards it to a single output line. Multiplexer selects the input signals based on the signals given at selector pin. 
 
 | Select (S0) |   Out   |
