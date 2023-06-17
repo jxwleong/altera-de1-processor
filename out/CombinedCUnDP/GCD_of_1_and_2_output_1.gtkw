@@ -1,0 +1,36 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sat Jun 17 06:44:59 2023
+[*]
+[dumpfile] "C:\Users\xleong\OneDrive - Intel Corporation\Desktop\altera-de1-processor\out\CombinedCUnDP\waveform.vcd"
+[savefile] "C:\Users\xleong\OneDrive - Intel Corporation\Desktop\altera-de1-processor\out\CombinedCUnDP\GCD_of_1_and_2_output_1.gtkw"
+[timestart] 0
+[size] 2560 1009
+[pos] -61 -61
+*-4.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] CombinedCUnDP_tb.
+[treeopen] CombinedCUnDP_tb.microprocessor.
+[sst_width] 197
+[signals_width] 126
+[sst_expanded] 1
+[sst_vpaned_height] 297
+@200
+-Combined
+@28
+CombinedCUnDP_tb.clock
+CombinedCUnDP_tb.enter
+CombinedCUnDP_tb.reset
+@420
+CombinedCUnDP_tb.X
+CombinedCUnDP_tb.Y
+@22
+CombinedCUnDP_tb.dataIn[7:0]
+CombinedCUnDP_tb.dataOut[7:0]
+@28
+CombinedCUnDP_tb.Halt
+@200
+-CU
+@100000028
+CombinedCUnDP_tb.microprocessor.controlUnit.state[3:0]
+[pattern_trace] 1
+[pattern_trace] 0
