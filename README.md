@@ -544,7 +544,7 @@ Find the GCD where A  = 10, B = 5 by following the program preloaded into the RA
 | 8    |00111 | JUMP to PC (01100) if A = +ve | Jumps to 01100 as A is positive |
 | 9    |01100 | STORE A -> 11110         | Stores 1 at memory location 11110  |
 | 10   |01101 | A = A - (11110)          | Subtracts value at 11110 from A, now A=8   |
-| 11   |01110 | STORE A -> 11111         | Stores 8 at memory location 11111  |
+| 11   |01110 | STORE A -> 11110         | Stores 8 at memory location 11111  |
 | 12   |01111 | JUMP to PC (00100) if A = +ve | Jumps back to PC=00100 as A is positive |
 | --   | --   | --                       | -- Repeats steps 5-12 until A becomes 0 --|
 
