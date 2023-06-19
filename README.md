@@ -39,7 +39,7 @@ Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The
     - [Pseudocode of the Program](#pseudocode-of-the-program)
     - [ Program Example](#-program-example)
       - [Example 1](#example-1)
-      - [Example2: Let's trace through the execution with num1=10 and num2=9](#example2-lets-trace-through-the-execution-with-num110-and-num29)
+      - [Example 2: Let's trace through the execution with num1=10 and num2=9](#example-2-lets-trace-through-the-execution-with-num110-and-num29)
   - [ Future Enhancement](#-future-enhancement)
   - [ References](#-references)
 
@@ -530,31 +530,28 @@ Find the GCD where A  = 10, B = 5 by following the program preloaded into the RA
 
 <br/>  
   
-#### Example2: Let's trace through the execution with num1=10 and num2=9  
-
+#### Example 2: Let's trace through the execution with num1=10 and num2=9  
 | Step | PC   | Instructions             | Description                         |
 |------|------|--------------------------|-------------------------------------|
-| 1    |00000 | INPUT A (10)             | User inputs integer 10 (A)         |
-| 2    |00001 | STORE A -> 11110         | Stores 10 at memory location 11110 |
-| 3    |00010 | INPUT A (9)              | User inputs integer 9 (B)          |
-| 4    |00011 | STORE A -> 11111         | Stores 9 at memory location 11111  |
-| 5    |00100 | LOAD (11110) -> A        | Loads value 10 from 11110 into A   |
-| 6    |00101 | A = A - (11111)          | Subtracts value at 11111 from A, now A=1   |
-| 7    |00110 | JUMP to PC (10000) if A = 0 | Skips because A is not 0        |
+| 1    |00000 | INPUT A (10)             | User inputs integer 10 (A)          |
+| 2    |00001 | STORE A -> 11110         | Stores 10 at memory location 11110  |
+| 3    |00010 | INPUT A (9)              | User inputs integer 9 (B)           |
+| 4    |00011 | STORE A -> 11111         | Stores 9 at memory location 11111   |
+| 5    |00100 | LOAD (11110) -> A        | Loads value 10 from 11110 into A    |
+| 6    |00101 | A = A - (11111)          | Subtracts value at 11111 from A, now A=1 |
+| 7    |00110 | JUMP to PC (10000) if A = 0 | Skips because A is not 0.         |
 | 8    |00111 | JUMP to PC (01100) if A = +ve | Jumps to 01100 as A is positive |
-| 9    |01100 | STORE A -> 11110         | Stores 1 at memory location 11110  |
-| 10   |01101 | A = A - (11110)          | Subtracts value at 11110 from A, now A=8   |
-| 11   |01110 | STORE A -> 11110         | Stores 8 at memory location 11110  |
-| 12   |01111 | JUMP to PC (00100) if A = +ve | Jumps back to PC=00100 as A is positive |
-| --   | --   | --                       | -- Repeats steps 5-12 until A becomes 0 --|
+| 9    |01100 | STORE A -> 11111         | Stores 1 at memory location 11111   |
+| 10   |01101 | LOAD (11110) -> A        | Loads value 10 from 11110 into A    |
+| 11   |01110 | A = A - (11111)          | Subtracts value at 11111 from A, now A=9 |
+| 12   |01111 | STORE A -> 11110         | Stores 9 at memory location 11110   |
+| 13   |01111 | JUMP to PC (00100) if A = +ve | Jumps back to PC=00100 as A is positive |
+|      |      |                          | -- Repeats steps 5-13 until A becomes 0 -- |
+| 14   |10000 | LOAD (11111) -> A        | Loads the final value 1 from 11111 into A |
+| 15   |10001 | HALT                     | The program halts                   |
+   |  
 
 When A finally equals 0, we jump to PC=10000:
-
-| Step | PC   | Instructions             | Description                         |
-|------|------|--------------------------|-------------------------------------|
-| 13   |10000 | LOAD (11110) -> A        | Loads the final value 1 from 11110 into A |
-| 14   |10001 | HALT                     | The program halts                  |  
-
 
 
 > The output is 1, which is the GCD of the original num1 and num2 (10 and 9).  
