@@ -77,7 +77,7 @@ This instruction will store the data in A (an 8-bit data register) into the memo
 This instruction will add the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the addition is stored back into A.
 
 4. **subtraction A**  
-This instruction will subtractiontract the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the subtraction is stored back into A.
+This instruction will subtract the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the subtraction is stored back into A.
 
 5. **IN A**  
 This instruction will load A (an 8-bit data register) with the data from INPUT line (external I/Os such as switch in Altera DE1).
@@ -270,18 +270,18 @@ Answer:  Repeat the process from Simple example.
 
 
 #### <a name="subtraction"></a> subtraction   
-The last method is to used the repeated subtractionraction method. The working princple is subtractiontract the smaller number from the greater. Repeat the process until the remainders are equal, which is the GCD of the given numbers [10]. For example,  
+The last method is to used the repeated subtractionraction method. The working princple is subtract the smaller number from the greater. Repeat the process until the remainders are equal, which is the GCD of the given numbers [10]. For example,  
   
 ```
 Find the GCD for 20 and 5.
 
-0. GCD (20, 5) ; subtractiontract the larger number with smaller number
+0. GCD (20, 5) ; subtract the larger number with smaller number
 1. GCD (15, 5) ; Repeat
 2. GCD (10, 5) ; Repeat
 3. GCD (5, 5)  ; The remainders are equal so that GCD is 5.
 
 ```
-This processor use this method to find the GCD between two integer numbers. However, this processor will continue to subtractiontract (the same remainders) to zero so that it knows it's the end of the calculation.
+This processor use this method to find the GCD between two integer numbers. However, this processor will continue to subtract (the same remainders) to zero so that it knows it's the end of the calculation.
 
 <br/>
 
@@ -488,25 +488,21 @@ Programs that are preloaded into the RAM.
 &nbsp;
 
 ### Pseudocode of the Program
-```python
-# Initialize input values
-num1 = int(input("Enter first number: "))
-num2 = int(input("Enter second number: "))
+```vbnet
+1. Prompt the user for two inputs: num1 and num2
+2. Store these inputs in two memory locations, let's say at 11110 and 11111
+3. Start a loop:
+    1. Load the value from memory location 11110 into register A
+    2. Subtract the value at memory location 11111 from A
+    3. If the result in A is zero:
+        1. Jump to a location in the program that loads the value at 11110 into A and halts, outputting the result
+    4. If the result in A is positive:
+        1. Store the result back into memory location 11110
+        2. Load the value from memory location 11111 into register A
+        3. Subtract the value at memory location 11110 from A
+        4. If the result is positive, store it back in 11110 and repeat the loop from step 3
+    5. If the result in A is negative, swap the values at memory locations 11110 and 11111 and repeat the loop from step 3
 
-# Main loop
-while True:
-    # If the numbers are equal, num1 is the GCD
-    if num1 == num2:
-        print("GCD is", num1)
-        break  # Exit the loop
-    
-    # If num1 > num2, subtract num2 from num1
-    elif num1 > num2:
-        num1 = num1 - num2
-    
-    # If num2 > num1, subtract num1 from num2
-    else: 
-        num2 = num2 - num1
 ```
 
 &nbsp;&nbsp;  
@@ -521,11 +517,11 @@ Find the GCD where A  = 10, B = 5 by following the program preloaded into the RA
 | 3  | IN A (5)                 | INPUT integer 5 (B)                |
 | 4  | STORE A (5) -> 11111     | Store 5 at location 11111          |
 | 5  | LOAD content 11110 to A  | Load 10 into A                     |
-| 6  | A = A - 5 = 10 - 5 = 5   | subtractiontract A from content at 11111   |
+| 6  | A = A - 5 = 10 - 5 = 5   | subtract A from content at 11111   |
 | 7  | Skip because A is not 0. | Skip because A is not 0.           |
 | 8  | JPOS                     | JUMP Program Counter (PC) to 01100 |
 | 9  | STORE A (5) -> 11110     | STORE A (5) at location 11110      |
-| 10 | A = A - 5 = 5 - 5 = 0    | subtractiontract A from content at 11111   |
+| 10 | A = A - 5 = 5 - 5 = 0    | subtract A from content at 11111   |
 | 11 | Skip because A is 0.     | Skip because A is 0.               |
 | 12 | LOAD 11110 -> A          | LOAD content from 11110 (5) to A   |
 | 13 | HALT                     | HALT                               |  
@@ -536,21 +532,32 @@ Find the GCD where A  = 10, B = 5 by following the program preloaded into the RA
   
 #### Example2: Let's trace through the execution with num1=10 and num2=9  
 
-1. PC=00000: The first input num1 is entered as 10.  
-2. PC=00001: num1 is stored in memory location 11110.
-3. PC=00010: The second input num2 is entered as 9.
-4. PC=00011: num2 is stored in memory location 11111.
-5. PC=00100: num1 is loaded from location 11110, so A = 10.
-6. PC=00101: Subtract num2 from num1 (A = A - 9), so A becomes 1.
-7. PC=00110: Since A is not zero, this jump is not taken.
-8. PC=00111: Since A is positive, we jump to PC 01100.
-9. PC=01100: num1 is loaded from location 11110, so A = 10.
-10. PC=01101: Subtract num2 from num1 (A = A - 9), so A becomes 1.
-11. PC=01110: Store the result 1 into location 11110 (i.e., num1 becomes 1).
-12. PC=01111: Since A is not positive, this jump is not taken.
-13. PC=10000: Load num1 from location 11110, so A = 1.
-14. PC=10001: Halt execution.
+| Step | PC   | Instructions             | Description                         |
+|------|------|--------------------------|-------------------------------------|
+| 1    |00000 | INPUT A (10)             | User inputs integer 10 (A)         |
+| 2    |00001 | STORE A -> 11110         | Stores 10 at memory location 11110 |
+| 3    |00010 | INPUT A (9)              | User inputs integer 9 (B)          |
+| 4    |00011 | STORE A -> 11111         | Stores 9 at memory location 11111  |
+| 5    |00100 | LOAD (11110) -> A        | Loads value 10 from 11110 into A   |
+| 6    |00101 | A = A - (11111)          | Subtracts value at 11111 from A, now A=1   |
+| 7    |00110 | JUMP to PC (10000) if A = 0 | Skips because A is not 0        |
+| 8    |00111 | JUMP to PC (01100) if A = +ve | Jumps to 01100 as A is positive |
+| 9    |01100 | STORE A -> 11110         | Stores 1 at memory location 11110  |
+| 10   |01101 | A = A - (11110)          | Subtracts value at 11110 from A, now A=8   |
+| 11   |01110 | STORE A -> 11111         | Stores 8 at memory location 11111  |
+| 12   |01111 | JUMP to PC (00100) if A = +ve | Jumps back to PC=00100 as A is positive |
+| --   | --   | --                       | -- Repeats steps 5-12 until A becomes 0 --|
 
+When A finally equals 0, we jump to PC=10000:
+
+| Step | PC   | Instructions             | Description                         |
+|------|------|--------------------------|-------------------------------------|
+| 13   |10000 | LOAD (11110) -> A        | Loads the final value 1 from 11110 into A |
+| 14   |10001 | HALT                     | The program halts                  |  
+
+
+
+> The output is 1, which is the GCD of the original num1 and num2 (10 and 9).  
 > The GCD between 10 and 9 is 1.
 
 <br/><br/>    
