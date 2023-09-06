@@ -4,7 +4,15 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 
-VHDL_SOURCES  += $(PWD)/CombinedCUnDP.v
+VERILOG_SOURCES	+= $(PWD)/CombinedCUnDP.v
+VERILOG_SOURCES += $(PWD)/CU.v
+VERILOG_SOURCES += $(PWD)/DP.v
+
+VERILOG_SOURCES += $(PWD)/DFF_reg.v
+VERILOG_SOURCES += $(PWD)/RAM.v
+VERILOG_SOURCES += $(PWD)/addSubstractor.v
+VERILOG_SOURCES += $(PWD)/mux2to1.v
+VERILOG_SOURCES += $(PWD)/mux4to1.v
 # use VHDL_SOURCES for VHDL files
 
 # TOPLEVEL is the name of the toplevel module in your Verilog or VHDL file
