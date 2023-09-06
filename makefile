@@ -20,7 +20,7 @@ VERILOG_SOURCES += $(THIS_DIR)/mux4to1.v
 TOPLEVEL = CombinedCUnDP
 
 # MODULE is the basename of the Python test file
-MODULE = test_microprocessor
+MODULE = test.test_microprocessor
 
 # include cocotb's make rules to take care of the simulator setup
 include $(shell cocotb-config --makefiles)/Makefile.sim
