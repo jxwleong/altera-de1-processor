@@ -1,9 +1,0 @@
-<?xml version="1.0" ?>
-<LOG_ROOT>
-	<PROJECT NAME="AlteraDe1_SimpleProcessor">
-		<CBX_INST_ENTRY INSTANCE_NAME="|AlteraDE1_SimpleProcessor|DP:dataPath|RAM:RAM32x8|altsyncram:RAM_rtl_0" CBX_FILE_NAME="altsyncram_fij1.tdf"/>
-	</PROJECT>
-	<PROJECT NAME="AlteraDE1_SimpleProcessor">
-		<CBX_INST_ENTRY INSTANCE_NAME="|AlteraDE1_SimpleProcessor|DP:dataPath|RAM:RAM32x8|altsyncram:RAM_rtl_0" CBX_FILE_NAME="altsyncram_fij1.tdf"/>
-	</PROJECT>
-</LOG_ROOT>
