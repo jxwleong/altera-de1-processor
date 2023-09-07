@@ -1,4 +1,4 @@
-name: Run Verilog Simulation
+name: Verilog Simulation
 
 on:
   push:
