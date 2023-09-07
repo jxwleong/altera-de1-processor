@@ -46,7 +46,7 @@ test_mux2to1:
 	$(info Running test_mux2to1...)
 	$(eval TOPLEVEL := mux2to1)
 	$(eval MODULE := test.cocotb.test_mux2to1)
-	
+
 	@echo "TOPLEVEL=$(TOPLEVEL)"
 	@echo "MODULE=$(MODULE)"
 	@echo "VERILOG_SOURCES=$(VERILOG_SOURCES)"
@@ -55,5 +55,6 @@ test_mux2to1:
 cleanup:
 	$(info Cleaning up generated files...)
 	$(RM) -vf *.vvp sim_build/* results.xml
+	$(RM) -rf sim_build
 
 
