@@ -1,6 +1,6 @@
 # Makefile
 THIS_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-
+RTL_DIR := $(THIS_DIR)/rtl
 
 # defaults
 SIM ?= icarus
@@ -22,15 +22,15 @@ all:	test_microprocessor  \
 # MODULE is the basename of the Python test file
 # use VHDL_SOURCES instead VERILOG_SOURCES of for VHDL files
 #Paths to HDL source files
-VERILOG_SOURCES	+= $(THIS_DIR)/CombinedCUnDP.v
-VERILOG_SOURCES += $(THIS_DIR)/CU.v
-VERILOG_SOURCES += $(THIS_DIR)/DP.v
+VERILOG_SOURCES	+= $(RTL_DIR)/CombinedCUnDP.v
+VERILOG_SOURCES += $(RTL_DIR)/CU.v
+VERILOG_SOURCES += $(RTL_DIR)/DP.v
 
-VERILOG_SOURCES += $(THIS_DIR)/DFF_reg.v
-VERILOG_SOURCES += $(THIS_DIR)/RAM.v
-VERILOG_SOURCES += $(THIS_DIR)/addSubstractor.v
-VERILOG_SOURCES += $(THIS_DIR)/mux2to1.v
-VERILOG_SOURCES += $(THIS_DIR)/mux4to1.v
+VERILOG_SOURCES += $(RTL_DIR)/DFF_reg.v
+VERILOG_SOURCES += $(RTL_DIR)/RAM.v
+VERILOG_SOURCES += $(RTL_DIR)/addSubstractor.v
+VERILOG_SOURCES += $(RTL_DIR)/mux2to1.v
+VERILOG_SOURCES += $(RTL_DIR)/mux4to1.v
 
 
 test_microprocessor:
