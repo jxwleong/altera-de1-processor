@@ -2,9 +2,6 @@ import cocotb
 from cocotb.triggers import Event, RisingEdge, FallingEdge, Timer
 
 
-
-
-
 async def initialize(dut):
     await Timer(1, units="ns")
     dut.i0.value  = 0
