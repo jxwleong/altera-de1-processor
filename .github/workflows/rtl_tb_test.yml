@@ -20,12 +20,12 @@ jobs:
       run: sudo apt-get -y install iverilog
 
     - name: Build and run Verilog simulation
+      working-directory: testbench/rtl_tb  # Subsequent step will back to root directory automatically  
       run: 
-        working-directory: testbench/rtl_tb  # Subsequent step will back to root directory automatically
         make -f Makefile all
 
 
     - name: Clean up
+      working-directory: testbench/rtl_tb
       run:
-        working-directory: testbench/rtl_tb
         make -f Makefile clean
