@@ -1,2 +1,6 @@
 __pycache__/
 .idea
+
+# Intel Quartus intermediate directories
+/db/
+/incremental_db/
