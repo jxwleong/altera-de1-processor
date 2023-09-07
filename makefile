@@ -1,6 +1,7 @@
 # Makefile
 THIS_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
+
 # defaults
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
@@ -13,7 +14,9 @@ include $(shell cocotb-config --makefiles)/Makefile.sim
 # even if a file with the same name exists.
 .PHONY:	all test_microprocessor test_mux2to1 cleanup
 
-all: test_microprocessor  test_mux2to1 cleanup
+all:	test_microprocessor  \
+		test_mux2to1 	\
+		cleanup		\
 
 # TOPLEVEL is the name of the toplevel module in your Verilog or VHDL file
 # MODULE is the basename of the Python test file
@@ -34,7 +37,7 @@ test_microprocessor:
 	$(MAKE) cleanup
 	$(info Running test_microprocessor...)
 	$(eval TOPLEVEL := CombinedCUnDP)
-	$(eval MODULE := test.cocotb.test_microprocessor)
+	$(eval MODULE := testbench.cocotb.test_microprocessor)
 
 	@echo "TOPLEVEL=$(TOPLEVEL)"
 	@echo "MODULE=$(MODULE)"
@@ -45,7 +48,7 @@ test_mux2to1:
 	$(MAKE) cleanup
 	$(info Running test_mux2to1...)
 	$(eval TOPLEVEL := mux2to1)
-	$(eval MODULE := test.cocotb.test_mux2to1)
+	$(eval MODULE := testbench.cocotb.test_mux2to1)
 
 	@echo "TOPLEVEL=$(TOPLEVEL)"
 	@echo "MODULE=$(MODULE)"
