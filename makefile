@@ -34,7 +34,7 @@ all: test_microprocessor cleanup
 test_microprocessor:
 	$(info Running test_microprocessor...)
 	TOPLEVEL=CombinedCUnDP \
-	MODULE=test.test_microprocessor \
+	MODULE=test.cocotb.test_microprocessor \
 	$(MAKE) sim
 
 
