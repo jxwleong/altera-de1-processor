@@ -6,8 +6,10 @@ ROOT_DIR := $(realpath $(dir $(MAKEFILE_DIR))/../../)
 # Directories
 RTL_DIR = $(ROOT_DIR)/rtl
 TB_DIR = $(ROOT_DIR)/testbench/rtl_tb
-OUT_DIR = $(ROOT_DIR)/out
+OUT_DIR = $(TB_DIR)/out
 
+# Create the OUT_DIR if it doesn't exist
+$(shell mkdir -p $(OUT_DIR))
 
 # Define the simulator
 SIM = iverilog
