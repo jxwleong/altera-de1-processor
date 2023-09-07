@@ -1,4 +1,4 @@
-# Altera DE1 Processor [![Cocotb Test](https://github.com/jxwleong/altera-de1-processor/actions/workflows/cocotb_test.yml/badge.svg)](https://github.com/jxwleong/altera-de1-processor/actions/workflows/cocotb_test.yml)
+# Altera DE1 Processor [![Cocotb Test](https://github.com/jxwleong/altera-de1-processor/actions/workflows/cocotb_test.yml/badge.svg)](https://github.com/jxwleong/altera-de1-processor/actions/workflows/cocotb_test.yml) [![Run Verilog Simulation](https://github.com/jxwleong/altera-de1-processor/actions/workflows/rtl_tb_test.yml/badge.svg)](https://github.com/jxwleong/altera-de1-processor/actions/workflows/rtl_tb_test.yml)
 Use Verilog HDL code to synthesize the General Purpose Microprocessor (GPM). The GPM is broken down into two parts: Datapath (DP) and Control Unit (CU). Write the DP and CU code seperately then combined into a top module (DP + CU). The purpose of the GPM is to determine the Greatest Common Divisor (GCD) between two integers.  
 
 <br/>  
