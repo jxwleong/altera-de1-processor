@@ -32,10 +32,12 @@ all: $(TESTBENCHES)
 	for tb in $^ ; do \
         OUTFILE=$(OUT_DIR)/$$(basename $$tb .v).out ; \
 		TB_NAME=$$(basename $$tb .v) ; \
+        echo "\nRunning Testbench: $$TB_NAME" ; \
 		VCD_FILE=$(OUT_DIR)/$$TB_NAME.vcd ; \
         $(SIM) $(SIM_FLAGS) $$OUTFILE $(RTL_DIR)/*.v $$tb ; \
         $(VVP) $$OUTFILE ; \
 		mv $(CURDIR)/waveform.vcd $$VCD_FILE ; \
+		echo "Waveform: $$VCD_FILE" ; \
     done
 
 
