@@ -207,7 +207,7 @@ At STORE state, it will load the current data in the 8-bit data register (A) to 
 6. **ADD**  
 At this state, the adder-subtractor will add the current value at the 8-bit data register with the output data of RAM with memory address set by the instruction code.  
 
-7. **subtraction**  
+7. **SUB**  
 At this state, the adder-subtractor will minus the current value at the 8-bit data register (A) with the output data of RAM with memory address set by the instruction code using 2's complement (A + B'').  
 
 8. **INPUT**  
@@ -270,7 +270,7 @@ Answer:  Repeat the process from Simple example.
 
 
 #### <a name="subtraction"></a> subtraction   
-The last method is to used the repeated subtractionraction method. The working princple is subtract the smaller number from the greater. Repeat the process until the remainders are equal, which is the GCD of the given numbers [10]. For example,  
+The last method is to used the repeated subtraction method. The working princple is subtract the smaller number from the greater. Repeat the process until the remainders are equal, which is the GCD of the given numbers [10]. For example,  
   
 ```
 Find the GCD for 20 and 5.
