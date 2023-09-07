@@ -5,38 +5,54 @@ THIS_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 
-VERILOG_SOURCES	+= $(THIS_DIR)/CombinedCUnDP.v
-VERILOG_SOURCES += $(THIS_DIR)/CU.v
-VERILOG_SOURCES += $(THIS_DIR)/DP.v
-
-VERILOG_SOURCES += $(THIS_DIR)/DFF_reg.v
-VERILOG_SOURCES += $(THIS_DIR)/RAM.v
-VERILOG_SOURCES += $(THIS_DIR)/addSubstractor.v
-VERILOG_SOURCES += $(THIS_DIR)/mux2to1.v
-VERILOG_SOURCES += $(THIS_DIR)/mux4to1.v
-# use VHDL_SOURCES for VHDL files
-
-
 # include cocotb's make rules to take care of the simulator setup
 include $(shell cocotb-config --makefiles)/Makefile.sim
-
 
 # Custom targets for individual tests
 # .PHONY ensures these targets are always executed, 
 # even if a file with the same name exists.
+.PHONY:	all test_microprocessor test_mux2to1 cleanup
 
-.PHONY:	all test1 cleanup
-
-all: test_microprocessor cleanup
+all: test_microprocessor  test_mux2to1 cleanup
 
 # TOPLEVEL is the name of the toplevel module in your Verilog or VHDL file
 # MODULE is the basename of the Python test file
-test_microprocessor:
-	$(info Running test_microprocessor...)
-	TOPLEVEL=CombinedCUnDP \
-	MODULE=test.cocotb.test_microprocessor \
-	$(MAKE) sim
+# use VHDL_SOURCES instead VERILOG_SOURCES of for VHDL files
+#Paths to HDL source files
 
+
+
+test_microprocessor:
+	$(MAKE) cleanup
+	$(info Running test_microprocessor...)
+	$(eval TOPLEVEL := CombinedCUnDP)
+	$(eval MODULE := test.cocotb.test_microprocessor)
+	$(eval VERILOG_SOURCES := $(THIS_DIR)/CombinedCUnDP.v \
+                          $(THIS_DIR)/CU.v \
+                          $(THIS_DIR)/DP.v \
+                          $(THIS_DIR)/DFF_reg.v \
+                          $(THIS_DIR)/RAM.v \
+                          $(THIS_DIR)/addSubstractor.v \
+                          $(THIS_DIR)/mux2to1.v \
+                          $(THIS_DIR)/mux4to1.v)
+	@echo "TOPLEVEL=$(TOPLEVEL)"
+	@echo "MODULE=$(MODULE)"
+	@echo "VERILOG_SOURCES=$(VERILOG_SOURCES)"
+	$(MAKE) sim TOPLEVEL=$(TOPLEVEL) MODULE=$(MODULE) VERILOG_SOURCES="$(VERILOG_SOURCES)"
+
+test_mux2to1:
+	$(MAKE) cleanup
+	$(info Running test_mux2to1...)
+	$(eval TOPLEVEL := mux2to1)
+	$(eval MODULE := test.cocotb.test_mux2to1)
+	$(eval VERILOG_SOURCES := $(THIS_DIR)/mux2to1.v)
+	@echo "TOPLEVEL=$(TOPLEVEL)"
+	@echo "MODULE=$(MODULE)"
+	@echo "VERILOG_SOURCES=$(VERILOG_SOURCES)"
+	$(MAKE) sim TOPLEVEL=$(TOPLEVEL) MODULE=$(MODULE) VERILOG_SOURCES="$(VERILOG_SOURCES)"
 
 cleanup:
-	$(RM) -r sim_build/ results.xml
+	$(info Cleaning up generated files...)
+	$(RM) -vf *.vvp sim_build/* results.xml
+
+
