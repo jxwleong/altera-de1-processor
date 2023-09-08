@@ -1,5 +1,5 @@
 import cocotb
-from cocotb.triggers import Event, RisingEdge, FallingEdge, Timer
+from cocotb.triggers import Timer
 
 
 async def initialize(dut):
