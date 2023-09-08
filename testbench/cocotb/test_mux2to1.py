@@ -10,7 +10,7 @@ async def initialize(dut):
 
 """Run test for a 2-to-1 multiplexer without a clock."""
 @cocotb.test()
-async def test_mux2_to_1_S0_eq_0(dut):
+async def test_mux2_to_1_S0_eq_0_expect_I0(dut):
     dut._log.info("Running test for S0=0...")
 
     await initialize(dut)  # Call the initialization function
@@ -32,7 +32,7 @@ async def test_mux2_to_1_S0_eq_0(dut):
 
 
 @cocotb.test()
-async def test_mux2_to_1_S0_eq_1(dut):
+async def test_mux2_to_1_S0_eq_1_expect_I1(dut):
     dut._log.info("Running test for S0=1...")
 
     await initialize(dut)  # Call the initialization function
