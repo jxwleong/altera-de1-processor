@@ -22,10 +22,10 @@ jobs:
     - name: Build and run Verilog simulation
       working-directory: testbench/rtl_tb  # Subsequent step will back to root directory automatically  
       run: 
-        make -f makefile all
+        make -f Makefile all
 
 
     - name: Clean up
       working-directory: testbench/rtl_tb
       run:
-        make -f makefile clean
+        make -f Makefile clean
