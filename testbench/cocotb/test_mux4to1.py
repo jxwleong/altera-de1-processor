@@ -6,6 +6,10 @@ async def initialize(dut):
     await Timer(1, units="ns")
     dut.i0.value  = 0
     dut.i1.value  = 0
+    dut.i2.value  = 0
+    dut.i3.value  = 0
+    dut.S0.value = 0
+    dut.S1.value = 0
     await Timer(1, units="ns")
 
 """Run test for a 4-to-1 multiplexer without a clock."""
