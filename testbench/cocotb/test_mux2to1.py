@@ -21,14 +21,14 @@ async def test_mux2_to_1_S0_eq_0(dut):
     dut.i1.value = 0
     dut.S0.value = 0
     await Timer(1, units="ns")  # wait a bit for hardware natural delay
-    assert dut.out == dut.i0.value, f"Expected {dut.i0.value } but got {dut.out}"
+    assert dut.out == dut.i0.value, f"Expected {dut.i0.value} but got {dut.out}"
 
     dut._log.info("S0=0, I0=0, I1=1, EXPECTED OUT=I0=0")
     dut.i0.value = 0
     dut.i1.value = 1
     dut.S0.value = 0
     await Timer(1, units="ns")  # wait a bit for hardware natural delay
-    assert dut.out == dut.i0.value, f"Expected {dut.i0.value } but got {dut.out}"
+    assert dut.out == dut.i0.value, f"Expected {dut.i0.value} but got {dut.out}"
 
 
 @cocotb.test()
