@@ -1,6 +1,8 @@
 # Makefile
-THIS_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-RTL_DIR := $(THIS_DIR)/rtl
+# Determine the directory containing this makefile and root directory
+MAKEFILE_DIR := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
+ROOT_DIR := $(realpath $(dir $(MAKEFILE_DIR))/../../)
+RTL_DIR := $(ROOT_DIR)/rtl
 
 # defaults
 SIM ?= icarus
@@ -37,7 +39,7 @@ test_microprocessor:
 	$(MAKE) cleanup
 	$(info Running test_microprocessor...)
 	$(eval TOPLEVEL := CombinedCUnDP)
-	$(eval MODULE := testbench.cocotb.test_microprocessor)
+	$(eval MODULE := test_microprocessor)
 
 	@echo "TOPLEVEL=$(TOPLEVEL)"
 	@echo "MODULE=$(MODULE)"
@@ -48,7 +50,7 @@ test_mux2to1:
 	$(MAKE) cleanup
 	$(info Running test_mux2to1...)
 	$(eval TOPLEVEL := mux2to1)
-	$(eval MODULE := testbench.cocotb.test_mux2to1)
+	$(eval MODULE := test_mux2to1)
 
 	@echo "TOPLEVEL=$(TOPLEVEL)"
 	@echo "MODULE=$(MODULE)"
