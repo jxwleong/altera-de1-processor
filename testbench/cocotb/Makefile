@@ -14,12 +14,18 @@ include $(shell cocotb-config --makefiles)/Makefile.sim
 # Custom targets for individual tests
 # .PHONY ensures these targets are always executed, 
 # even if a file with the same name exists.
-.PHONY:	all test_microprocessor test_mux2to1 test_mux4to1 cleanup
+.PHONY:	all	\
+		test_microprocessor	\
+		test_mux2to1	\
+		test_mux4to1 	\
+		test_DFF_reg	\
+		cleanup
 
 all:	test_microprocessor  \
 		test_mux2to1 	\
 		test_mux4to1	\
-		cleanup		\
+		test_DFF_reg	\
+		cleanup		
 
 # TOPLEVEL is the name of the toplevel module in your Verilog or VHDL file
 # MODULE is the basename of the Python test file
@@ -63,6 +69,17 @@ test_mux4to1:
 	$(info Running test_mux4to1...)
 	$(eval TOPLEVEL := mux4to1)
 	$(eval MODULE := test_mux4to1)
+
+	@echo "TOPLEVEL=$(TOPLEVEL)"
+	@echo "MODULE=$(MODULE)"
+	@echo "VERILOG_SOURCES=$(VERILOG_SOURCES)"
+	$(MAKE) sim TOPLEVEL=$(TOPLEVEL) MODULE=$(MODULE) VERILOG_SOURCES="$(VERILOG_SOURCES)"
+
+test_DFF_reg:
+	$(MAKE) cleanup
+	$(info Running test_DFF_reg...)
+	$(eval TOPLEVEL := DFF_reg)
+	$(eval MODULE := test_DFF_reg)
 
 	@echo "TOPLEVEL=$(TOPLEVEL)"
 	@echo "MODULE=$(MODULE)"
