@@ -4,21 +4,15 @@ on:
   push:
     branches:
       - master
-    paths-ignore:               
-      - "out/**" 
-      - "resources/**" 
-      - ".gitignore"
-      - "chn"
-      - "README.md"
+    paths:
+      - 'testbench/rtl_tb/**'
+      - 'rtl/**'
   pull_request:
     branches:
       - master  
-    paths-ignore:               
-      - "out/**" 
-      - "resources/**" 
-      - ".gitignore"
-      - "chn"
-      - "README.md"
+    paths:
+      - 'testbench/rtl_tb/**'
+      - 'rtl/**'
       
 jobs:
   build:
