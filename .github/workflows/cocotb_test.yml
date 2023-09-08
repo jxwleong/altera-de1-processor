@@ -40,5 +40,11 @@ jobs:
         pip install cocotb
 
     - name: Run Cocotb Test
-      run: |
-        make  
+      working-directory: testbench/cocotb  # Subsequent step will back to root directory automatically  
+      run: 
+        make -f Makefile all
+
+    - name: Clean up
+      working-directory: testbench/cocotb
+      run:
+        make -f Makefile cleanup
