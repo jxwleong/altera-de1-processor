@@ -20,6 +20,7 @@ include $(shell cocotb-config --makefiles)/Makefile.sim
 		test_mux4to1 	\
 		test_DFF_reg	\
 		test_addSubtractor	\
+		test_RAM	\
 		cleanup
 
 all:	test_microprocessor  \
@@ -27,6 +28,7 @@ all:	test_microprocessor  \
 		test_mux4to1	\
 		test_DFF_reg	\
 		test_addSubtractor	\
+		test_RAM	\
 		cleanup		
 
 # TOPLEVEL is the name of the toplevel module in your Verilog or VHDL file
@@ -98,6 +100,18 @@ test_addSubtractor:
 	@echo "MODULE=$(MODULE)"
 	@echo "VERILOG_SOURCES=$(VERILOG_SOURCES)"
 	$(MAKE) sim TOPLEVEL=$(TOPLEVEL) MODULE=$(MODULE) VERILOG_SOURCES="$(VERILOG_SOURCES)"
+
+test_RAM:
+	$(MAKE) cleanup
+	$(info Running test_RAM...)
+	$(eval TOPLEVEL := RAM)
+	$(eval MODULE := test_RAM)
+
+	@echo "TOPLEVEL=$(TOPLEVEL)"
+	@echo "MODULE=$(MODULE)"
+	@echo "VERILOG_SOURCES=$(VERILOG_SOURCES)"
+	$(MAKE) sim TOPLEVEL=$(TOPLEVEL) MODULE=$(MODULE) VERILOG_SOURCES="$(VERILOG_SOURCES)"
+
 
 cleanup:
 	$(info Cleaning up generated files...)
