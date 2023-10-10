@@ -76,7 +76,7 @@ This instruction will store the data in A (an 8-bit data register) into the memo
 3. **ADD A**  
 This instruction will add the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the addition is stored back into A.
 
-4. **subtraction A**  
+4. **SUB A**  
 This instruction will subtract the data in A (an 8-bit data register) with the data in the memory location aaaaa. Then, the result of the subtraction is stored back into A.
 
 5. **IN A**  
@@ -152,8 +152,8 @@ These signals is used for the 4-to-1 decoder so that it will select the correct 
 7. **Aload**  
 This signals function are similar to **PCload**, it is used to load data register A.
 
-8. **subtraction**  
-subtraction signal is send to the adder-subtractor. When the signal is `HIGH`, the adder-subtractor will act as a subtractor. Otherwise, it operates like an adder.
+8. **Sub**  
+Sub signal is send to the adder-subtractor. When the signal is `HIGH`, the adder-subtractor will act as a subtractor. Otherwise, it operates like an adder.
   
 <br/>
 
